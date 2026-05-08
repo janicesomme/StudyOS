@@ -6,7 +6,7 @@ interface UseAuthReturn {
   session: Session | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>
-  signUp: (email: string, password: string, name: string) => Promise<{ error: Error | null; emailSent: boolean }>
+  signUp: (email: string, password: string, name: string) => Promise<{ error: Error | null }>
   signOut: () => Promise<void>
 }
 
@@ -33,14 +33,12 @@ export function useAuth(): UseAuthReturn {
   }
 
   const signUp = async (email: string, password: string, name: string) => {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { name } },
     })
-    if (error) return { error: error as Error | null, emailSent: false }
-    const emailSent = !data.session
-    return { error: null, emailSent }
+    return { error: error as Error | null }
   }
 
   const signOut = async () => {

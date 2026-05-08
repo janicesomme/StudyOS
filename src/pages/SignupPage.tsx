@@ -8,34 +8,17 @@ export function SignupPage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [emailSent, setEmailSent] = useState(false)
 
   const handleSubmit = async (name: string, email: string, password: string) => {
     setLoading(true)
     setError(null)
-    const { error, emailSent } = await signUp(email, password, name)
+    const { error } = await signUp(email, password, name)
     setLoading(false)
     if (error) {
       setError(error.message)
-    } else if (emailSent) {
-      setEmailSent(true)
     } else {
       navigate('/dashboard')
     }
-  }
-
-  if (emailSent) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 w-full max-w-sm text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Check your email</h1>
-          <p className="text-sm text-gray-500">
-            We sent a confirmation link to your email address. Click it to activate your account, then{' '}
-            <Link to="/login" className="text-indigo-600 font-medium hover:underline">sign in</Link>.
-          </p>
-        </div>
-      </div>
-    )
   }
 
   return (
