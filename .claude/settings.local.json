@@ -11,7 +11,8 @@
       "Bash(timeout 10 npm run dev)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(npx tailwindcss *)"
+      "Bash(npx tailwindcss *)",
+      "Bash(npm test *)"
     ]
   }
 }
