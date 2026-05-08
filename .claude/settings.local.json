@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(mkdir -p /tmp/vite_scaffold)",
+      "Read(//tmp/**)",
+      "Bash(cp /tmp/vite_scaffold/package.json /tmp/vite_scaffold/tsconfig.json /tmp/vite_scaffold/tsconfig.app.json /tmp/vite_scaffold/tsconfig.node.json /tmp/vite_scaffold/vite.config.ts /tmp/vite_scaffold/index.html /tmp/vite_scaffold/eslint.config.js \"C:\\\\Users\\\\crm22\\\\StudyOS/\")",
+      "Bash(cp -r /tmp/vite_scaffold/public \"C:\\\\Users\\\\crm22\\\\StudyOS/\")",
+      "Bash(cp /tmp/vite_scaffold/src/App.css /tmp/vite_scaffold/src/App.tsx /tmp/vite_scaffold/src/index.css /tmp/vite_scaffold/src/main.tsx \"C:\\\\Users\\\\crm22\\\\StudyOS/src/\")",
+      "Bash(cp -r /tmp/vite_scaffold/src/assets \"C:\\\\Users\\\\crm22\\\\StudyOS/src/\")",
+      "Bash(timeout 10 npm run dev)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
