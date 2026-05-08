@@ -76,70 +76,187 @@ StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests eve
 
 ### Plan 1 -- COMPLETE AND QA VERIFIED
 
-All 13 tasks done. Two-user RLS test passed -- User A and User B each see only their own courses.
+All 13 tasks done. Two-user RLS test passed.
+
+### Plan 2 -- CODE COMPLETE, SUPABASE SETUP INCOMPLETE
+
+All code is written, committed, and passing (29 tests green, build clean). The app will not work end-to-end until the Supabase manual steps below are completed.
 
 ```
-StudyOS/
-├── docs/
-│   └── superpowers/
-│       ├── specs/
-│       │   └── 2026-05-08-studyos-design.md
-│       └── plans/
-│           └── 2026-05-08-plan-01-foundation.md   (complete)
-├── supabase/
-│   └── migrations/
-│       └── 20260508000000_plan1_foundation.sql    (applied to Supabase)
-├── src/
-│   ├── lib/supabase.ts
-│   ├── types/database.ts                          (Plan 1 temp -- 3 tables)
-│   ├── hooks/useAuth.ts
-│   ├── hooks/useCourses.ts
-│   ├── components/auth/LoginForm.tsx
-│   ├── components/auth/SignupForm.tsx
-│   ├── components/courses/CourseForm.tsx
-│   ├── components/layout/DashboardShell.tsx
-│   ├── pages/LoginPage.tsx
-│   ├── pages/SignupPage.tsx
-│   ├── pages/DashboardPage.tsx
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── __tests__/                                 (11 tests, all green)
-├── postcss.config.js                              (empty -- overrides parent dir config)
-├── package.json
-├── vite.config.ts
-└── .env.local                                     (gitignored -- credentials present)
+New files added in Plan 2:
+supabase/
+  migrations/
+    20260508010000_plan2_archivist.sql   (NOT YET RUN in Supabase)
+  functions/
+    archivist/
+      index.ts                           (NOT YET DEPLOYED)
+src/
+  types/database.ts                      (updated -- now covers 5 tables)
+  hooks/useSourceMaterials.ts
+  hooks/useKnowledgeUnits.ts
+  components/materials/
+    UploadForm.tsx
+    MaterialCard.tsx
+    KnowledgeUnitList.tsx
+  pages/CoursePage.tsx
+  App.tsx                                (updated -- /courses/:id route added)
+  pages/DashboardPage.tsx                (updated -- courses link to /courses/:id)
+  __tests__/hooks/useSourceMaterials.test.ts
+  __tests__/hooks/useKnowledgeUnits.test.ts
+  __tests__/components/UploadForm.test.tsx
+  __tests__/components/MaterialCard.test.tsx
 ```
-
-### Supabase state
-- 3 tables live: students, student_profile, courses
-- RLS enabled and verified with two-user app test
-- Triggers: auth.users -> students -> student_profile (all SECURITY DEFINER)
-- Email confirmation: DISABLED (setting is at Authentication -> Providers -> Email -> "Confirm email")
 
 ### Test state
-- 11 tests passing, 0 failures
-- Build: clean (npm run build exits 0)
+- 29 tests passing, 0 failures
+- Build: clean
 
 ---
 
 ## 3. Next Steps
 
-### Immediate (next session)
+### IMMEDIATE -- Complete the Supabase manual setup for Plan 2
 
-**Plan 2: The Archivist**
+The code is done. These are the three things still needed before first QA run. Do them in order.
 
-The Archivist agent handles file upload and knowledge unit extraction. A student uploads a PDF, slide deck, or text file and the Archivist processes it via Claude API into structured knowledge units stored in Supabase.
+---
 
-Plan 2 will need to be written before execution. Use `gsd:plan-phase` or `superpowers:writing-plans` to create it.
+### STEP A: Run the database migration
 
-Plan 2 covers:
-- 2 new tables: source_materials, knowledge_units (migration)
-- File upload UI (to Supabase Storage)
-- Archivist agent (Claude API call to extract knowledge units)
-- Processing status tracking (pending -> processing -> complete/failed)
-- Knowledge unit display in dashboard
+Go to your Supabase dashboard. Click **SQL Editor** in the left sidebar. Click **New query**. Open the file `supabase/migrations/20260508010000_plan2_archivist.sql` in VS Code, copy the entire contents, paste into the SQL editor, and click **Run**.
+
+Expected result: `Success. No rows returned.`
+
+Then click **Table Editor** in the left sidebar and confirm that `source_materials` and `knowledge_units` now appear in the list. Both should show a lock icon (RLS enabled).
+
+---
+
+### STEP B: Add Storage policies
+
+The `course-materials` bucket already exists. Now add 4 security policies so students can only access their own files.
+
+In the Supabase dashboard: click **Storage** in the left sidebar, then click the **Policies** tab at the top. Find `course-materials` in the list and click **New policy**. Choose **For full customization**.
+
+The policy editor has individual fields -- do NOT paste the full SQL statement. Fill in the fields exactly as shown below for each policy.
+
+---
+
+**Policy 1 of 4**
+
+- Policy name: `Users can download their own files`
+- Allowed operation: SELECT
+- USING expression (paste only this, nothing else):
+
+```
+bucket_id = 'course-materials' AND auth.uid()::text = (storage.foldername(name))[1]
+```
+
+Click **Save**.
+
+---
+
+**Policy 2 of 4**
+
+Click **New policy** again. Choose **For full customization**.
+
+- Policy name: `Users can upload to their own folder`
+- Allowed operation: INSERT
+- WITH CHECK expression (paste only this, nothing else):
+
+```
+bucket_id = 'course-materials' AND auth.uid()::text = (storage.foldername(name))[1]
+```
+
+Click **Save**.
+
+---
+
+**Policy 3 of 4**
+
+Click **New policy** again. Choose **For full customization**.
+
+- Policy name: `Users can update their own files`
+- Allowed operation: UPDATE
+- USING expression (paste only this, nothing else):
+
+```
+bucket_id = 'course-materials' AND auth.uid()::text = (storage.foldername(name))[1]
+```
+
+Click **Save**.
+
+---
+
+**Policy 4 of 4**
+
+Click **New policy** again. Choose **For full customization**.
+
+- Policy name: `Users can delete their own files`
+- Allowed operation: DELETE
+- USING expression (paste only this, nothing else):
+
+```
+bucket_id = 'course-materials' AND auth.uid()::text = (storage.foldername(name))[1]
+```
+
+Click **Save**.
+
+---
+
+### STEP C: Deploy the Archivist edge function
+
+This deploys the AI extraction function to Supabase and gives it your Anthropic API key.
+
+Run these commands one at a time in a PowerShell terminal from the project folder (`C:\Users\crm22\StudyOS`):
+
+**1. Install the Supabase CLI:**
+```
+npm install -g supabase
+```
+
+**2. Log in to Supabase:**
+```
+supabase login
+```
+This opens a browser tab. Click to confirm. Come back to the terminal when done.
+
+**3. Find your project ref:**
+In the Supabase dashboard, click **Settings** (gear icon at the bottom of the left sidebar), then click **General**. Copy the **Reference ID** -- it is a 16-character string like `abcdefghijklmnop`.
+
+**4. Link the project:**
+```
+supabase link --project-ref YOUR_REFERENCE_ID_HERE
+```
+It will ask for your database password. This is the password you set when you created the Supabase project.
+
+**5. Deploy the function:**
+```
+supabase functions deploy archivist --project-ref YOUR_REFERENCE_ID_HERE
+```
+
+**6. Set your Anthropic API key:**
+```
+supabase secrets set ANTHROPIC_API_KEY=YOUR_ANTHROPIC_KEY_HERE --project-ref YOUR_REFERENCE_ID_HERE
+```
+Your Anthropic API key is at console.anthropic.com -- click API Keys in the left sidebar.
+
+---
+
+### After completing Steps A, B, and C: First QA test
+
+Start the dev server (`npm run dev`) and do this test:
+
+1. Sign in
+2. Click a course on the dashboard -- it should navigate to `/courses/{id}`
+3. Create a small text file on your desktop with a few sentences about any topic (e.g. paste in a paragraph from Wikipedia). Save it as `test.txt`.
+4. Click the file picker on the CoursePage, select `test.txt`, click Upload
+5. A card should appear showing status **pending**, then change to **processing**, then **complete** -- without you refreshing the page
+6. Click the completed card -- knowledge units extracted from your text should appear on the right
+
+---
 
 ### After Plan 2
+
 - Plan 3: Memory Coach (recall sessions + spaced repetition)
 - Plan 4: Study Manager + Today's Focus
 - Plan 5: The Professor (onboarding assessment + tutoring)
@@ -153,10 +270,11 @@ Plan 2 covers:
 |---|---|
 | `docs/superpowers/specs/2026-05-08-studyos-design.md` | Full design spec v2 -- product vision, all agents, 15-table schema |
 | `docs/superpowers/plans/2026-05-08-plan-01-foundation.md` | Plan 1 -- complete, for reference only |
+| `docs/superpowers/plans/2026-05-08-plan-02-archivist.md` | Plan 2 -- complete, for reference only |
 
 ---
 
-## 5. Implementation Notes (for next session)
+## 5. Implementation Notes
 
 **Tech versions actually installed:**
 - React 19, React Router v7, Tailwind CSS v4, Vite 8, TypeScript 6, Vitest 4
@@ -164,15 +282,21 @@ Plan 2 covers:
 **Tailwind v4:** Uses `@import "tailwindcss"` in index.css. No tailwind.config.js. Uses `@tailwindcss/vite` plugin in vite.config.ts.
 
 **TypeScript 6 gotchas:**
-- `verbatimModuleSyntax: true` -- type-only imports must use `import type` or inline `type` keyword: `import { useState, type FormEvent } from 'react'`
-- Supabase JS v2 `.insert()` types don't resolve correctly under TS6 -- workaround is `@ts-expect-error` with explicit `CourseInsert` type cast (see useCourses.ts)
+- `verbatimModuleSyntax: true` -- type-only imports must use `import type` or inline `type` keyword
+- Supabase JS v2 `.insert()` -- single-line inserts use `@ts-expect-error` (see useCourses.ts). Multi-line insert+select chains use `(supabase.from('table') as any)` cast instead (see useSourceMaterials.ts)
+- Supabase JS v2 `.update()` chains also need the `as any` cast in some cases
+- Vitest mock variables must be declared with `vi.hoisted()` if referenced inside `vi.mock()` factory -- plain `const` declarations are not initialized in time due to hoisting
 - Import `defineConfig` from `vitest/config` not `vite` in vite.config.ts
 
 **PostCSS:** Empty `postcss.config.js` in project root is intentional -- it overrides a parent-directory postcss config from another project. Do not delete it.
 
-**Supabase email confirmation:** The toggle is at Authentication -> Providers -> Email -> "Confirm email" (NOT Authentication -> Settings). Must be OFF for local dev.
+**Supabase email confirmation:** Must be OFF for local dev. Setting is at Authentication -> Providers -> Email -> "Confirm email".
 
-**signup flow:** emailSent logic removed. Signup always navigates to /dashboard on success. ProtectedRoute handles redirect if no session.
+**signup flow:** Signup always navigates to /dashboard on success.
+
+**Storage path structure:** Files are stored at `{studentId}/{courseId}/{timestamp}-{filename}` in the `course-materials` bucket. The storage policies use this structure to restrict access.
+
+**Edge function:** The Archivist runs on Supabase Edge Functions (Deno runtime). It verifies both the source_material and its parent course belong to the authenticated user before writing any knowledge_units. It uses the service role key (injected automatically by Supabase -- not in .env.local).
 
 ---
 
@@ -197,4 +321,11 @@ Plan 2 covers:
 - Fixed PostCSS conflict with parent directory config
 - Fixed Supabase email confirmation issue (setting location, removed emailSent logic)
 - Plan 1 QA complete -- two-user RLS test passed
-- Next: Plan 2 (Archivist)
+
+### Session 03 (2026-05-08)
+- Wrote and revised Plan 2: The Archivist
+- Built all Plan 2 code: useSourceMaterials, useKnowledgeUnits, UploadForm, MaterialCard, KnowledgeUnitList, CoursePage, Archivist edge function
+- Fixed Vitest hoisting issue (vi.hoisted pattern for mock variables)
+- Fixed TypeScript 6 incompatibility with Supabase multi-line insert+select chain (as any cast)
+- 29 tests passing, build clean, all committed
+- Supabase manual setup (migration, storage policies, edge function deploy) NOT YET DONE -- see Section 3
