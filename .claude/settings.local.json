@@ -10,7 +10,8 @@
       "Bash(cp -r /tmp/vite_scaffold/src/assets \"C:\\\\Users\\\\crm22\\\\StudyOS/src/\")",
       "Bash(timeout 10 npm run dev)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(npx tailwindcss *)"
     ]
   }
 }
