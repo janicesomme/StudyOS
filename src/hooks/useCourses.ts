@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import type { Course } from '../types/database'
+import type { Course, Database } from '../types/database'
+
+type CourseInsert = Database['public']['Tables']['courses']['Insert']
 
 interface CreateCourseInput {
   name: string
@@ -36,9 +38,9 @@ export function useCourses(studentId: string | undefined): UseCoursesReturn {
   const createCourse = async (input: CreateCourseInput) => {
     if (!studentId) return { error: new Error('No student ID') }
 
-    const { error } = await supabase
-      .from('courses')
-      .insert({ ...input, student_id: studentId })
+    const insertData: CourseInsert = { student_id: studentId, name: input.name, subject: input.subject, institution: input.institution, semester: input.semester, exam_date: input.exam_date }
+    // @ts-expect-error supabase-js v2 insert types incompatible with TypeScript 6
+    const { error } = await supabase.from('courses').insert(insertData)
 
     if (!error) {
       const { data } = await supabase

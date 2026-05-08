@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 
 interface SignupFormProps {
   onSubmit: (name: string, email: string, password: string) => void
