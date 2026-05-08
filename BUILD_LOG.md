@@ -14,7 +14,7 @@ Do the following, in this order:
 4. Ask the user to confirm before doing any work.
 
 Do NOT start building, writing, or editing anything until the user says go.
-Do NOT ask clarifying questions before giving the summary — read the file, report, then ask.
+Do NOT ask clarifying questions before giving the summary -- read the file, report, then ask.
 
 The working directory is: C:\Users\crm22\StudyOS
 
@@ -24,7 +24,7 @@ The working directory is: C:\Users\crm22\StudyOS
 
 **StudyOS** is a subject-agnostic AI operating system for students. It is a separate, standalone product from the AI OCHEM STUDY SYSTEM (which is the playbook/card system at C:\Users\crm22\AI OCHEM STUDY SYSTEM).
 
-StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests everything a student learns from, builds a personalized knowledge base, runs specialized agents, and prepares students for exams throughout the semester — not just the night before.
+StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests everything a student learns from, builds a personalized knowledge base, runs specialized agents, and prepares students for exams throughout the semester -- not just the night before.
 
 **Core product claim:** "Your AI study assistant and personal tutor, working all semester so you're ready before exam day."
 
@@ -52,15 +52,17 @@ StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests eve
 
 **Orchestrator** sits above all six agents -- thin routing layer only.
 
-**Tech stack:** React + TypeScript + Vite, Supabase (auth + database), Claude API, Tailwind CSS, Vitest
+**Tech stack:** React 19, TypeScript 6, Vite 8, Supabase (auth + database), React Router v7, Tailwind CSS v4, Vitest 4, React Testing Library
 
 **Key design decisions (locked):**
 - students.id = auth.users.id (Supabase auth pattern)
+- students and student_profile rows are created by SECURITY DEFINER triggers -- the client never INSERTs into them
 - Schema-first: no agent is built until the full schema is approved
-- All 16 tables designed before any code is written
+- All 15 tables designed before any code is written (plan had 16 -- corrected to 15)
 - knowledge_units is the atomic heart of the system
 - student_profile feeds every agent; Professor reads it most deeply
 - RLS on every table: each student sees only their own rows
+- RLS uses both USING and WITH CHECK where appropriate (hardened)
 
 ---
 
@@ -70,6 +72,7 @@ StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests eve
 - Local: C:\Users\crm22\StudyOS
 - Branch: master
 - GitHub: not yet set up
+- Supabase project: studyos (renamed from existing project)
 
 ### What exists right now
 ```
@@ -77,17 +80,48 @@ StudyOS/
 ├── docs/
 │   └── superpowers/
 │       ├── specs/
-│       │   └── 2026-05-08-studyos-design.md   (FULL DESIGN SPEC v2 -- read this)
+│       │   └── 2026-05-08-studyos-design.md      (full design spec v2)
 │       └── plans/
-│           └── 2026-05-08-plan-01-foundation.md  (PLAN 1 -- ready to execute)
-├── supabase/                                      (empty)
-├── src/                                           (empty)
-├── .gitignore
+│           └── 2026-05-08-plan-01-foundation.md   (REVISED Plan 1 -- in progress)
+├── supabase/
+│   └── migrations/
+│       └── 20260508000000_plan1_foundation.sql    (RUNS IN SUPABASE -- already applied)
+├── src/
+│   ├── lib/
+│   │   └── supabase.ts                            (typed Supabase client)
+│   ├── types/
+│   │   └── database.ts                            (Plan 1 temp types -- 3 tables)
+│   ├── setupTests.ts
+│   ├── main.tsx                                   (Vite default -- will be replaced in Task 12)
+│   ├── App.tsx                                    (Vite default -- will be replaced in Task 12)
+│   └── index.css                                  (Tailwind v4 import)
+├── package.json                                   (React 19, Vite 8, TS 6, Vitest 4)
+├── vite.config.ts                                 (Tailwind v4 plugin + vitest config)
+├── .env.local                                     (gitignored -- Supabase credentials present)
 └── BUILD_LOG.md
 ```
 
-### No application code has been written yet.
-The repo contains only design documents. Plan 1 is written and ready to execute.
+### Supabase state
+- 3 tables live: students, student_profile, courses
+- RLS enabled on all 3 with hardened USING + WITH CHECK policies
+- Trigger: auth.users INSERT -> students row (SECURITY DEFINER)
+- Trigger: students INSERT -> student_profile row (SECURITY DEFINER)
+- Email confirmation: DISABLED for local dev
+
+### Plan 1 task progress
+- [x] Task 1: Scaffold Vite project
+- [x] Task 2: Install dependencies
+- [x] Task 3: Configure Vite, Tailwind, test environment
+- [x] Task 4: Supabase project setup and .env.local
+- [x] Task 5: Create Supabase client
+- [x] Task 6: Write TypeScript types (3 tables)
+- [x] Task 7: Write and run database migration
+- [ ] Task 8: useAuth hook (TDD)
+- [ ] Task 9: LoginForm component (TDD)
+- [ ] Task 10: SignupForm component (TDD)
+- [ ] Task 11: useCourses hook (TDD)
+- [ ] Task 12: Pages, routing, dashboard shell
+- [ ] Task 13: Build verification and all tests
 
 ---
 
@@ -95,20 +129,22 @@ The repo contains only design documents. Plan 1 is written and ready to execute.
 
 ### Immediate (next session)
 
-**Execute Plan 1: Foundation**
+**Continue Plan 1 -- Tasks 8-13**
 
-File: `docs/superpowers/plans/2026-05-08-plan-01-foundation.md`
+Pick up at Task 8: useAuth hook (TDD).
 
-Plan 1 covers 13 tasks:
-- Tasks 1-4: Vite + React + TypeScript scaffold, dependencies, Supabase project setup
-- Tasks 5-7: Supabase client, TypeScript types for all 16 tables, full schema migration
-- Tasks 8-10: useAuth hook (TDD), LoginForm (TDD), SignupForm (TDD)
-- Task 11: Auth pages, protected routing, dashboard shell
-- Tasks 12-13: useCourses hook (TDD), course creation form wired into dashboard
+Plan file: `docs/superpowers/plans/2026-05-08-plan-01-foundation.md`
 
-**Deliverable from Plan 1:** A student can sign up, sign in, create a course, and see a working dashboard. All 16 schema tables are live in Supabase with RLS.
+Tasks 8-13 are pure code -- no more Supabase dashboard work needed until manual QA.
 
-**How to execute:** Use the `superpowers:subagent-driven-development` skill (recommended) or `superpowers:executing-plans` skill.
+Task 8: useAuth hook (write failing test, implement, pass)
+Task 9: LoginForm component (TDD)
+Task 10: SignupForm component (TDD)
+Task 11: useCourses hook (TDD)
+Task 12: Pages, routing, dashboard shell, CourseForm (wire everything together)
+Task 13: Build verification + full test suite + manual QA (two-user RLS test)
+
+**Use:** `superpowers:executing-plans` skill to continue execution.
 
 ### After Plan 1
 - Plan 2: The Archivist (file upload + knowledge unit extraction via Claude API)
@@ -123,19 +159,46 @@ Plan 1 covers 13 tasks:
 
 | File | Purpose |
 |---|---|
-| `docs/superpowers/specs/2026-05-08-studyos-design.md` | Full design spec v2 -- product vision, all agents, schema, build sequence |
-| `docs/superpowers/plans/2026-05-08-plan-01-foundation.md` | Plan 1 -- ready to execute, all 13 tasks with complete code |
+| `docs/superpowers/specs/2026-05-08-studyos-design.md` | Full design spec v2 -- product vision, all agents, 15-table schema |
+| `docs/superpowers/plans/2026-05-08-plan-01-foundation.md` | Revised Plan 1 -- task-by-task with code, pick up at Task 8 |
 
 ---
 
-## 5. Session Log
+## 5. Implementation Notes (for next session)
+
+**Tech versions actually installed (differ from original plan):**
+- React 19 (plan assumed 18) -- compatible, no API differences for our usage
+- React Router v7 (plan assumed v6) -- BrowserRouter/Routes/Route API still works
+- Tailwind CSS v4 (plan assumed v3) -- uses `@import "tailwindcss"` not directives, no tailwind.config.js needed, uses @tailwindcss/vite plugin
+- Vite 8, TypeScript 6, Vitest 4 -- all latest, compatible
+
+**Tailwind v4 note:** No `tailwind.config.js` file. Content scanning is automatic. CSS uses `@import "tailwindcss"`. The vite.config.ts already has the `@tailwindcss/vite` plugin wired in.
+
+**TypeScript 6 note:** `tsconfig.app.json` has `"erasableSyntaxOnly": true` and `"verbatimModuleSyntax": true`. Avoid using TypeScript enum syntax or `import type` mixing in the same statement.
+
+**Test runner:** `npm test -- --run` for a single non-watch pass. `npm test` for watch mode.
+
+---
+
+## 6. Session Log
 
 ### Session 01 (2026-05-08)
 - Brainstormed StudyOS concept from scratch
 - Defined target user, product vision, Four Cs architecture
 - Designed six-agent system (including Study Manager and Professor)
-- Designed 16-table Supabase schema
+- Designed 15-table Supabase schema (original plan incorrectly said 16 -- corrected)
 - Wrote design spec v2 (incorporating ChatGPT architecture review)
 - Initialized repo at C:\Users\crm22\StudyOS
 - Wrote Plan 1: Foundation (13 tasks, fully executable)
-- Next: Execute Plan 1
+
+### Session 02 (2026-05-08)
+- Revised Plan 1: reduced scope to 3 tables, hardened RLS, added trigger pattern, fixed email confirmation handling, updated QA to two-user app test
+- Scaffolded Vite project (React 19, Vite 8, TypeScript 6)
+- Installed all dependencies (Tailwind v4, Vitest 4, Supabase JS, React Router v7)
+- Configured Vite for Tailwind v4 + vitest
+- Set up Supabase project (renamed existing project to studyos)
+- Disabled email confirmation for local dev
+- Created .env.local with live credentials
+- Ran Plan 1 migration -- 3 tables live with RLS and triggers
+- Created typed Supabase client and Plan 1 TypeScript types
+- Next: Tasks 8-13 (pure code, no more dashboard work)
