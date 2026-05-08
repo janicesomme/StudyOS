@@ -56,9 +56,9 @@ StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests eve
 
 **Key design decisions (locked):**
 - students.id = auth.users.id (Supabase auth pattern)
-- students and student_profile rows are created by SECURITY DEFINER triggers -- the client never INSERTs into them
+- students and student_profile rows are created by SECURITY DEFINER triggers -- the client never INSERTs into them directly
 - Schema-first: no agent is built until the full schema is approved
-- All 15 tables designed before any code is written (plan had 16 -- corrected to 15)
+- 15 tables total across all plans (original plan said 16 -- corrected)
 - knowledge_units is the atomic heart of the system
 - student_profile feeds every agent; Professor reads it most deeply
 - RLS on every table: each student sees only their own rows
@@ -74,54 +74,51 @@ StudyOS combines an AI study assistant and a 24/7 personal tutor. It ingests eve
 - GitHub: not yet set up
 - Supabase project: studyos (renamed from existing project)
 
-### What exists right now
+### Plan 1 -- COMPLETE AND QA VERIFIED
+
+All 13 tasks done. Two-user RLS test passed -- User A and User B each see only their own courses.
+
 ```
 StudyOS/
 ├── docs/
 │   └── superpowers/
 │       ├── specs/
-│       │   └── 2026-05-08-studyos-design.md      (full design spec v2)
+│       │   └── 2026-05-08-studyos-design.md
 │       └── plans/
-│           └── 2026-05-08-plan-01-foundation.md   (REVISED Plan 1 -- in progress)
+│           └── 2026-05-08-plan-01-foundation.md   (complete)
 ├── supabase/
 │   └── migrations/
-│       └── 20260508000000_plan1_foundation.sql    (RUNS IN SUPABASE -- already applied)
+│       └── 20260508000000_plan1_foundation.sql    (applied to Supabase)
 ├── src/
-│   ├── lib/
-│   │   └── supabase.ts                            (typed Supabase client)
-│   ├── types/
-│   │   └── database.ts                            (Plan 1 temp types -- 3 tables)
-│   ├── setupTests.ts
-│   ├── main.tsx                                   (Vite default -- will be replaced in Task 12)
-│   ├── App.tsx                                    (Vite default -- will be replaced in Task 12)
-│   └── index.css                                  (Tailwind v4 import)
-├── package.json                                   (React 19, Vite 8, TS 6, Vitest 4)
-├── vite.config.ts                                 (Tailwind v4 plugin + vitest config)
-├── .env.local                                     (gitignored -- Supabase credentials present)
-└── BUILD_LOG.md
+│   ├── lib/supabase.ts
+│   ├── types/database.ts                          (Plan 1 temp -- 3 tables)
+│   ├── hooks/useAuth.ts
+│   ├── hooks/useCourses.ts
+│   ├── components/auth/LoginForm.tsx
+│   ├── components/auth/SignupForm.tsx
+│   ├── components/courses/CourseForm.tsx
+│   ├── components/layout/DashboardShell.tsx
+│   ├── pages/LoginPage.tsx
+│   ├── pages/SignupPage.tsx
+│   ├── pages/DashboardPage.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── __tests__/                                 (11 tests, all green)
+├── postcss.config.js                              (empty -- overrides parent dir config)
+├── package.json
+├── vite.config.ts
+└── .env.local                                     (gitignored -- credentials present)
 ```
 
 ### Supabase state
 - 3 tables live: students, student_profile, courses
-- RLS enabled on all 3 with hardened USING + WITH CHECK policies
-- Trigger: auth.users INSERT -> students row (SECURITY DEFINER)
-- Trigger: students INSERT -> student_profile row (SECURITY DEFINER)
-- Email confirmation: DISABLED for local dev
+- RLS enabled and verified with two-user app test
+- Triggers: auth.users -> students -> student_profile (all SECURITY DEFINER)
+- Email confirmation: DISABLED (setting is at Authentication -> Providers -> Email -> "Confirm email")
 
-### Plan 1 task progress
-- [x] Task 1: Scaffold Vite project
-- [x] Task 2: Install dependencies
-- [x] Task 3: Configure Vite, Tailwind, test environment
-- [x] Task 4: Supabase project setup and .env.local
-- [x] Task 5: Create Supabase client
-- [x] Task 6: Write TypeScript types (3 tables)
-- [x] Task 7: Write and run database migration
-- [ ] Task 8: useAuth hook (TDD)
-- [ ] Task 9: LoginForm component (TDD)
-- [ ] Task 10: SignupForm component (TDD)
-- [ ] Task 11: useCourses hook (TDD)
-- [ ] Task 12: Pages, routing, dashboard shell
-- [ ] Task 13: Build verification and all tests
+### Test state
+- 11 tests passing, 0 failures
+- Build: clean (npm run build exits 0)
 
 ---
 
@@ -129,25 +126,20 @@ StudyOS/
 
 ### Immediate (next session)
 
-**Continue Plan 1 -- Tasks 8-13**
+**Plan 2: The Archivist**
 
-Pick up at Task 8: useAuth hook (TDD).
+The Archivist agent handles file upload and knowledge unit extraction. A student uploads a PDF, slide deck, or text file and the Archivist processes it via Claude API into structured knowledge units stored in Supabase.
 
-Plan file: `docs/superpowers/plans/2026-05-08-plan-01-foundation.md`
+Plan 2 will need to be written before execution. Use `gsd:plan-phase` or `superpowers:writing-plans` to create it.
 
-Tasks 8-13 are pure code -- no more Supabase dashboard work needed until manual QA.
+Plan 2 covers:
+- 2 new tables: source_materials, knowledge_units (migration)
+- File upload UI (to Supabase Storage)
+- Archivist agent (Claude API call to extract knowledge units)
+- Processing status tracking (pending -> processing -> complete/failed)
+- Knowledge unit display in dashboard
 
-Task 8: useAuth hook (write failing test, implement, pass)
-Task 9: LoginForm component (TDD)
-Task 10: SignupForm component (TDD)
-Task 11: useCourses hook (TDD)
-Task 12: Pages, routing, dashboard shell, CourseForm (wire everything together)
-Task 13: Build verification + full test suite + manual QA (two-user RLS test)
-
-**Use:** `superpowers:executing-plans` skill to continue execution.
-
-### After Plan 1
-- Plan 2: The Archivist (file upload + knowledge unit extraction via Claude API)
+### After Plan 2
 - Plan 3: Memory Coach (recall sessions + spaced repetition)
 - Plan 4: Study Manager + Today's Focus
 - Plan 5: The Professor (onboarding assessment + tutoring)
@@ -160,23 +152,27 @@ Task 13: Build verification + full test suite + manual QA (two-user RLS test)
 | File | Purpose |
 |---|---|
 | `docs/superpowers/specs/2026-05-08-studyos-design.md` | Full design spec v2 -- product vision, all agents, 15-table schema |
-| `docs/superpowers/plans/2026-05-08-plan-01-foundation.md` | Revised Plan 1 -- task-by-task with code, pick up at Task 8 |
+| `docs/superpowers/plans/2026-05-08-plan-01-foundation.md` | Plan 1 -- complete, for reference only |
 
 ---
 
 ## 5. Implementation Notes (for next session)
 
-**Tech versions actually installed (differ from original plan):**
-- React 19 (plan assumed 18) -- compatible, no API differences for our usage
-- React Router v7 (plan assumed v6) -- BrowserRouter/Routes/Route API still works
-- Tailwind CSS v4 (plan assumed v3) -- uses `@import "tailwindcss"` not directives, no tailwind.config.js needed, uses @tailwindcss/vite plugin
-- Vite 8, TypeScript 6, Vitest 4 -- all latest, compatible
+**Tech versions actually installed:**
+- React 19, React Router v7, Tailwind CSS v4, Vite 8, TypeScript 6, Vitest 4
 
-**Tailwind v4 note:** No `tailwind.config.js` file. Content scanning is automatic. CSS uses `@import "tailwindcss"`. The vite.config.ts already has the `@tailwindcss/vite` plugin wired in.
+**Tailwind v4:** Uses `@import "tailwindcss"` in index.css. No tailwind.config.js. Uses `@tailwindcss/vite` plugin in vite.config.ts.
 
-**TypeScript 6 note:** `tsconfig.app.json` has `"erasableSyntaxOnly": true` and `"verbatimModuleSyntax": true`. Avoid using TypeScript enum syntax or `import type` mixing in the same statement.
+**TypeScript 6 gotchas:**
+- `verbatimModuleSyntax: true` -- type-only imports must use `import type` or inline `type` keyword: `import { useState, type FormEvent } from 'react'`
+- Supabase JS v2 `.insert()` types don't resolve correctly under TS6 -- workaround is `@ts-expect-error` with explicit `CourseInsert` type cast (see useCourses.ts)
+- Import `defineConfig` from `vitest/config` not `vite` in vite.config.ts
 
-**Test runner:** `npm test -- --run` for a single non-watch pass. `npm test` for watch mode.
+**PostCSS:** Empty `postcss.config.js` in project root is intentional -- it overrides a parent-directory postcss config from another project. Do not delete it.
+
+**Supabase email confirmation:** The toggle is at Authentication -> Providers -> Email -> "Confirm email" (NOT Authentication -> Settings). Must be OFF for local dev.
+
+**signup flow:** emailSent logic removed. Signup always navigates to /dashboard on success. ProtectedRoute handles redirect if no session.
 
 ---
 
@@ -185,20 +181,20 @@ Task 13: Build verification + full test suite + manual QA (two-user RLS test)
 ### Session 01 (2026-05-08)
 - Brainstormed StudyOS concept from scratch
 - Defined target user, product vision, Four Cs architecture
-- Designed six-agent system (including Study Manager and Professor)
-- Designed 15-table Supabase schema (original plan incorrectly said 16 -- corrected)
-- Wrote design spec v2 (incorporating ChatGPT architecture review)
-- Initialized repo at C:\Users\crm22\StudyOS
-- Wrote Plan 1: Foundation (13 tasks, fully executable)
+- Designed six-agent system
+- Designed 15-table Supabase schema
+- Wrote design spec v2
+- Initialized repo
+- Wrote Plan 1: Foundation (13 tasks)
 
 ### Session 02 (2026-05-08)
-- Revised Plan 1: reduced scope to 3 tables, hardened RLS, added trigger pattern, fixed email confirmation handling, updated QA to two-user app test
+- Revised Plan 1: reduced to 3 tables, hardened RLS, trigger pattern, two-user QA test
 - Scaffolded Vite project (React 19, Vite 8, TypeScript 6)
 - Installed all dependencies (Tailwind v4, Vitest 4, Supabase JS, React Router v7)
-- Configured Vite for Tailwind v4 + vitest
-- Set up Supabase project (renamed existing project to studyos)
-- Disabled email confirmation for local dev
-- Created .env.local with live credentials
 - Ran Plan 1 migration -- 3 tables live with RLS and triggers
-- Created typed Supabase client and Plan 1 TypeScript types
-- Next: Tasks 8-13 (pure code, no more dashboard work)
+- Built all auth and course components with TDD (11 tests)
+- Fixed TypeScript 6 compatibility issues (import type, vitest/config, insert cast)
+- Fixed PostCSS conflict with parent directory config
+- Fixed Supabase email confirmation issue (setting location, removed emailSent logic)
+- Plan 1 QA complete -- two-user RLS test passed
+- Next: Plan 2 (Archivist)
