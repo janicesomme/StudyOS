@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DashboardShell } from '../components/layout/DashboardShell'
 import { CourseForm } from '../components/courses/CourseForm'
 import { useCourses } from '../hooks/useCourses'
@@ -43,9 +44,14 @@ export function DashboardPage() {
           ) : (
             <ul className="space-y-2 mt-2">
               {courses.map(course => (
-                <li key={course.id} className="bg-gray-50 rounded-lg px-3 py-2">
-                  <p className="text-sm font-medium text-gray-900">{course.name}</p>
-                  <p className="text-xs text-gray-400">{course.subject}</p>
+                <li key={course.id}>
+                  <Link
+                    to={`/courses/${course.id}`}
+                    className="block bg-gray-50 rounded-lg px-3 py-2 hover:bg-indigo-50 transition-colors"
+                  >
+                    <p className="text-sm font-medium text-gray-900">{course.name}</p>
+                    <p className="text-xs text-gray-400">{course.subject}</p>
+                  </Link>
                 </li>
               ))}
             </ul>
