@@ -130,10 +130,12 @@ export function DrillPage() {
               <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-4">Question</p>
               {isImageQuestion && q.image_url ? (
                 <QuestionImageCard imagePath={q.image_url} className="w-full" />
-              ) : (
+              ) : q.raw_text ? (
                 <p className="text-base text-gray-900 whitespace-pre-wrap leading-relaxed">
-                  {q.raw_text ?? q.question_type}
+                  {q.raw_text}
                 </p>
+              ) : (
+                <p className="text-sm text-gray-400 italic">Question text not available.</p>
               )}
             </div>
           )}
