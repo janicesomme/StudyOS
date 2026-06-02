@@ -15,7 +15,8 @@
     "import-question-bank": "tsx scripts/import-question-bank.ts",
     "ingest-docx": "tsx --env-file=.env.local scripts/ingest-docx.ts",
     "parse-exam-sheet": "tsx scripts/parse-exam-sheet.ts",
-    "propose-topics": "tsx --env-file=.env.local scripts/propose-topics.ts"
+    "propose-topics": "tsx --env-file=.env.local scripts/propose-topics.ts",
+    "ingest-exam-pairs": "tsx --env-file=.env.local scripts/ingest-exam-pairs.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
