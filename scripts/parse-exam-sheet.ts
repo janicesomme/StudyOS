@@ -188,7 +188,10 @@ async function run() {
   console.log('\nDone.')
 }
 
-run().catch(err => {
-  console.error(err instanceof Error ? err.message : String(err))
-  process.exit(1)
-})
+// Only execute CLI when this file is the main entry point, not when imported as a module
+if (path.resolve(process.argv[1] ?? '') === path.resolve(fileURLToPath(import.meta.url))) {
+  run().catch(err => {
+    console.error(err instanceof Error ? err.message : String(err))
+    process.exit(1)
+  })
+}
