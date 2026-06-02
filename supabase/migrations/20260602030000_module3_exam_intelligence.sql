@@ -23,6 +23,8 @@ ALTER TABLE source_exams ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "se_select_own" ON source_exams FOR SELECT USING (auth.uid() = student_id);
 CREATE POLICY "se_insert_own" ON source_exams FOR INSERT WITH CHECK (auth.uid() = student_id);
 CREATE POLICY "se_delete_own" ON source_exams FOR DELETE USING (auth.uid() = student_id);
+CREATE POLICY "se_update_own" ON source_exams FOR UPDATE
+  USING (auth.uid() = student_id) WITH CHECK (auth.uid() = student_id);
 
 -- Add Module 3 columns to exam_questions
 ALTER TABLE exam_questions

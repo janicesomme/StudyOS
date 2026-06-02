@@ -101,7 +101,9 @@ export type Database = {
         Update: {
           question_type?: string; verified?: boolean; ai_tagged?: boolean
           answer_key?: string | null; hint?: string | null; answer_image_url?: string | null
-          question_order?: number | null
+          question_order?: number | null; source_exam_id?: string | null
+          exam_number?: number | null; exam_year?: number | null
+          point_value?: number | null; sub_parts?: string[]; has_structure?: boolean; raw_text?: string | null
         }
       }
     }
