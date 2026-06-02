@@ -79,26 +79,31 @@ function pairExams(dir: string): { question: string; key: string }[] {
 
 // ── Tag topic using canonical enum ───────────────────────────────────────────
 async function tagTopic(questionText: string): Promise<string> {
-  const resp = await anthropic.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 32,
-    messages: [{
-      role: 'user',
-      content: `Organic chemistry exam question. Pick the SINGLE best topic from this list: ${TOPIC_ENUM.join(', ')}. Reply with ONLY the topic label, nothing else.\n\nQuestion: ${questionText.slice(0, 500)}`,
-    }],
-  })
-  const raw = resp.content[0]?.type === 'text' ? resp.content[0].text.trim().toUpperCase() : 'OTHER'
-  return TOPIC_ENUM.includes(raw) ? raw : 'OTHER'
+  try {
+    const resp = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 32,
+      messages: [{
+        role: 'user',
+        content: `Organic chemistry exam question. Pick the SINGLE best topic from this list: ${TOPIC_ENUM.join(', ')}. Reply with ONLY the topic label, nothing else.\n\nQuestion: ${questionText.slice(0, 500)}`,
+      }],
+    })
+    const raw = resp.content[0]?.type === 'text' ? resp.content[0].text.trim().toUpperCase() : 'OTHER'
+    return TOPIC_ENUM.includes(raw) ? raw : 'OTHER'
+  } catch {
+    return 'OTHER'
+  }
 }
 
 // ── Generate hint (question-only, no answer key) ──────────────────────────────
 async function generateHint(questionText: string, pointValue: number | null, examNumber: number): Promise<string> {
-  const resp = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 120,
-    messages: [{
-      role: 'user',
-      content: `You are an organic chemistry study coach writing exam hints for students.
+  try {
+    const resp = await anthropic.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 120,
+      messages: [{
+        role: 'user',
+        content: `You are an organic chemistry study coach writing exam hints for students.
 
 QUESTION: ${questionText.slice(0, 800)}
 POINT VALUE: ${pointValue ?? 'unknown'} pts
@@ -111,9 +116,12 @@ Write ONE sentence that:
 - Is direct and concise -- no preamble, no "Hint:"
 
 Reply with ONLY the hint sentence.`,
-    }],
-  })
-  return resp.content[0]?.type === 'text' ? resp.content[0].text.trim() : ''
+      }],
+    })
+    return resp.content[0]?.type === 'text' ? resp.content[0].text.trim() : ''
+  } catch {
+    return ''
+  }
 }
 
 // ── Upload a PNG file to Supabase storage ─────────────────────────────────────
@@ -174,68 +182,68 @@ async function processExamPair(questionPdf: string, keyPdf: string): Promise<voi
   }
   console.log(`  Uploaded ${keyStoragePaths.length} key page images`)
 
-  // 5. For each question: tag topic, generate hint, map to key page(s), build row
-  const rows: object[] = []
-  for (const q of questions) {
-    process.stdout.write(`    Q${q.number}: tagging...`)
-    const topic = await tagTopic(q.raw_text)
-    process.stdout.write(` ${topic}, hinting...`)
-    const hint = await generateHint(q.raw_text, q.point_value, meta.exam_number)
+  try {
+    // 5. For each question: tag topic, generate hint, map to key page(s), build row
+    const rows: object[] = []
+    for (const q of questions) {
+      process.stdout.write(`    Q${q.number}: tagging...`)
+      const topic = await tagTopic(q.raw_text)
+      process.stdout.write(` ${topic}, hinting...`)
+      const hint = await generateHint(q.raw_text, q.point_value, meta.exam_number)
 
-    // Answer image: key page corresponding to question's page (1-based page_number -> key page index)
-    const keyPageIdx = Math.min(q.page_number - 1, keyStoragePaths.length - 1)
-    const answerImageUrl = keyStoragePaths[keyPageIdx] ?? null
+      const keyPageIdx = Math.min(q.page_number - 1, keyStoragePaths.length - 1)
+      const answerImageUrl = keyStoragePaths[keyPageIdx] ?? null
 
-    rows.push({
-      student_id: STUDENT_ID,
-      course_id: COURSE_ID,
-      q_id: `${meta.course_code}${meta.year}EX${meta.exam_number}Q${q.number}`,
-      source_doc: filename,
-      source_page: String(q.page_number),
-      question_type: topic,
-      pack: null,
-      pattern: null,
-      difficulty: 'E',
-      suitable_use: null,
-      janice_shortcut: null,
-      student_visible_trigger: null,
-      what_student_does: null,
-      struggle_point: null,
-      why_easy_in_system: null,
-      pre_lesson_needed: null,
-      topics: [topic],
-      reagents_involved: [],
-      vocab_needed: [],
-      related_knowledge_unit_ids: [],
-      image_url: null,
-      ai_tagged: true,
-      answer_key: null,
-      verified: false,
-      hint,
-      answer_image_url: answerImageUrl,
-      source_exam_id: sourceExamId,
-      exam_number: meta.exam_number,
-      exam_year: meta.year,
-      question_order: q.number,
-      point_value: q.point_value,
-      sub_parts: q.sub_parts.map(s => s.label),
-      has_structure: q.has_structure,
-      raw_text: q.raw_text,
-    })
-    process.stdout.write(' done\n')
+      rows.push({
+        student_id: STUDENT_ID,
+        course_id: COURSE_ID,
+        q_id: `${meta.course_code}${meta.year}EX${meta.exam_number}Q${q.number}`,
+        source_doc: filename,
+        source_page: String(q.page_number),
+        question_type: topic,
+        pack: null,
+        pattern: null,
+        difficulty: 'E',
+        suitable_use: null,
+        janice_shortcut: null,
+        student_visible_trigger: null,
+        what_student_does: null,
+        struggle_point: null,
+        why_easy_in_system: null,
+        pre_lesson_needed: null,
+        topics: [topic],
+        reagents_involved: [],
+        vocab_needed: [],
+        related_knowledge_unit_ids: [],
+        image_url: null,
+        ai_tagged: true,
+        answer_key: null,
+        verified: false,
+        hint,
+        answer_image_url: answerImageUrl,
+        source_exam_id: sourceExamId,
+        exam_number: meta.exam_number,
+        exam_year: meta.year,
+        question_order: q.number,
+        point_value: q.point_value,
+        sub_parts: q.sub_parts.map(s => s.label),
+        has_structure: q.has_structure,
+        raw_text: q.raw_text,
+      })
+      process.stdout.write(' done\n')
+    }
+
+    // @ts-expect-error supabase-js v2 insert types incompatible with TypeScript 6
+    const { error: insertErr } = await supabase.from('exam_questions').insert(rows)
+    if (insertErr) throw new Error(`exam_questions insert failed: ${insertErr.message}`)
+    console.log(`  Inserted ${rows.length} questions for ${filename}`)
+  } finally {
+    // Always clean up temp key page files regardless of success or failure
+    for (const p of keyPagePaths) {
+      try { fs.rmSync(p, { force: true }) } catch { /* ignore */ }
+    }
+    try { fs.rmdirSync(tmpDir) } catch { /* ignore if not empty */ }
   }
-
-  // @ts-expect-error supabase-js v2 insert types incompatible with TypeScript 6
-  const { error: insertErr } = await supabase.from('exam_questions').insert(rows)
-  if (insertErr) throw new Error(`exam_questions insert failed: ${insertErr.message}`)
-
-  // Clean up temp key page files
-  for (const p of keyPagePaths) {
-    try { fs.rmSync(p, { force: true }) } catch { /* ignore */ }
-  }
-  try { fs.rmdirSync(tmpDir) } catch { /* ignore if not empty */ }
-
-  console.log(`  Inserted ${rows.length} questions for ${filename}`)
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
