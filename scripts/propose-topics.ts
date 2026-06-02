@@ -50,7 +50,12 @@ async function run() {
     process.stdout.write(`${questions.length} questions\n`)
 
     for (const q of questions) {
-      const topic = await proposeTopic(q.raw_text)
+      let topic = 'UNKNOWN'
+      try {
+        topic = await proposeTopic(q.raw_text)
+      } catch (err) {
+        console.warn(`    Warning: API call failed for Q${q.number} in ${filename}: ${String(err)}`)
+      }
       topicMap.set(topic, (topicMap.get(topic) ?? 0) + 1)
       rows.push({ file: filename, qNum: q.number, topic, preview: q.raw_text.slice(0, 80) })
     }
