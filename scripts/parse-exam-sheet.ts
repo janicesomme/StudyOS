@@ -1,13 +1,17 @@
 /// <reference types="node" />
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
+import { createRequire } from 'module'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-// Point to the worker file co-located with the legacy build of pdfjs-dist.
-// The path is resolved relative to pdf.mjs itself, so './pdf.worker.mjs' works.
-GlobalWorkerOptions.workerSrc = './pdf.worker.mjs'
+const require = createRequire(import.meta.url)
+// Resolve the worker path absolutely so the script works from any cwd.
+// Convert to a file:// URL because pdfjs-dist requires a URL scheme on Windows.
+GlobalWorkerOptions.workerSrc = pathToFileURL(
+  require.resolve('pdfjs-dist/legacy/build/pdf.worker.mjs')
+).href
 
 export interface ParsedSubPart {
   label: string    // 'a', 'b', 'c'
@@ -76,7 +80,7 @@ function hasStructure(text: string): boolean {
 
 // Split full document text into per-question blocks.
 // Questions are delimited by patterns like "1.", "1)", "Question 1", "Q1" at line start.
-export function parseQuestions(pages: string[], filename: string): ParsedQuestion[] {
+export function parseQuestions(pages: string[]): ParsedQuestion[] {
   const questions: ParsedQuestion[] = []
 
   // Build a flat text with page markers so we can recover page_number
@@ -171,7 +175,7 @@ async function run() {
   console.log('\n--- RAW PAGE TEXT (first 2 pages) ---')
   pages.slice(0, 2).forEach((p, i) => console.log(`\n[Page ${i + 1}]\n${p}`))
 
-  const questions = parseQuestions(pages, path.basename(pdfPath))
+  const questions = parseQuestions(pages)
   console.log(`\n--- PARSED QUESTIONS (${questions.length} found) ---`)
   for (const q of questions) {
     console.log(`\nQ${q.number} (page ${q.page_number}, ${q.point_value ?? '?'} pts, ${q.has_structure ? 'HAS STRUCTURE' : 'no structure'})`)
