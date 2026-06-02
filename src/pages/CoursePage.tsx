@@ -14,7 +14,7 @@ export function CoursePage() {
   const { session } = useAuth()
   const studentId = session?.user.id
 
-  const { materials, loading: materialsLoading, uploadAndProcess } = useSourceMaterials(
+  const { materials, loading: materialsLoading, uploadAndProcess, deleteMaterial } = useSourceMaterials(
     courseId,
     studentId
   )
@@ -58,6 +58,26 @@ export function CoursePage() {
           <div className="mt-2">
             <h1 className="text-2xl font-bold text-gray-900">{course.name}</h1>
             <p className="text-sm text-gray-500">{course.subject}</p>
+            <div className="mt-2 flex gap-4">
+              <Link
+                to={`/courses/${courseId}/translate`}
+                className="text-sm text-indigo-600 hover:underline"
+              >
+                Chapter Translator
+              </Link>
+              <Link
+                to={`/courses/${courseId}/exam-picker`}
+                className="text-sm text-indigo-600 hover:underline"
+              >
+                Drill Questions
+              </Link>
+              <Link
+                to={`/courses/${courseId}/review-images`}
+                className="text-sm text-indigo-600 hover:underline"
+              >
+                Review Images
+              </Link>
+            </div>
           </div>
         )}
       </div>
@@ -81,6 +101,7 @@ export function CoursePage() {
                     material={material}
                     onSelect={handleSelectMaterial}
                     selected={selectedMaterialId === material.id}
+                    onDelete={deleteMaterial}
                   />
                 ))}
               </div>

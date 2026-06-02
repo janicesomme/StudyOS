@@ -4,6 +4,10 @@ import { LoginPage } from './pages/LoginPage'
 import { SignupPage } from './pages/SignupPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { CoursePage } from './pages/CoursePage'
+import { ChapterTranslatorPage } from './pages/ChapterTranslatorPage'
+import { DrillPage } from './pages/DrillPage'
+import { ReviewImagesPage } from './pages/ReviewImagesPage'
+import { ExamPickerPage } from './pages/ExamPickerPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
@@ -24,6 +28,10 @@ export default function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/courses/:id" element={<ProtectedRoute><CoursePage /></ProtectedRoute>} />
+        <Route path="/courses/:id/translate" element={<ProtectedRoute><ChapterTranslatorPage /></ProtectedRoute>} />
+        <Route path="/courses/:id/drill" element={<ProtectedRoute><DrillPage /></ProtectedRoute>} />
+        <Route path="/courses/:id/exam-picker" element={<ProtectedRoute><ExamPickerPage /></ProtectedRoute>} />
+        <Route path="/courses/:id/review-images" element={<ProtectedRoute><ReviewImagesPage /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
