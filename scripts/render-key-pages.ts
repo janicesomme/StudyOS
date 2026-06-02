@@ -14,5 +14,5 @@ export function renderKeyPages(pdfPath: string, outputDir: string): string[] {
   if (result.status !== 0) {
     throw new Error(`render-key-pages.py failed: ${result.stderr}`)
   }
-  return result.stdout.trim().split('\n').filter(Boolean)
+  return result.stdout.trim().split(/\r?\n/).filter(Boolean)
 }
