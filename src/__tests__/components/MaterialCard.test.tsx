@@ -19,17 +19,17 @@ const base: SourceMaterial = {
 
 describe('MaterialCard', () => {
   it('renders the material title', () => {
-    render(<MaterialCard material={base} onSelect={vi.fn()} selected={false} />)
+    render(<MaterialCard material={base} onSelect={vi.fn()} selected={false} onDelete={vi.fn()} />)
     expect(screen.getByText('Lecture Notes Week 1')).toBeInTheDocument()
   })
 
   it('shows the processing status', () => {
-    render(<MaterialCard material={base} onSelect={vi.fn()} selected={false} />)
+    render(<MaterialCard material={base} onSelect={vi.fn()} selected={false} onDelete={vi.fn()} />)
     expect(screen.getByText('complete')).toBeInTheDocument()
   })
 
   it('shows failed status', () => {
-    render(<MaterialCard material={{ ...base, processing_status: 'failed' }} onSelect={vi.fn()} selected={false} />)
+    render(<MaterialCard material={{ ...base, processing_status: 'failed' }} onSelect={vi.fn()} selected={false} onDelete={vi.fn()} />)
     expect(screen.getByText('failed')).toBeInTheDocument()
   })
 
@@ -39,6 +39,7 @@ describe('MaterialCard', () => {
         material={{ ...base, processing_status: 'failed', error_message: 'Claude API error' }}
         onSelect={vi.fn()}
         selected={false}
+        onDelete={vi.fn()}
       />
     )
     expect(screen.getByText('Claude API error')).toBeInTheDocument()
@@ -46,13 +47,13 @@ describe('MaterialCard', () => {
 
   it('calls onSelect with the material id when clicked', () => {
     const onSelect = vi.fn()
-    render(<MaterialCard material={base} onSelect={onSelect} selected={false} />)
+    render(<MaterialCard material={base} onSelect={onSelect} selected={false} onDelete={vi.fn()} />)
     fireEvent.click(screen.getByText('Lecture Notes Week 1'))
     expect(onSelect).toHaveBeenCalledWith('mat-1')
   })
 
   it('shows needs-review badge when needs_review is true', () => {
-    render(<MaterialCard material={{ ...base, needs_review: true }} onSelect={vi.fn()} selected={false} />)
+    render(<MaterialCard material={{ ...base, needs_review: true }} onSelect={vi.fn()} selected={false} onDelete={vi.fn()} />)
     expect(screen.getByText(/review/i)).toBeInTheDocument()
   })
 })
