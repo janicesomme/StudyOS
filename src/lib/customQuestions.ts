@@ -62,6 +62,7 @@ export type ImageQuestion = z.infer<typeof ImageQuestionSchema>
 export const TranslatorResultSchema = z.object({
   concepts: z.array(z.string()).min(1),
   plain_english: z.string().min(1),
+  floor_covered: z.array(z.string()).default([]),
   // Optional: absent when course question_source = 'image_bank'
   questions: z.array(ClaudeQuestionSchema).optional().default([]),
   topic_tags: z.array(z.string()).default([]),

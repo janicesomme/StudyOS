@@ -37,6 +37,11 @@ export function ChapterTranslatorPage() {
   const [saved, setSaved] = useState<number | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
 
+  const floorMissing = state.status === 'done'
+    ? state.result.topic_tags.filter(t => !state.result.floor_covered.includes(t))
+    : []
+  const floorAllCovered = floorMissing.length === 0
+
   const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -166,11 +171,27 @@ export function ChapterTranslatorPage() {
 
               {state.result.topic_tags.length > 0 && (
                 <div className="md:col-span-2 bg-white rounded-2xl border border-gray-200 p-6">
-                  <p className="text-sm font-medium text-gray-700 mb-3">
-                    Matched topics in your exam question library
-                  </p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <p className="text-sm font-medium text-gray-700">Floor coverage:</p>
+                    <span className={`text-sm font-bold ${floorAllCovered ? 'text-green-600' : 'text-amber-600'}`}>
+                      {state.result.floor_covered.length} / {state.result.topic_tags.length} exam topics
+                    </span>
+                    <span className={`text-xs px-2 py-0.5 rounded font-medium ${floorAllCovered ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>
+                      {floorAllCovered ? 'PASS' : 'INCOMPLETE'}
+                    </span>
+                  </div>
+                  {!floorAllCovered && (
+                    <div className="mb-3">
+                      <p className="text-xs font-medium text-red-600 mb-1">Not covered:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {floorMissing.map(t => (
+                          <span key={t} className="text-xs bg-red-50 text-red-700 px-2 py-1 rounded font-medium">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {state.result.topic_tags.map(tag => (
+                    {state.result.floor_covered.map(tag => (
                       <span key={tag} className="text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded font-medium">
                         {tag}
                       </span>
@@ -264,11 +285,27 @@ export function ChapterTranslatorPage() {
 
                 {state.result.topic_tags.length > 0 && (
                   <div className="border-t border-gray-100 pt-4">
-                    <p className="text-xs font-medium text-gray-500 mb-2">
-                      Matched topics in your image question bank
-                    </p>
+                    <div className="flex items-center gap-3 mb-3">
+                      <p className="text-xs font-medium text-gray-500">Floor coverage:</p>
+                      <span className={`text-xs font-bold ${floorAllCovered ? 'text-green-600' : 'text-amber-600'}`}>
+                        {state.result.floor_covered.length} / {state.result.topic_tags.length} exam topics
+                      </span>
+                      <span className={`text-xs px-2 py-0.5 rounded font-medium ${floorAllCovered ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>
+                        {floorAllCovered ? 'PASS' : 'INCOMPLETE'}
+                      </span>
+                    </div>
+                    {!floorAllCovered && (
+                      <div className="mb-3">
+                        <p className="text-xs font-medium text-red-600 mb-1">Not covered:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {floorMissing.map(t => (
+                            <span key={t} className="text-xs bg-red-50 text-red-700 px-2 py-1 rounded font-medium">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {state.result.topic_tags.map(tag => (
+                      {state.result.floor_covered.map(tag => (
                         <span key={tag} className="text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded font-medium">
                           {tag}
                         </span>

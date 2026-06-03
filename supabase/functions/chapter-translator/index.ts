@@ -38,14 +38,38 @@ const SYSTEM_PROMPT =
   '   GOOD: "Remove the H. Whichever atom better handles the negative charge left behind = stronger acid."'
 
 function buildPrompt(chapterTitle: string, imageTopicLabels: string[] = [], generateQuestions = false): string {
-  const topicSection = imageTopicLabels.length > 0
-    ? '\ntopic_tags: From the concepts you listed, return the subset of these existing exam question topic labels that apply to this chapter (string match or close semantic match): ' +
-      imageTopicLabels.join(', ') + '. Return only labels from that list — empty array if none match.\n'
-    : '\ntopic_tags: [] (no image question bank yet)\n'
+  const hasFloor = imageTopicLabels.length > 0
+
+  const floorSection = hasFloor
+    ? '\nEXAM FLOOR — topics your real exams test for this course:\n' +
+      imageTopicLabels.map(l => `  - ${l}`).join('\n') + '\n\n' +
+      'Identify which of these this chapter teaches. Those are your floor concepts — ' +
+      'plain_english MUST explicitly explain every one of them. Never drop a floor concept.\n\n' +
+      'floor_covered: List every floor concept from the above list that you explicitly ' +
+      'addressed in plain_english. After writing plain_english, verify every floor concept ' +
+      'appears in it — if any are missing, expand plain_english before returning.\n\n' +
+      'topic_tags: Same as floor_covered — the floor concepts you covered in this chapter.\n'
+    : '\nfloor_covered: [] (no exam data yet)\ntopic_tags: [] (no exam data yet)\n'
 
   const baseShape = generateQuestions
-    ? '{\n  "concepts": string[],\n  "plain_english": string,\n  "topic_tags": string[],\n  "questions": Question[]\n}\n\n'
-    : '{\n  "concepts": string[],\n  "plain_english": string,\n  "topic_tags": string[]\n}\n\n'
+    ? '{\n  "concepts": string[],\n  "plain_english": string,\n  "floor_covered": string[],\n  "topic_tags": string[],\n  "questions": Question[]\n}\n\n'
+    : '{\n  "concepts": string[],\n  "plain_english": string,\n  "floor_covered": string[],\n  "topic_tags": string[]\n}\n\n'
+
+  const conceptsInstruction = hasFloor
+    ? 'concepts: All floor concepts this chapter covers, plus any prerequisite concepts ' +
+      'needed to understand them. No arbitrary cap — include everything needed to answer the exam.\n'
+    : 'concepts: Key concepts from this chapter as concise noun phrases.\n'
+
+  const plainEnglishInstruction = hasFloor
+    ? 'plain_english: A plain-English translation of this chapter. MANDATORY: cover every ' +
+      'floor concept explicitly — if a floor concept is not explained, this translation fails. ' +
+      'Voice: Klein "As a Second Language" — keep the mechanism, never dumb it down. ' +
+      'Every technical term translated in parentheses on first use. ' +
+      'Length: as long as needed to cover all floor concepts; no longer than what\'s needed ' +
+      'to answer the exam.\n'
+    : 'plain_english: A plain-English student-friendly translation of the core ideas. ' +
+      'Voice: Klein "As a Second Language" — keep the mechanism, never dumb it down. ' +
+      'Every technical term translated in parentheses on first use.\n'
 
   const questionSection = generateQuestions
     ? 'questions: 8-15 exam-prep questions. Each question MUST have ALL fields below.\n\n' +
@@ -80,9 +104,9 @@ function buildPrompt(chapterTitle: string, imageTopicLabels: string[] = [], gene
     'Translate this chapter into study materials.\n\n' +
     'Return ONLY a valid JSON object. No markdown, no code fences, no explanation.\n\n' +
     baseShape +
-    topicSection + '\n' +
-    'concepts: 5-10 key concepts as concise noun phrases.\n' +
-    'plain_english: 200-400 word student-friendly rewrite of the core ideas.\n' +
+    floorSection + '\n' +
+    conceptsInstruction +
+    plainEnglishInstruction +
     questionSection
   )
 }
@@ -242,7 +266,7 @@ Deno.serve(async (req) => {
       ? responseText.slice(objStart, objEnd + 1)
       : responseText.trim()
 
-    let parsed: { concepts?: unknown; plain_english?: unknown; questions?: unknown; topic_tags?: unknown }
+    let parsed: { concepts?: unknown; plain_english?: unknown; floor_covered?: unknown; questions?: unknown; topic_tags?: unknown }
     try {
       parsed = JSON.parse(stripped) as typeof parsed
     } catch {
@@ -255,11 +279,15 @@ Deno.serve(async (req) => {
 
     const plainEnglish = typeof parsed.plain_english === 'string' ? parsed.plain_english.trim() : ''
 
+    const floorCovered = Array.isArray(parsed.floor_covered)
+      ? (parsed.floor_covered as unknown[]).filter((f): f is string => typeof f === 'string')
+      : []
+
     const topicTags = Array.isArray(parsed.topic_tags)
       ? (parsed.topic_tags as unknown[]).filter((t): t is string => typeof t === 'string')
       : []
 
-    const responseBody: Record<string, unknown> = { concepts, plain_english: plainEnglish, topic_tags: topicTags }
+    const responseBody: Record<string, unknown> = { concepts, plain_english: plainEnglish, floor_covered: floorCovered, topic_tags: topicTags }
 
     if (questionSource === 'generated') {
       const rawQuestions = Array.isArray(parsed.questions) ? (parsed.questions as RawQuestion[]) : []
