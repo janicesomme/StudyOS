@@ -1,0 +1,444 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyOS · Alkene Arcade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Outfit:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0e0a;
+    --ink2:#10160f;
+    --panel:#141c12;
+    --panel2:#1b261a;
+    --line:#2a3a26;
+    --acid:#b6ff3a;      /* organic-chem acid green */
+    --acid-dim:#7fae2a;
+    --cyan:#3ae0ff;      /* stereochem */
+    --coral:#ff5d52;     /* error */
+    --amber:#ffb43a;     /* trap / halide */
+    --teal:#2fd7b5;      /* OH */
+    --txt:#e9f1e4;
+    --txt-dim:#8ba086;
+    --br:#d98a4a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:
+     radial-gradient(900px 500px at 80% -10%, rgba(182,255,58,.10), transparent 60%),
+     radial-gradient(700px 500px at -10% 110%, rgba(58,224,255,.07), transparent 55%),
+     var(--ink);
+    color:var(--txt);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;
+    background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+  .wrap{max-width:760px;margin:0 auto;padding:22px 18px 60px;position:relative}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;margin:0;line-height:1.02;letter-spacing:-.02em}
+
+  /* HUD */
+  .hud{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+  .brand{font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;letter-spacing:.02em}
+  .brand b{color:var(--acid)}
+  .hud .sp{flex:1}
+  .pill{font-family:'IBM Plex Mono';font-size:12px;border:1px solid var(--line);background:var(--panel);
+    padding:6px 10px;border-radius:999px;display:flex;gap:7px;align-items:center}
+  .pill .k{color:var(--txt-dim)}
+  .pill .v{color:var(--acid);font-weight:600}
+  .pill.streak .v{color:var(--amber)}
+
+  .card{background:linear-gradient(180deg,var(--panel),var(--ink2));border:1px solid var(--line);
+    border-radius:20px;padding:26px;box-shadow:0 24px 60px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.03)}
+
+  /* TITLE SCREEN */
+  .title h1{font-size:clamp(38px,8vw,68px);font-weight:800}
+  .title h1 em{font-style:normal;color:var(--acid);text-shadow:0 0 30px rgba(182,255,58,.35)}
+  .title p.lede{color:var(--txt-dim);font-size:17px;max-width:46ch;margin:14px 0 4px}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 6px}
+  .lvlbtn{appearance:none;cursor:pointer;text-align:left;width:100%;border:1px solid var(--line);
+    background:var(--panel2);color:var(--txt);border-radius:14px;padding:15px 17px;margin-top:10px;
+    display:flex;align-items:center;gap:14px;transition:.15s transform,.15s border-color,.15s background}
+  .lvlbtn:hover{transform:translateX(4px);border-color:var(--acid-dim);background:#202e1d}
+  .lvlbtn .num{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;width:34px;height:34px;
+    flex:0 0 auto;display:grid;place-items:center;border-radius:10px;background:var(--ink);color:var(--acid);border:1px solid var(--line)}
+  .lvlbtn .lt{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px;letter-spacing:.04em}
+  .lvlbtn .ld{font-size:13px;color:var(--txt-dim);margin-top:2px}
+  .lvlbtn .arr{margin-left:auto;color:var(--txt-dim);font-size:20px}
+  .lvlbtn.boss{border-color:#3a2a26;background:#221713}
+  .lvlbtn.boss .num{color:var(--coral)}
+  .lvlbtn.trap{border-color:#3a3526;background:#211e12}
+  .lvlbtn.trap .num{color:var(--amber)}
+  .foot{margin-top:22px;font-size:12.5px;color:var(--txt-dim);line-height:1.5}
+
+  /* QUESTION */
+  .qtop{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .qtag{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;color:var(--ink);background:var(--acid);
+    padding:4px 9px;border-radius:6px;font-weight:600}
+  .qtag.boss{background:var(--coral);color:#fff}
+  .qtag.trap{background:var(--amber);color:#1a1405}
+  .qprog{font-family:'IBM Plex Mono';font-size:12px;color:var(--txt-dim);margin-left:auto}
+  .qx{font-family:'IBM Plex Mono';font-size:12px;color:var(--txt-dim);background:none;border:1px solid var(--line);
+    border-radius:8px;padding:5px 9px;cursor:pointer}
+  .qx:hover{color:var(--coral);border-color:var(--coral)}
+  .ask{font-family:'Bricolage Grotesque';font-weight:700;font-size:22px;margin:14px 0 4px;line-height:1.12}
+  .reagent{font-family:'IBM Plex Mono';font-weight:600;font-size:20px;color:var(--acid);background:var(--ink);
+    border:1px dashed var(--acid-dim);border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;
+    box-shadow:inset 0 0 30px rgba(182,255,58,.05)}
+  .sub{color:var(--txt-dim);font-size:13.5px;margin:-4px 0 2px}
+
+  .opts{display:grid;gap:10px;margin-top:16px}
+  .opts.two{grid-template-columns:1fr 1fr}
+  .opts.mol{grid-template-columns:1fr 1fr}
+  .opt{appearance:none;cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--txt);
+    border-radius:13px;padding:14px 15px;font-family:'Outfit';font-size:15px;text-align:left;transition:.12s;
+    display:flex;align-items:center;gap:10px}
+  .opt .mn{font-family:'IBM Plex Mono';font-weight:600}
+  .opt:hover:not(:disabled){border-color:var(--acid-dim);background:#202e1d;transform:translateY(-2px)}
+  .opt:disabled{cursor:default}
+  .opt.molcard{flex-direction:column;align-items:stretch;gap:8px;padding:10px}
+  .opt.right{border-color:var(--acid);background:rgba(182,255,58,.10);box-shadow:0 0 0 1px var(--acid),0 0 30px -8px var(--acid)}
+  .opt.wrong{border-color:var(--coral);background:rgba(255,93,82,.10)}
+  .opt .badge{margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;font-weight:600}
+  .opt.right .badge{color:var(--acid)}
+  .opt.wrong .badge{color:var(--coral)}
+
+  /* image question */
+  .qimg{width:100%;border-radius:12px;margin:12px 0;border:1px solid var(--line);display:block}
+  .ans-img{width:100%;border-radius:10px;margin-top:10px;border:1px solid var(--acid-dim);display:block}
+  .opts.letters{grid-template-columns:repeat(4,1fr)}
+  .opts.letters.two{grid-template-columns:1fr 1fr}
+  .opts.letters.three{grid-template-columns:1fr 1fr 1fr}
+  .opts.letters.five{grid-template-columns:repeat(5,1fr)}
+  .opts.letters.six{grid-template-columns:repeat(3,1fr)}
+
+  /* feedback */
+  .fb{margin-top:18px;border-radius:14px;padding:16px 17px;border:1px solid var(--line);background:var(--panel2);
+    animation:rise .25s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .fb.win{border-color:var(--acid-dim);background:linear-gradient(180deg,rgba(182,255,58,.10),transparent)}
+  .fb.lose{border-color:#5a352f;background:linear-gradient(180deg,rgba(255,93,82,.10),transparent)}
+  .fb .h{font-family:'Bricolage Grotesque';font-weight:800;font-size:16px;letter-spacing:.02em;margin-bottom:6px}
+  .fb.win .h{color:var(--acid)}.fb.lose .h{color:var(--coral)}
+  .fb p{margin:0;font-size:14.5px;line-height:1.5;color:var(--txt)}
+  .fb .rule{margin-top:9px;font-size:13.5px;color:var(--txt-dim);border-left:2px solid var(--acid-dim);padding-left:11px}
+  .fb .pedagogy{margin-top:9px;display:grid;gap:5px}
+  .fb .ped-row{font-size:12.5px;color:var(--txt-dim)}
+  .fb .ped-row b{color:var(--amber);font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em}
+  .next{appearance:none;cursor:pointer;margin-top:14px;border:none;border-radius:11px;padding:13px 18px;
+    font-family:'Bricolage Grotesque';font-weight:700;font-size:15px;letter-spacing:.03em;background:var(--acid);color:#0a0e0a;
+    width:100%;transition:.12s}
+  .next:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+  /* clear screen */
+  .clear{text-align:center}
+  .clear h2{font-size:clamp(30px,7vw,52px);font-weight:800;color:var(--acid);text-shadow:0 0 30px rgba(182,255,58,.3)}
+  .clear .score{font-family:'IBM Plex Mono';font-size:46px;font-weight:600;margin:6px 0}
+  .clear .rk{font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;letter-spacing:.04em;margin:4px 0 2px}
+  .clear .rkd{color:var(--txt-dim);font-size:14px;max-width:40ch;margin:0 auto 16px}
+  .crow{display:flex;gap:10px;margin-top:8px}
+  .btn2{flex:1;appearance:none;cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--txt);
+    border-radius:12px;padding:13px;font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;letter-spacing:.03em;transition:.12s}
+  .btn2:hover{border-color:var(--acid-dim);background:#202e1d}
+  .btn2.primary{background:var(--acid);color:#0a0e0a;border-color:var(--acid)}
+
+  svg.mol{display:block;width:100%;height:auto}
+  .molcap{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--txt-dim);text-align:center}
+  .stbadge{display:inline-block;font-family:'IBM Plex Mono';font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:5px;margin-left:6px}
+  .st-syn{background:rgba(58,224,255,.16);color:var(--cyan)}
+  .st-anti{background:rgba(255,180,58,.16);color:var(--amber)}
+</style>
+
+<!-- Content file: swap this one line to load a different subject -->
+<script src="content/alkenes.js"></script>
+
+<div class="wrap">
+  <div class="hud">
+    <div class="brand">easyorganicchemistry · StudyOS</div>
+    <div class="sp"></div>
+    <div class="pill streak"><span class="k">streak</span><span class="v" id="hStreak">0</span></div>
+    <div class="pill"><span class="k">score</span><span class="v" id="hScore">0</span></div>
+  </div>
+  <div id="app"></div>
+</div>
+
+<script>
+/* ============ ENGINE — content lives in content/*.js, not here ============ */
+const RXN    = window.GAME_DATA.reactions;
+const POOL   = window.GAME_DATA.pool;
+const LEVELS = window.GAME_DATA.levels;
+const byId   = id => RXN.find(r => r.id === id);
+
+/* ============ MOLECULE RENDERER (clean schematic) ============ */
+const COL = {Br:'var(--br)', OH:'var(--teal)', H:'var(--txt-dim)', O:'var(--cyan)'};
+function grp(x,g){ if(!g) return '';
+  return `<g><circle cx="${x}" cy="22" r="15" fill="var(--ink)" stroke="${COL[g]||'#888'}" stroke-width="1.6"/>
+    <text x="${x}" y="27" text-anchor="middle" font-family="IBM Plex Mono" font-size="14" font-weight="600" fill="${COL[g]||'#fff'}">${g}</text>
+    <line x1="${x}" y1="37" x2="${x}" y2="58" stroke="var(--line)" stroke-width="2"/></g>`; }
+function mol(spec){
+  const W=200,c1x=66,c2x=134,by=66;
+  let s=`<svg class="mol" viewBox="0 0 200 118">`;
+  const carbon=(x,l)=>`<circle cx="${x}" cy="${by}" r="13" fill="var(--panel)" stroke="var(--line)" stroke-width="1.5"/>
+     <text x="${x}" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--txt)">${l}</text>`;
+  if(spec.type==='alkene'){
+    s+=`<line x1="${c1x+11}" y1="${by-3}" x2="${c2x-11}" y2="${by-3}" stroke="var(--acid)" stroke-width="2"/>
+        <line x1="${c1x+11}" y1="${by+3}" x2="${c2x-11}" y2="${by+3}" stroke="var(--acid)" stroke-width="2"/>`;
+    s+=carbon(c1x,'C')+carbon(c2x,'C');
+    s+=`<line x1="${c2x+13}" y1="${by}" x2="${c2x+30}" y2="${by}" stroke="var(--line)" stroke-width="2"/>
+        <text x="${c2x+44}" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--txt-dim)">CH₃</text>`;
+    s+=`</svg>`; return s;
+  }
+  if(spec.type==='cleave'){
+    s+=`<text x="60" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="var(--txt)">C=O</text>
+        <text x="100" y="${by+4}" text-anchor="middle" font-size="18" fill="var(--coral)">+</text>
+        <text x="142" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="var(--txt)">O=C</text>
+        <text x="100" y="34" text-anchor="middle" font-size="15" fill="var(--amber)">✂</text></svg>`; return s;
+  }
+  if(spec.type==='epoxide'){
+    s+=`<line x1="${c1x}" y1="${by}" x2="${c2x}" y2="${by}" stroke="var(--txt)" stroke-width="2"/>
+        <line x1="${c1x}" y1="${by}" x2="100" y2="34" stroke="var(--cyan)" stroke-width="2"/>
+        <line x1="${c2x}" y1="${by}" x2="100" y2="34" stroke="var(--cyan)" stroke-width="2"/>
+        <circle cx="100" cy="30" r="12" fill="var(--ink)" stroke="var(--cyan)" stroke-width="1.6"/>
+        <text x="100" y="35" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="var(--cyan)">O</text>`;
+    s+=carbon(c1x,'C')+carbon(c2x,'C');
+    s+=`<line x1="${c2x+13}" y1="${by}" x2="${c2x+30}" y2="${by}" stroke="var(--line)" stroke-width="2"/>
+        <text x="${c2x+44}" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--txt-dim)">CH₃</text></svg>`;
+    return s;
+  }
+  let g1='',g2='';
+  if(spec.type==='diol'){g1='OH';g2='OH';}
+  else if(spec.type==='alkane'){g1='H';g2='H';}
+  else {g1=spec.c1;g2=spec.c2;}
+  s+=`<line x1="${c1x+11}" y1="${by}" x2="${c2x-11}" y2="${by}" stroke="var(--txt)" stroke-width="2"/>`;
+  s+=grp(c1x,g1)+grp(c2x,g2);
+  s+=carbon(c1x,'C')+carbon(c2x,'C');
+  s+=`<line x1="${c2x+13}" y1="${by}" x2="${c2x+30}" y2="${by}" stroke="var(--line)" stroke-width="2"/>
+      <text x="${c2x+44}" y="${by+4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="var(--txt-dim)">CH₃</text>`;
+  s+=`</svg>`; return s;
+}
+function stereoBadge(s){ if(!s) return '';
+  return s==='syn'?'<span class="stbadge st-syn">SYN</span>':'<span class="stbadge st-anti">ANTI</span>'; }
+function specKey(p){ return p.type+':'+(p.c1||'')+':'+(p.c2||''); }
+
+/* ============ GAME STATE ============ */
+const QN=7;
+let S={screen:'title',level:null,qs:[],i:0,score:0,streak:0,best:0,answered:false,levelScore:0};
+const app=document.getElementById('app');
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+function setHud(){document.getElementById('hScore').textContent=S.score;document.getElementById('hStreak').textContent=S.streak;}
+
+/* build a level's question set */
+function buildLevel(key){
+  let qs=[];
+  if(key==='recognise'){
+    shuffle(RXN).slice(0,QN).forEach(r=>{
+      const wrong=shuffle(RXN.filter(x=>x.id!==r.id)).slice(0,3).map(x=>({label:x.name,correct:false}));
+      qs.push({kind:'recognise',rxn:r,ask:'What reaction is this?',reagent:r.reagents,
+        options:shuffle([{label:r.name,correct:true},...wrong])});
+    });
+  } else if(key==='toggle'){
+    shuffle(RXN).slice(0,QN).forEach(r=>{
+      qs.push({kind:'toggle',rxn:r,ask:r.decision.q,reagent:r.reagents,name:r.name,
+        options:shuffle(r.decision.opts.map(([label,correct])=>({label,correct})))});
+    });
+  } else if(key==='predict'){
+    const predictable = RXN.filter(r => r.tier === 'predict');
+    shuffle(predictable).slice(0,QN).forEach(r=>{
+      const distract=shuffle(POOL.filter(p=>specKey(p)!==specKey(r.prod))).slice(0,3);
+      qs.push({kind:'predict',rxn:r,ask:'Pick the product:',reagent:r.reagents,
+        options:shuffle([{prod:r.prod,stereo:r.prod.stereo,correct:true},
+          ...distract.map(p=>({prod:p,stereo:null,correct:false}))])});
+    });
+  } else if(key==='reverse'){
+    shuffle(RXN).slice(0,QN).forEach(r=>{
+      const wrong=shuffle(RXN.filter(x=>x.id!==r.id&&x.reagents).slice(0,3)).map(x=>({label:x.reagents,correct:false}));
+      qs.push({kind:'reverse',rxn:r,ask:'Which reagents give THIS product?',showProd:r.prod,
+        options:shuffle([{label:r.reagents,correct:true},...wrong])});
+    });
+  } else if(key==='trap'){
+    const pairs=RXN.filter(r=>r.trap).map(r=>[r,byId(r.trap)]);
+    const seen=new Set(),uniq=[];
+    pairs.forEach(([a,b])=>{const k=[a.id,b.id].sort().join('|');if(!seen.has(k)){seen.add(k);uniq.push([a,b]);}});
+    shuffle(uniq).forEach(([a,b])=>{
+      const target=rnd([a,b]); const other=target===a?b:a;
+      qs.push({kind:'trap',rxn:target,ask:'Only ONE of these gives the product shown. Which reagents?',
+        showProd:target.prod,
+        options:shuffle([{label:target.reagents,correct:true},{label:other.reagents,correct:false}])});
+    });
+    qs=qs.slice(0,QN);
+  } else if(key==='image'){
+    const imgRxns = RXN.filter(r => r.tier === 'image' && r.questionImg && r.correctAnswer);
+    shuffle(imgRxns).slice(0, QN).forEach(r => {
+      const opts = r.choices.map(letter => ({ label: letter, correct: letter === r.correctAnswer }));
+      qs.push({ kind:'image', rxn:r, ask:'Pick the correct answer:', opts });
+    });
+  }
+  return qs;
+}
+
+/* ============ RENDER ============ */
+function render(){
+  setHud();
+  if(S.screen==='title') return renderTitle();
+  if(S.screen==='play') return renderQuestion();
+  if(S.screen==='clear') return renderClear();
+}
+
+function renderTitle(){
+  const subj = window.GAME_DATA.subject;
+  const parts = subj.split(' ');
+  const last = parts.pop();
+  const head = parts.join(' ');
+  app.innerHTML=`
+    <div class="card title">
+      <h1>${head} <em>${last}</em></h1>
+      <p class="lede">Every reaction here is a trigger and a toggle. Stop re-reading the chapter. Start playing the decisions.</p>
+      ${LEVELS.map(l=>`
+        <button class="lvlbtn ${l.cls}" data-lvl="${l.key}">
+          <span class="num">${l.n}</span>
+          <span><span class="lt">${l.lt}</span><div class="ld">${l.ld}</div></span>
+          <span class="arr">→</span>
+        </button>`).join('')}
+      <div class="foot">Every wrong answer restates the rule — no grades, no judgement. Failure here is cheap, like a video game. <span style="color:var(--acid-dim)">Best score: ${S.best}</span></div>
+    </div>`;
+  app.querySelectorAll('[data-lvl]').forEach(b=>b.onclick=()=>startLevel(b.dataset.lvl));
+}
+
+function startLevel(key){
+  S.level=LEVELS.find(l=>l.key===key);
+  S.qs=buildLevel(key);S.i=0;S.answered=false;S.levelScore=0;S.screen='play';render();
+}
+
+function renderQuestion(){
+  const q=S.qs[S.i],L=S.level;
+  let body='';
+  if(q.kind==='image'){
+    body=`<img class="qimg" src="${q.rxn.questionImg}" alt="exam question">`;
+  } else if(q.kind==='recognise'||q.kind==='toggle'){
+    body=`<div class="reagent mono">${q.reagent}</div>`;
+    if(q.kind==='toggle') body=`<div class="sub">Reaction: <b style="color:var(--txt)">${q.name}</b></div>`+body;
+  } else if(q.kind==='predict'){
+    body=`<div style="display:flex;align-items:center;gap:12px;justify-content:center;margin:14px 0">
+      <div style="flex:0 0 130px">${mol({type:'alkene'})}<div class="molcap">alkene</div></div>
+      <div class="mono" style="color:var(--acid);font-size:20px">—${q.reagent}→</div>
+    </div>`;
+  } else if(q.kind==='reverse'||q.kind==='trap'){
+    body=`<div style="max-width:200px;margin:14px auto 4px">${mol(q.showProd)}
+      <div class="molcap">target product ${stereoBadge(q.showProd.stereo)}</div></div>`;
+  }
+
+  let opts='';
+  if(q.kind==='image'){
+    const n=q.opts.length;
+    const cls=n===2?'two':n===3?'three':n>=5?'letters five':'letters';
+    opts=`<div class="opts letters ${cls}">`+q.opts.map((o,idx)=>`
+      <button class="opt" data-i="${idx}" style="justify-content:center;font-size:20px;font-weight:700">
+        <span>${o.label}</span><span class="badge"></span>
+      </button>`).join('')+`</div>`;
+  } else if(q.kind==='predict'){
+    opts=`<div class="opts mol">`+q.options.map((o,idx)=>`
+      <button class="opt molcard" data-i="${idx}">
+        ${mol(o.prod)}
+        <div class="molcap" style="display:flex;justify-content:center;align-items:center">option ${idx+1} ${stereoBadge(o.stereo)}<span class="badge"></span></div>
+      </button>`).join('')+`</div>`;
+  } else {
+    const two=q.options.length===2?' two':'';
+    opts=`<div class="opts${two}">`+q.options.map((o,idx)=>`
+      <button class="opt" data-i="${idx}"><span class="mn">${'ABCD'[idx]}</span><span>${o.label}</span><span class="badge"></span></button>`).join('')+`</div>`;
+  }
+
+  app.innerHTML=`
+    <div class="card">
+      <div class="qtop">
+        <span class="qtag ${L.cls}">${L.tag}</span>
+        <span class="qprog">${S.i+1} / ${S.qs.length}</span>
+        <button class="qx" id="bQuit">quit</button>
+      </div>
+      <div class="ask">${q.ask}</div>
+      ${body}
+      ${opts}
+      <div id="fb"></div>
+    </div>`;
+  app.querySelector('#bQuit').onclick=()=>{S.screen='title';render();};
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(parseInt(b.dataset.i)));
+}
+
+function answer(idx){
+  if(S.answered) return; S.answered=true;
+  const q=S.qs[S.i];
+  const allOpts = q.kind==='image' ? q.opts : q.options;
+  const chosen=allOpts[idx], correct=chosen.correct;
+  const btns=app.querySelectorAll('.opt');
+  btns.forEach((b,i)=>{
+    b.disabled=true;
+    if(allOpts[i].correct){b.classList.add('right');b.querySelector('.badge').textContent='✓';}
+    if(i===idx&&!correct){b.classList.add('wrong');b.querySelector('.badge').textContent='✗';}
+  });
+  let gained=0;
+  if(correct){S.streak++;gained=10+Math.min(S.streak-1,5)*2;S.score+=gained;S.levelScore+=gained;}
+  else{S.streak=0;}
+  S.best=Math.max(S.best,S.score);
+  setHud();
+
+  const r=q.rxn;
+  const fb=app.querySelector('#fb');
+  const last=S.i===S.qs.length-1;
+
+  /* pedagogy rows — only shown if the fields are populated */
+  const pedRows = [
+    r.firstMove       && `<div class="ped-row"><b>FIRST MOVE</b> ${r.firstMove}</div>`,
+    r.shortcut        && `<div class="ped-row"><b>SHORTCUT</b> ${r.shortcut}</div>`,
+    (!correct && r.whyTrapTempting) && `<div class="ped-row"><b>WHY TEMPTING</b> ${r.whyTrapTempting}</div>`
+  ].filter(Boolean).join('');
+
+  const hText = correct
+    ? 'NICE · +' + gained + (S.streak > 1 ? '  (×' + S.streak + ' streak)' : '')
+    : 'NOT QUITE — but now you\'ve got it';
+
+  let bodyHtml;
+  if (q.kind === 'image') {
+    bodyHtml = '<img class="ans-img" src="' + r.answerImg + '" alt="answer">'
+      + '<div class="rule" style="margin-top:10px">' + r.rule + '</div>';
+  } else {
+    const reagentSpan = r.reagents
+      ? ' · <span class="mono" style="color:var(--acid)">' + r.reagents + '</span>'
+      : '';
+    bodyHtml = '<p>' + r.name + reagentSpan + '</p>'
+      + '<div class="rule">' + r.rule + '</div>'
+      + (pedRows ? '<div class="pedagogy">' + pedRows + '</div>' : '');
+  }
+
+  fb.innerHTML = '<div class="fb ' + (correct ? 'win' : 'lose') + '">'
+    + '<div class="h">' + hText + '</div>'
+    + bodyHtml
+    + '<button class="next" id="bNext">' + (last ? 'Finish level →' : 'Next →') + '</button>'
+    + '</div>';
+  fb.querySelector('#bNext').onclick=()=>{
+    if(last){S.screen='clear';render();}
+    else{S.i++;S.answered=false;render();}
+  };
+}
+
+function renderClear(){
+  const maxPer=10+5*2, total=S.qs.length;
+  const pct=S.levelScore/(total*maxPer);
+  let rk,rd;
+  if(pct>=0.95){rk='S · REAGENT NATIVE';rd="You're reading these like a first language. This level is yours.";}
+  else if(pct>=0.75){rk='A · PATTERN LOCKED';rd='The triggers are firing on sight. Run the trap level to bulletproof it.';}
+  else if(pct>=0.5){rk='B · GETTING FLUENT';rd='The logic is landing. One more pass turns recognition into reflex.';}
+  else{rk='C · WARMING UP';rd="Every miss showed you the rule — that's the rep that counts. Go again.";}
+  app.innerHTML=`
+    <div class="card clear">
+      <h2>LEVEL CLEAR</h2>
+      <div class="score mono">+${S.levelScore}</div>
+      <div class="rk" style="color:var(--acid)">${rk}</div>
+      <div class="rkd">${rd}</div>
+      <div class="crow">
+        <button class="btn2" id="bAgain">Replay level</button>
+        <button class="btn2 primary" id="bMenu">Pick next level</button>
+      </div>
+    </div>`;
+  app.querySelector('#bAgain').onclick=()=>startLevel(S.level.key);
+  app.querySelector('#bMenu').onclick=()=>{S.screen='title';render();};
+}
+
+render();
+</script>
