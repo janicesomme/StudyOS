@@ -6064,6 +6064,101 @@ window.GAME_DATA = {
       "shortcut": "",
       "whyTrapTempting": "",
       "smiles": null
+    },
+    {
+      "id": "img_predict_hbr_allylbenzene",
+      "name": "HBr Addition to Allylbenzene",
+      "reagents": "HBr",
+      "tier": "predict",
+      "substrateImg": "assets/crops/q_hbr_vinyl_arene/substrate.png",
+      "imgOpts": [
+        {
+          "file": "assets/crops/q_hbr_vinyl_arene/opt_a.png",
+          "label": "a",
+          "correct": false,
+          "caption": "vinyl bromide (terminal)"
+        },
+        {
+          "file": "assets/crops/q_hbr_vinyl_arene/opt_b.png",
+          "label": "b",
+          "correct": false,
+          "caption": "2-bromide (Markovnikov, no resonance)"
+        },
+        {
+          "file": "assets/crops/q_hbr_vinyl_arene/opt_c.png",
+          "label": "c",
+          "correct": true,
+          "caption": "benzylic bromide (resonance-stabilized)"
+        },
+        {
+          "file": "assets/crops/q_hbr_vinyl_arene/opt_d.png",
+          "label": "d",
+          "correct": false,
+          "caption": "benzylic vinyl bromide"
+        }
+      ],
+      "prod": {
+        "type": "add"
+      },
+      "decision": {
+        "q": "",
+        "opts": []
+      },
+      "rule": "The allyl-benzene substrate forms a resonance-stabilized benzylic carbocation when H+ adds to the terminal carbon. Br- attacks the benzylic carbon — benzylic resonance overrides simple Markovnikov selectivity.",
+      "trap": null,
+      "firstMove": "Spot the benzylic position — adjacent benzene ring always stabilizes the adjacent carbocation by resonance",
+      "shortcut": "Benzene + alkene = Br goes benzylic, every time",
+      "whyTrapTempting": "Students apply simple Markovnikov (Br to more substituted) without asking whether benzylic resonance changes which carbon bears the most + character",
+      "smiles": null
+    },
+    {
+      "id": "img_predict_nbs_halohydrin",
+      "name": "NBS / H2O Halohydrin of 2-Methylpropene",
+      "reagents": "NBS, H2O, DMSO",
+      "tier": "predict",
+      "substrateImg": "assets/crops/q_nbs_halohydrin/substrate.png",
+      "imgOpts": [
+        {
+          "file": "assets/crops/q_nbs_halohydrin/opt_a.png",
+          "label": "a",
+          "correct": false,
+          "caption": "Br on more-substituted C (wrong regio)"
+        },
+        {
+          "file": "assets/crops/q_nbs_halohydrin/opt_b.png",
+          "label": "b",
+          "correct": true,
+          "caption": "OH on more-substituted C, Br on less (Markovnikov halohydrin)"
+        },
+        {
+          "file": "assets/crops/q_nbs_halohydrin/opt_c.png",
+          "label": "c",
+          "correct": false,
+          "caption": "diol (both OH)"
+        },
+        {
+          "file": "assets/crops/q_nbs_halohydrin/opt_d.png",
+          "label": "d",
+          "correct": false,
+          "caption": "epoxide"
+        }
+      ],
+      "prod": {
+        "type": "add",
+        "c1": "Br",
+        "c2": "OH",
+        "stereo": "anti"
+      },
+      "decision": {
+        "q": "",
+        "opts": []
+      },
+      "rule": "NBS provides Br+ in low concentration. Bromonium forms and water attacks the more substituted carbon (Markovnikov). Result: OH on the tertiary-like carbon, Br on the less-substituted carbon — anti addition as a racemic mixture.",
+      "trap": null,
+      "firstMove": "Bromonium ion forms — water attacks the more substituted carbon (more delta+)",
+      "shortcut": "Br+ on alkene + H2O = OH goes Markovnikov, Br goes anti-Markovnikov, anti addition",
+      "whyTrapTempting": "Students confuse with plain Br2 (vicinal dibromide) or with acid hydration (no Br)",
+      "smiles": null
     }
   ],
   "pool": [

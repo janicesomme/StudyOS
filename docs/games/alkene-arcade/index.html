@@ -103,6 +103,12 @@
   /* image question */
   .qimg{width:100%;border-radius:12px;margin:12px 0;border:1px solid var(--line);display:block}
   .ans-img{width:100%;border-radius:10px;margin-top:10px;border:1px solid var(--acid-dim);display:block}
+  /* image-card predict */
+  .substrate-img{display:block;max-width:420px;margin:10px auto;background:#fff;border-radius:10px;padding:8px}
+  .opt.imgcard{flex-direction:column;align-items:center;gap:6px;padding:8px;background:#fff}
+  .opt.imgcard img{display:block;max-width:100%;border-radius:6px}
+  .opt.imgcard .icap{font-size:11px;color:var(--txt-dim);font-family:"IBM Plex Mono";letter-spacing:.05em}
+  .opts.imgrow{grid-template-columns:repeat(4,1fr)}
   .opts.letters{grid-template-columns:repeat(4,1fr)}
   .opts.letters.two{grid-template-columns:1fr 1fr}
   .opts.letters.three{grid-template-columns:1fr 1fr 1fr}
@@ -225,31 +231,73 @@ const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 function setHud(){document.getElementById('hScore').textContent=S.score;document.getElementById('hStreak').textContent=S.streak;}
 
+/* ---- per-level reaction filters ---- */
+// Words that indicate a name is a question/task description, not a reaction type name
+const _BAD_STARTS = ['Identify','Select','Choose','Which','Provide','How Many','Rank','List','False','Reagent'];
+const _BAD_WORDS  = ['vs.','Role','Identification','Reactivity','Rate'];
+// RECOGNISE: needs reagents + a clean reaction-type name + unique (no duplicate names in pool)
+const RXN_RECOGNISE = (()=>{
+  const seen = new Set();
+  return RXN.filter(r => {
+    if (!r.reagents || !r.reagents.trim()) return false;
+    if (!r.name) return false;
+    if (r.name.includes(':') || r.name.includes('?')) return false;
+    if (r.name.length > 52) return false;
+    if (_BAD_STARTS.some(s => r.name.startsWith(s))) return false;
+    if (_BAD_WORDS.some(w => r.name.includes(w))) return false;
+    const last = r.name.split(' ').pop();
+    if (['Product','Products'].includes(last)) return false;
+    if (seen.has(r.name)) return false;  // deduplicate by name
+    seen.add(r.name);
+    return true;
+  });
+})();
+// TOGGLE: needs a proper binary decision with exactly 2 options
+const RXN_TOGGLE = RXN.filter(r =>
+  r.decision && r.decision.q && r.decision.q.trim() &&
+  Array.isArray(r.decision.opts) && r.decision.opts.length >= 2 &&
+  r.reagents && r.reagents.trim()
+);
+// REVERSE: needs a reagent string (shown as the answer) and a displayable product
+const RXN_REVERSE = RXN.filter(r =>
+  r.reagents && r.reagents.trim() &&
+  r.prod && r.prod.type
+);
+
 /* build a level's question set */
 function buildLevel(key){
   let qs=[];
   if(key==='recognise'){
-    shuffle(RXN).slice(0,QN).forEach(r=>{
-      const wrong=shuffle(RXN.filter(x=>x.id!==r.id)).slice(0,3).map(x=>({label:x.name,correct:false}));
+    const pool = RXN_RECOGNISE.length >= 4 ? RXN_RECOGNISE : RXN.filter(r => r.reagents && r.reagents.trim());
+    shuffle(pool).slice(0,QN).forEach(r=>{
+      const wrong=shuffle(pool.filter(x=>x.id!==r.id)).slice(0,3).map(x=>({label:x.name,correct:false}));
       qs.push({kind:'recognise',rxn:r,ask:'What reaction is this?',reagent:r.reagents,
         options:shuffle([{label:r.name,correct:true},...wrong])});
     });
   } else if(key==='toggle'){
-    shuffle(RXN).slice(0,QN).forEach(r=>{
+    const pool = RXN_TOGGLE.length >= 4 ? RXN_TOGGLE : RXN.filter(r => r.decision && r.decision.opts && r.decision.opts.length >= 2);
+    shuffle(pool).slice(0,QN).forEach(r=>{
       qs.push({kind:'toggle',rxn:r,ask:r.decision.q,reagent:r.reagents,name:r.name,
         options:shuffle(r.decision.opts.map(([label,correct])=>({label,correct})))});
     });
   } else if(key==='predict'){
     const predictable = RXN.filter(r => r.tier === 'predict');
     shuffle(predictable).slice(0,QN).forEach(r=>{
-      const distract=shuffle(POOL.filter(p=>specKey(p)!==specKey(r.prod))).slice(0,3);
-      qs.push({kind:'predict',rxn:r,ask:'Pick the product:',reagent:r.reagents,
-        options:shuffle([{prod:r.prod,stereo:r.prod.stereo,correct:true},
-          ...distract.map(p=>({prod:p,stereo:null,correct:false}))])});
+      if(r.imgOpts){
+        // image-card predict: use cropped structures as option cards
+        qs.push({kind:'predict-img',rxn:r,ask:'Pick the major product:',reagent:r.reagents,
+          options:shuffle(r.imgOpts.map(o=>({imgFile:o.file,label:o.label,caption:o.caption,correct:o.correct})))});
+      } else {
+        const distract=shuffle(POOL.filter(p=>specKey(p)!==specKey(r.prod))).slice(0,3);
+        qs.push({kind:'predict',rxn:r,ask:'Pick the product:',reagent:r.reagents,
+          options:shuffle([{prod:r.prod,stereo:r.prod.stereo,correct:true},
+            ...distract.map(p=>({prod:p,stereo:null,correct:false}))])});
+      }
     });
   } else if(key==='reverse'){
-    shuffle(RXN).slice(0,QN).forEach(r=>{
-      const wrong=shuffle(RXN.filter(x=>x.id!==r.id&&x.reagents).slice(0,3)).map(x=>({label:x.reagents,correct:false}));
+    const pool = RXN_REVERSE.length >= 4 ? RXN_REVERSE : RXN.filter(r => r.reagents && r.reagents.trim());
+    shuffle(pool).slice(0,QN).forEach(r=>{
+      const wrong=shuffle(pool.filter(x=>x.id!==r.id)).slice(0,3).map(x=>({label:x.reagents,correct:false}));
       qs.push({kind:'reverse',rxn:r,ask:'Which reagents give THIS product?',showProd:r.prod,
         options:shuffle([{label:r.reagents,correct:true},...wrong])});
     });
@@ -315,6 +363,8 @@ function renderQuestion(){
   } else if(q.kind==='recognise'||q.kind==='toggle'){
     body=`<div class="reagent mono">${q.reagent}</div>`;
     if(q.kind==='toggle') body=`<div class="sub">Reaction: <b style="color:var(--txt)">${q.name}</b></div>`+body;
+  } else if(q.kind==='predict-img'){
+    body=`<img class="substrate-img" src="${q.rxn.substrateImg}" alt="substrate + reagents">`;
   } else if(q.kind==='predict'){
     body=`<div style="display:flex;align-items:center;gap:12px;justify-content:center;margin:14px 0">
       <div style="flex:0 0 130px">${mol({type:'alkene'})}<div class="molcap">alkene</div></div>
@@ -326,7 +376,14 @@ function renderQuestion(){
   }
 
   let opts='';
-  if(q.kind==='image'){
+  if(q.kind==='predict-img'){
+    opts=`<div class="opts imgrow">`+q.options.map((o,idx)=>`
+      <button class="opt imgcard" data-i="${idx}">
+        <img src="${o.imgFile}" alt="option ${o.label}">
+        <div class="icap">${o.label.toUpperCase()}</div>
+        <span class="badge"></span>
+      </button>`).join('')+`</div>`;
+  } else if(q.kind==='image'){
     const n=q.opts.length;
     const cls=n===2?'two':n===3?'three':n>=5?'letters five':'letters';
     opts=`<div class="opts letters ${cls}">`+q.opts.map((o,idx)=>`
@@ -364,7 +421,7 @@ function renderQuestion(){
 function answer(idx){
   if(S.answered) return; S.answered=true;
   const q=S.qs[S.i];
-  const allOpts = q.kind==='image' ? q.opts : q.options;
+  const allOpts = (q.kind==='image') ? q.opts : q.options;
   const chosen=allOpts[idx], correct=chosen.correct;
   const btns=app.querySelectorAll('.opt');
   btns.forEach((b,i)=>{
