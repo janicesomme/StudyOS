@@ -4,6 +4,7 @@ interface MaterialCardProps {
   material: SourceMaterial
   onSelect: (id: string) => void
   selected: boolean
+  onDelete: (id: string) => void
 }
 
 const statusColors: Record<SourceMaterial['processing_status'], string> = {
@@ -14,11 +15,11 @@ const statusColors: Record<SourceMaterial['processing_status'], string> = {
   partial: 'bg-yellow-100 text-yellow-700',
 }
 
-export function MaterialCard({ material, onSelect, selected }: MaterialCardProps) {
+export function MaterialCard({ material, onSelect, selected, onDelete }: MaterialCardProps) {
   return (
-    <button
+    <div
       onClick={() => onSelect(material.id)}
-      className={`w-full text-left rounded-xl border p-4 transition-colors ${
+      className={`w-full text-left rounded-xl border p-4 transition-colors cursor-pointer ${
         selected
           ? 'border-indigo-400 bg-indigo-50'
           : 'border-gray-200 bg-white hover:border-gray-300'
@@ -26,11 +27,20 @@ export function MaterialCard({ material, onSelect, selected }: MaterialCardProps
     >
       <div className="flex items-start justify-between gap-2">
         <p className="text-sm font-medium text-gray-900">{material.title}</p>
-        <span
-          className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[material.processing_status]}`}
-        >
-          {material.processing_status}
-        </span>
+        <div className="flex items-center gap-2 shrink-0">
+          <span
+            className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[material.processing_status]}`}
+          >
+            {material.processing_status}
+          </span>
+          <button
+            onClick={(e) => { e.stopPropagation(); onDelete(material.id) }}
+            className="text-gray-300 hover:text-red-500 transition-colors leading-none"
+            title="Delete material"
+          >
+            x
+          </button>
+        </div>
       </div>
       <div className="mt-1 flex items-center gap-2">
         <span className="text-xs text-gray-400 uppercase">{material.file_type}</span>
@@ -41,6 +51,6 @@ export function MaterialCard({ material, onSelect, selected }: MaterialCardProps
       {material.error_message && material.processing_status === 'failed' && (
         <p className="mt-1 text-xs text-red-500">{material.error_message}</p>
       )}
-    </button>
+    </div>
   )
 }

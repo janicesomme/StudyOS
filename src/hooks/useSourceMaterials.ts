@@ -15,6 +15,7 @@ interface UseSourceMaterialsReturn {
   materials: SourceMaterial[]
   loading: boolean
   uploadAndProcess: (input: UploadInput) => Promise<{ error: Error | null }>
+  deleteMaterial: (id: string) => Promise<{ error: Error | null }>
   refreshMaterials: () => Promise<void>
 }
 
@@ -105,5 +106,16 @@ export function useSourceMaterials(
     return { error: null }
   }
 
-  return { materials, loading, uploadAndProcess, refreshMaterials: fetchMaterials }
+  const deleteMaterial = async (id: string): Promise<{ error: Error | null }> => {
+    const material = materials.find(m => m.id === id)
+    if (material?.file_url) {
+      await supabase.storage.from('course-materials').remove([material.file_url])
+    }
+    const { error } = await supabase.from('source_materials').delete().eq('id', id)
+    if (error) return { error: error as Error }
+    await fetchMaterials()
+    return { error: null }
+  }
+
+  return { materials, loading, uploadAndProcess, deleteMaterial, refreshMaterials: fetchMaterials }
 }

@@ -1,9 +1,78 @@
+# ---- dependencies ----
 node_modules/
+
+# ---- secrets / env (NEVER commit) ----
 .env
-.env.local
-.env.production
+.env.*
+.dev.vars
+.dev.vars.*
+*.key
+*.pem
+
+# ---- build / cache / deploy ----
 dist/
+build/
+.output/
 .vite/
+.cache/
+.wrangler/
+coverage/
+
+# ---- python (extraction scripts) ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---- local db / supabase ----
+*.sqlite
+*.sqlite3
+supabase/.branches/
+supabase/.temp/
+
+# ---- editor / OS ----
 .DS_Store
+Thumbs.db
+.idea/
+
+# ---- logs / temp ----
 *.log
 tmp/
+
+# ---- IP: exams, answer keys, private content (keep OUT of repo) ----
+private/
+source_materials/
+docs/past exams and answer keys/
+**/past exams and answer keys/
+
+# ---- copyrighted source material (bloat + copyright) ----
+*.pdf
+docs/ochem/
+
+# ---- exam-derived PNG renders (rendered PDF pages) ----
+pdf_page*.png
+pdf_render_*.png
+pdf_p*.png
+
+# ---- private question content ----
+question_bank_index_batches/
+
+# ---- playwright session snapshots ----
+.playwright-mcp/
+
+# ---- private skills ----
+.claude/skills/
+
+# ---- no-fear derived content ----
+docs/no-fear-ochem/
+
+# ---- session/internal docs ----
+docs/session-handoffs/
+**/SESSION_HANDOFF*.md
+
+# ---- debug/scratch logs ----
+PATTERN_DESIGN_LOG.md
+affected_rows_pattern*.md
+
+# ---- stray test screenshots ----
+molview-test.png

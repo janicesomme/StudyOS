@@ -182,7 +182,7 @@ Deno.serve(async (req) => {
     try {
       claudeResponse = await anthropic.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 8192,
+        max_tokens: 16000,
         system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: messageContent }],
       })
@@ -194,17 +194,18 @@ Deno.serve(async (req) => {
     const responseText =
       claudeResponse.content[0]?.type === 'text' ? claudeResponse.content[0].text : ''
 
-    const stripped = responseText
-      .replace(/^```json\s*/i, '')
-      .replace(/^```\s*/i, '')
-      .replace(/\s*```$/, '')
-      .trim()
+    const arrayStart = responseText.indexOf('[')
+    const arrayEnd = responseText.lastIndexOf(']')
+    const stripped = arrayStart !== -1 && arrayEnd > arrayStart
+      ? responseText.slice(arrayStart, arrayEnd + 1)
+      : responseText.trim()
 
     let rawUnits: unknown
     try {
       rawUnits = JSON.parse(stripped)
     } catch {
-      await markFailed(supabaseAdmin, source_material_id, 'Claude response was not valid JSON')
+      const preview = responseText.slice(0, 300).replace(/\n/g, ' ')
+      await markFailed(supabaseAdmin, source_material_id, `Claude response was not valid JSON. Raw preview: ${preview}`)
       return new Response('Parse error', { status: 500, headers: corsHeaders })
     }
 
