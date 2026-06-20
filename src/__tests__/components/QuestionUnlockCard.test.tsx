@@ -110,7 +110,8 @@ describe('QuestionUnlockCard — progressive reveal', () => {
     const user = userEvent.setup()
     renderCard()
     await user.click(screen.getByRole('button', { name: /Show first hint/ }))
-    expect(screen.getByText(/Find the key functional group/)).toBeInTheDocument()
+    // SAMPLE_QUESTION.questionType = 'Product prediction: HBr' -> HBr teaching-map hint
+    expect(screen.getByText(/HX adds H and X across the double bond/)).toBeInTheDocument()
   })
 
   it('hides Show first hint button after clicking it', async () => {
@@ -120,6 +121,13 @@ describe('QuestionUnlockCard — progressive reveal', () => {
     expect(
       screen.queryByRole('button', { name: /Show first hint/ })
     ).not.toBeInTheDocument()
+  })
+
+  it('shows a different hint for a different question type', async () => {
+    const user = userEvent.setup()
+    renderCard({ question: { ...SAMPLE_QUESTION, questionType: 'Calculate degrees of unsaturation' } })
+    await user.click(screen.getByRole('button', { name: /Show first hint/ }))
+    expect(screen.getByText(/2C \+ 2 \+ N - H - X/)).toBeInTheDocument()
   })
 
   it('still hides scaffold after clicking Show first hint', async () => {

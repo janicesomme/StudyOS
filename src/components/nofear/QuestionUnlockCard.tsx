@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Ch10Question, ProgressStatus, UnlockStatus } from '../../types/nofear'
 import { PROGRESS_LABELS, UNLOCK_LABELS } from '../../types/nofear'
+import { getFirstHint } from '../../data/nofear-hints'
 
 const UNLOCK_BADGE: Record<UnlockStatus, string> = {
   complete: 'bg-green-100 text-green-800',
@@ -17,9 +18,6 @@ const PROGRESS_OPTIONS: ProgressStatus[] = [
   'mastered',
 ]
 
-// Generic first hint — gives direction without revealing the answer scaffold.
-const FIRST_HINT =
-  'Find the key functional group and identify the reagent type from the question before going further.'
 
 interface Props {
   question: Ch10Question
@@ -97,7 +95,7 @@ export function QuestionUnlockCard({
 
       {showHint && !showScaffold && (
         <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded px-3 py-2">
-          {FIRST_HINT}
+          {getFirstHint(question.questionType)}
         </p>
       )}
 
