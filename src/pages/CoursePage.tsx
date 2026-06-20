@@ -77,6 +77,12 @@ export function CoursePage() {
               >
                 Review Images
               </Link>
+              <Link
+                to={`/courses/${courseId}/question-unlocks`}
+                className="text-sm text-indigo-600 hover:underline"
+              >
+                Question Unlocks
+              </Link>
             </div>
           </div>
         )}
