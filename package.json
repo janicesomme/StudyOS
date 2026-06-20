@@ -17,7 +17,8 @@
     "parse-exam-sheet": "tsx scripts/parse-exam-sheet.ts",
     "propose-topics": "tsx --env-file=.env.local scripts/propose-topics.ts",
     "ingest-exam-pairs": "tsx --env-file=.env.local scripts/ingest-exam-pairs.ts",
-    "frequency-map": "tsx --env-file=.env.local scripts/build-frequency-map.ts"
+    "frequency-map": "tsx --env-file=.env.local scripts/build-frequency-map.ts",
+    "convert-question-map": "tsx scripts/convert-question-map.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
@@ -52,6 +53,7 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "xlsx": "^0.18.5"
   }
 }
