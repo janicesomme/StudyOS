@@ -18,7 +18,14 @@
     "propose-topics": "tsx --env-file=.env.local scripts/propose-topics.ts",
     "ingest-exam-pairs": "tsx --env-file=.env.local scripts/ingest-exam-pairs.ts",
     "frequency-map": "tsx --env-file=.env.local scripts/build-frequency-map.ts",
-    "convert-question-map": "tsx scripts/convert-question-map.ts"
+    "convert-question-map": "tsx scripts/convert-question-map.ts",
+    "decompose-eas-smith": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose.ts",
+    "decompose-eas-patch": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-patch.ts",
+    "decompose-eas-framework": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-framework.ts",
+    "decompose-eas-framework-v2": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-framework-v2.ts",
+    "decompose-eas-klein-mcmurry": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-klein-mcmurry.ts",
+    "decompose-eas-klein-mcmurry-patch": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-klein-mcmurry-patch.ts",
+    "load-eas-supabase": "tsx --env-file=.env.local ochem2/eas/pipeline/load-supabase.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",

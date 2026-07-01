@@ -1,0 +1,644 @@
+Pages: 18
+--- PAGE 1 ---
+Chemistry 320N
+Dr. Brent Iverson
+2nd Midterm
+March 20, 2014
+NAME (Print): _____________________________
+SIGNATURE: _____________________________
+Please Note:  This test may be a bit long, but there is a reason.  I would like to give you a lot 
+of little questions, so you can find ones you can answer and show me what you know, rather 
+than just a few questions that may be testing the one thing you forgot.  I recommend you 
+look the exam over and answer the questions you are sure of first, then go back and try 
+to figure out the rest.  Also make sure to look at the point totals on the questions as a 
+guide to help budget your time.
+Please print the 
+first three letters 
+of your last name 
+in the three boxes
+You must have your answers written in 
+PERMANENT ink if you want a regrade!!!!  This 
+means no test written in pencil or ERASABLE INK 
+will be regraded.
+Please note: We routinely xerox a number of exams following initial grading to 
+guard against receiving altered answers during the regrading process.
+FINALLY, DUE TO SOME UNFORTUNATE RECENT INCIDENCTS YOU ARE NOT 
+ALLOWED TO INTERACT WITH YOUR CELL PHONE IN ANY WAY. IF YOU 
+TOUCH YOUR CELL PHONE DURING THE EXAM YOU WILL GET A "0" NO 
+MATTER WHAT YOU ARE DOING WITH THE PHONE. PUT IT AWAY AND LEAVE 
+IT THERE!!!
+
+--- PAGE 2 ---
+10
+9
+8
+7
+6
+5
+4
+3
+2
+(26)
+(25)
+(16)
+(18)
+(35)
+(30)
+(35)
+(19)
+(15)
+(10)
+(13)
+(22)
+(4)
+(12)
+(280)
+11
+1
+Page        Points
+12
+13
+14
+Total
+
+--- PAGE 3 ---
+Student Honor Code
+“As a student of The University of Texas at Austin, I shall abide by the core values of the 
+University and uphold academic integrity.”
+(Your signature)
+
+--- PAGE 4 ---
+CH3CH2-H
+R2C
+C
+H
+H
+H-N(i-C3H7)2
+RC
+C
+H
+COR'
+O
+RCH2
+CR'
+O
+RCH2
+CH
+O
+RCH2
+CCl
+O
+RCH2
+RCH2OH
+HOH
+ROC
+O
+COR'
+O
+CH2
+RC
+O
+COR'
+O
+CH2
+RC
+O
+CR'
+O
+CH2
+H4N
+CO-H
+O
+R
+RCH2OH2
+H3O
+H-Cl
+10
+51
+-7
+Compound
+pKa
+3-5
+15.7
+16
+18-20
+11
+23-25
+18-20
+13
+15-19
+40
+Carboxylic acids
+β-Dicarbonyls
+β-Ketoesters
+β-Diesters
+Water
+Alcohols
+Acid chlorides
+Aldehydes
+Ketones
+Esters
+LDA
+Alkanes
+Terminal alkynes
+25
+Terminal alkenes
+44
+9.2
+Ammonium ion
+Hydronium ion
+Hydrochloric acid
+Protonated alcohol
+-2
+-1.7
+H3NCH2CH3
+10.5
+Primary ammonium
+
+--- PAGE 5 ---
+Pg 1 _____________(26)
+Signature_________________________
+1. (14 points) Suppose a relative of yours is having an MRI.  In no more than four sentences, explain to 
+them what is happening when they have the MRI scan.  We will be looking for a minimum of 7 key 
+points here.
+2. (4 pts each) In the space provided, write the IUPAC name (including stereochemistry where 
+appropriate) for the following two molecules:
+F3C
+OH
+O
+O
+O
+OH
+O
+H
+N
+O
+
+--- PAGE 6 ---
+Pg 2 _____________(25)
+Signature_________________________
+3. (4 pts each) In the space provided, draw the following molecule:
+(R)-Isopropyl 3-methyl-4-oxohexanoate
+(3E,5Z)-3-Methyl-3,5-heptadienoic acid
+C
+C
+N
+H
+O
+H
+H
+H
+H
+4. (8 points)  Draw the two most important resonance contributing structures of the amide shown 
+below.  Be sure to show all lone pairs and formal charges.  You do not have to draw arrows on this one.
+O
+N
+NH2
+5. (9 points)  Shown below is an amide formed between methyl amine and the amino acid 
+phenylalanine.  Draw a small circle around each sp2 hybridized atom in the molecule.
+CH3
+H
+
+--- PAGE 7 ---
+Pg 3 _____________(16)
+Signature_________________________
+6. (4 points)  Rank the following carboxylic acid derivatives with respect to reactivity with a nucleophile.  
+Write a 1 under the most reactive, and a 4 under the least reactive derivative.
+8. (4 points) Rank the following in terms of relative acidity, with a 1 under the most acidic, and a 4 under 
+the least acidic molecule.
+O
+H3C
+H3C
+Cl
+O
+H3C
+O
+O
+NH2
+O
+CH3
+CH3
+O
+O
+7. (4 points)  Rank the following with respect to anion stability.  Write a 1 under the most stable anion, and 
+a 4 under the least stable anion.
+O
+O
+CH3
+CH3
+O
+Cl
+NH2
+HO
+HO
+CH3
+CH3
+O
+Cl
+NH3
+H
+9. (4 points) Rank the following in terms of relative acidity, with a 1 under the most acidic, and a 4 under 
+the least acidic molecule.
+H3C
+CH3
+O
+F3C
+OH
+O
+Cl3C
+OH
+O
+H3C
+OH
+O
+
+--- PAGE 8 ---
+Pg 4 _____________(18)
+Signature_________________________
+10. (10 points)  The following structure is that of ampicillin, a very common antibiotic used in the 
+treatment of many bacterial infections.  The following structure was copied directly from a Wikipedia page 
+(http://en.wikipedia.org/wiki/Ampicillin).  To the right of the structure are listed relevant pKa values 
+from the table at the beginning of the exam.
+H3NCH2CH3
+10.5
+Primary ammonium
+pKa
+CO-H
+O
+R
+3-5
+Carboxylic acids
+Based on the pKa values given, what is the total charge on amplicillin in a solution of pH = 2.0?
+Based on the pKa values given, what is the total charge on amplicillin in a solution of pH = 7.0?
+In only two short sentences, describe two very different things that are wrong with the format of the 
+ampicillin structure that I copied from Wikipedia. Hint; one of the answers to this question is related to 
+the two questions you just answered.  You can assume the atoms are all in the correct places in the 
+structure, we do NOT assume you know the structure of ampicillin by heart!
+11. (8 points)  In the following reactions, draw a circle around the nucleophile.  Note, there is no reason to 
+write any products for these.
+O
+O
++    HO
+Cl
+O
++    NH2CH3
+H3C
+CH2
+OH
++  Br2
+A)
+B)
+C)
+H3C
+O
+O
++  H2O
+D)
+H
+
+--- PAGE 9 ---
+Pg 5 _____________ (35)
+Signature_________________________
+12. (35 pts) Complete the mechanism for the following amide hydrolysis reaction.   Be sure to show 
+arrows to indicate movement of all electrons, write all lone pairs, all formal charges, and all the 
+products for each step.  Remember, I said all the products for each step. IF A NEW CHIRAL CENTER 
+IS CREATED IN AN INTERMEDIATE OR PRODUCT, MARK IT WITH AN ASTERISK AND 
+LABEL IT AS RACEMIC IF APPROPRIATE.  In the boxes provided, write which of the 4 
+mechanistic elements describes each step (make a bond, break a bond, etc.).
+H
+O
+H
+H
+O
+H
+H
+Products
+N
+O
+H
+H
+O
+H
+H
+H
+O
+H
+H
+H
+N
+H
+H
+
+--- PAGE 10 ---
+H
+O
+Pg 6 _____________ (30)
+Signature_________________________
+O
+Proton
+Transfer
+O
+13. (30 pts) Complete the mechanisms for the following two lactone reactions.   Be sure to show arrows 
+to indicate movement of all electrons, write all lone pairs, all formal charges, and all the products 
+for each step.  Remember, I said all the products for each step. IF A NEW CHIRAL CENTER IS 
+CREATED IN AN INTERMEDIATE OR PRODUCT, MARK IT WITH AN ASTERISK AND 
+LABEL IT AS RACEMIC IF APPROPRIATE.  In the boxes provided, write which of the 4 
+mechanistic elements describes each step (make a bond, break a bond, etc.).
+O
+O
+Al
+H
+H
+H
+H
+Li
+Products
+Products
+Al
+H
+H
+H
+H
+Li
+Chemist Opens 
+Flask
+2)
+H
+O
+H
+Do not draw any arrows here
+Do not draw any arrows here
+Note: Due to the 
+special nature of this 
+starting material, 
+you are not supposed 
+to draw arrows on 
+the last intermediate 
+in each case.
+excess
+
+--- PAGE 11 ---
+Pg 7 _____________ (35)
+Signature_________________________
+14. (35 pts) Complete the mechanism for the following Fischer esterification reaction.   Be sure to show 
+arrows to indicate movement of all electrons, write all lone pairs, all formal charges, and all the 
+products for each step.  Remember, I said all the products for each step. IF A NEW CHIRAL 
+CENTER IS CREATED IN AN INTERMEDIATE OR PRODUCT, MARK IT WITH AN 
+ASTERISK AND LABEL IT AS RACEMIC IF APPROPRIATE.  In the boxes provided, write 
+which of the 4 mechanistic elements describes each step (make a bond, break a bond, etc.).
+O
+O
+H
+O
+H
+H
+O
+H
+O
+H
+O
+H
+H
+O
+H
+Products
+
+--- PAGE 12 ---
+Signature_________________________
+Pg 8 _____________(19)
+15. (3, 4 or 5 pts.) Write the predominant carbon containing product or products that will occur for each 
+transformation.  If there are two carbon containing products, WRITE THEM BOTH.  If a new chiral 
+center is created and a racemic mixture is formed, label the chiral center with an asterisk (*) and 
+write racemic.  No need for wedges and dashes.
+N
+H
+O
+O
+1) 1.0 Equivalent 
+     NaOH
+2) HCl / H2O
+   (mild acid)
+2) H2O
+1) LiAlH4
+O
+O
+2) HCl / H2O
+   (mild acid)
+O
+O
+1) 2 eq.
+MgBr
+2) H2O
+1) NaBH4
+Cl
+O
+NH2
+2 eq.
+
+--- PAGE 13 ---
+4) H2O
+5)
+(9 pts)
+Pg 9 _____________(15)
+Signature_________________________
+15. (14 points)  For the following sequences of reactions, draw the final organic product or 
+products after ALL the steps have been completed.  You do not need to draw the molecules 
+synthesized along the way, only the last product that is formed.   If a new chiral center is 
+created in the reaction that produces a racemic mixture, label the chiral center with an asterisk 
+(*) and write "racemic" underneath.
+(6 pts)
+H2C
+P(Ph)3
+O
+1) LiAlH4
+2) H2O
+3)
+Cl
+O
+OH
+1) H2CrO4
+2) SOCl2
+3)
+CuLi
+2
+
+--- PAGE 14 ---
+Signature_________________________
+Pg 10 _____________(10)
+17. Using any reagents turn the starting material into the indicated product. All carbon atoms in the 
+product must come from the starting material.  Draw all molecules synthesized along the way.  When in 
+doubt, draw the molecule!  Label all chiral centers with an asterisk (*) and make sure to right "Racemic" 
+where appropriate.  Hint: this should look familiar as a homework problem.
+Remember, all of the carbons of the product must come from the given starting material.
+A)
+?
+(10 pts)
+O
+O
+OH
+
+--- PAGE 15 ---
+Signature_________________________
+Pg 11 _____________(13)
+17. Using any reagents turn the starting material into the indicated product. All carbon atoms of the 
+product must come from the starting material.  Draw all molecules synthesized along the way.  When in 
+doubt, draw the molecule!  Label all chiral centers with an asterisk (*) and make sure to right "Racemic" 
+where appropriate.  Hint: this should look familiar as a homework problem.
+Remember, all of the carbons of the product must come from the given starting material.
+B)
+?
+(13 pts)
+O
+O
+
+--- PAGE 16 ---
+Signature_________________________
+Pg 12 _____________(22)
+17.  Using any reagents turn the starting material into the indicated product. All carbon atoms in the 
+product must come from the starting material.  Draw all molecules synthesized along the way.  When in 
+doubt, draw the molecule!  Label all chiral centers with an asterisk (*) and make sure to right "Racemic" 
+where appropriate.  Hint: this should look familiar as a homework problem.
+Remember, all of the carbons of the product must come from the given starting material.
+C)
+?
+H2C
+CH2
+O
+O
+(22 pts)
+Ethylene
+
+--- PAGE 17 ---
+Signature_________________________
+Pg 13 _____________(4)
+18. (16 pts total) Here is an MCAT question in multiple choice format.  You have not seen this chemistry
+before, but you have learned fundamental principles of reactivity that will lead you to the correct answers.  In
+each case, you should circle the correct answer.
+Tert-butyl esters are interesting for many reasons.  Unfortunately, tert-butyl esters CANNOT be synthesized
+from the reaction of an acid chloride with 2-methyl-2-propanol.
+Cl
+O
+OH
++
+Not a useful
+reaction
+2-Methyl-2-propanol
+O
+O
+A tert-butyl ester
+Which of the following best explains why the above reaction does not work.
+A. The 2-methyl-2-propanol has too much steric hindrance to react as a nucleophile.
+B. Alcohols are weak nucleophiles, so they need acid catalysis to react with acid chlorides.
+C. Alcohols are weak electrophiles, so they need acid catalysis to react with acid chlorides.
+D. Both A. and B. are equally responsible for the lack of reaction.
+Tert-butyl esters are synthesized in high yield from a carboxylic acid and 2-methylpropene in the presence of a
+strong anhydrous acid such as H2SO4.
+OH
+O
++
+O
+O
+A tert-butyl ester
+H2SO4
+2-Methylpropene
+The mechanism of this reaction involves a carbocation intermediate as shown:
+HO
+O
++   HSO4
+S
+O
+O
+O
+O
+H
+H
+O
+O
+H
+S
+O
+O
+O
+O
+H
+O
+O
++   H2SO4
+tert-butyl ester
+Add a proton
+Make a bond
+Take a proton 
+away
+Products
+
+--- PAGE 18 ---
+Signature_________________________
+Pg 14 _____________(12)
+Which is true for the above mechanism:
+A. The pH of the reaction does not change.
+B. The pH decreases during the reaction.
+C. The reaction is catalytic in acid.
+D. Both A. and C. are true.
+Tert-butyl esters can be hydrolyzed in strong acid in the presence of water.  Shown below are two possible
+mechanisms, only one of which is correct.
+O
+O
+H
+O
+O
+tert-butyl ester
+Add a proton
+Products
+OH
+O
+OH
+O
+O
+H
+O
+O
+O
+H
+H
+H
+O
+H
+H
+or
+H
+O
+H
+H
+O
+H
+H
+O
+H
+H
+O
+H
+H
+H
+O
+H
+H
+Products
+OH
+O
+O
+H
+H
+H
+Several steps
+Which of the following is true:
+A. The reaction follows the upper pathway involving the carbocation intermediate.
+B. The reaction follows the lower pathway involving an initial attack by water.
+C. The mechanism you chose follows directly from the mechanism for tert-butyl ester formation according
+the law of microscopic reversibility.
+D. Both A. and C. are true.
+Given your answer immediately above, which is true?
+A. The pH of the tert-butyl ester hydrolysis reaction does not change.
+B. The pH of the tert-butyl ester hydrolysis decreases during the reaction.
+C. The tert-butyl ester hydrolysis reaction is catalytic in acid.
+D. Both A. and C. are true.
+

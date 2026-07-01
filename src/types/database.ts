@@ -106,6 +106,82 @@ export type Database = {
           point_value?: number | null; sub_parts?: string[]; has_structure?: boolean; raw_text?: string | null
         }
       }
+      o2_eas_problems: {
+        Row: {
+          id: string
+          source: string
+          chapter: number
+          problem_number: string
+          question_text_raw: string
+          solution_text_raw: string
+          question_analysis: { skill_tested: string; disguise: string; recognition_cue: string } | null
+          prior_knowledge_needed: string[] | null
+          decomposition_type: 'specific' | 'framework' | null
+          solution_status: 'solved' | 'unsolved'
+          has_missing_structure: boolean
+          topic: string | null
+          question_type: string | null
+          difficulty: number | null
+          high_yield: boolean | null
+          readiness_category: string | null
+          hint_1: string | null
+          hint_2: string | null
+          checklist_hint: string | null
+          common_trap: string | null
+          memory_trick: string | null
+          needs_image: boolean | null
+          expected_image_types: string[] | null
+          created_at: string
+        }
+        Insert: {
+          id: string; source: string; chapter: number; problem_number: string
+          question_text_raw: string; solution_text_raw: string
+          question_analysis?: { skill_tested: string; disguise: string; recognition_cue: string } | null
+          prior_knowledge_needed?: string[] | null
+          decomposition_type?: 'specific' | 'framework' | null
+          solution_status: 'solved' | 'unsolved'; has_missing_structure?: boolean
+          topic?: string | null; question_type?: string | null; difficulty?: number | null
+          high_yield?: boolean | null; readiness_category?: string | null
+          hint_1?: string | null; hint_2?: string | null; checklist_hint?: string | null
+          common_trap?: string | null; memory_trick?: string | null
+          needs_image?: boolean | null; expected_image_types?: string[] | null
+          created_at?: string
+        }
+        Update: {
+          topic?: string | null; question_type?: string | null; difficulty?: number | null
+          high_yield?: boolean | null; readiness_category?: string | null
+          hint_1?: string | null; hint_2?: string | null; checklist_hint?: string | null
+          common_trap?: string | null; memory_trick?: string | null
+          needs_image?: boolean | null; expected_image_types?: string[] | null
+        }
+      }
+      o2_eas_solution_steps: {
+        Row: {
+          id: string
+          problem_id: string
+          step_order: number
+          do_this: string
+          why: string
+          vocab: Record<string, string> | null
+          created_at: string
+        }
+        Insert: {
+          id?: string; problem_id: string; step_order: number
+          do_this: string; why: string; vocab?: Record<string, string> | null; created_at?: string
+        }
+        Update: { do_this?: string; why?: string; vocab?: Record<string, string> | null }
+      }
+      o2_eas_images: {
+        Row: {
+          id: string; problem_id: string; image_type: string
+          display_order: number; caption: string | null; storage_url: string | null; created_at: string
+        }
+        Insert: {
+          id?: string; problem_id: string; image_type: string
+          display_order?: number; caption?: string | null; storage_url?: string | null; created_at?: string
+        }
+        Update: { caption?: string | null; storage_url?: string | null; display_order?: number }
+      }
     }
   }
 }
@@ -120,3 +196,6 @@ export type SourceExam = Database['public']['Tables']['source_exams']['Row']
 export type SourceExamInsert = Database['public']['Tables']['source_exams']['Insert']
 export type ExamQuestion = Database['public']['Tables']['exam_questions']['Row']
 export type ExamQuestionInsert = Database['public']['Tables']['exam_questions']['Insert']
+export type EasProblem = Database['public']['Tables']['o2_eas_problems']['Row']
+export type EasSolutionStep = Database['public']['Tables']['o2_eas_solution_steps']['Row']
+export type EasImage = Database['public']['Tables']['o2_eas_images']['Row']

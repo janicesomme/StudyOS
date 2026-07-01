@@ -1,0 +1,1221 @@
+Total pages: 26
+--- PAGE 1 ---
+Chapter 1
+A Review of General Chemistry:
+Electrons, Bonds and Molecular Properties
+Review of Concepts
+Fill in the blanks below. To verify that your answers are correct, look in your textbook at the end of
+Chapter 1. Each of the sentences below appears verbatim in the section entitled Review of Concepts and
+Vocabulary.
+ _____________ isomers share the same molecular formula but have different connectivity of
+atoms and different physical properties.
+ Second-row elements generally obey the _______ rule, bonding to achieve noble gas electron
+configuration.
+ A pair of unshared electrons is called a ______________.
+ A formal charge occurs when atoms do not exhibit the appropriate number of
+___________________________.
+ An atomic orbital is a region of space associated with ____________________, while a
+molecular orbital is associated with _______________________.
+ Methane’s tetrahedral geometry can be explained using four degenerate _____-hybridized
+orbitals to achieve its four single bonds.
+ Ethylene’s planar geometry can be explained using three degenerate _____-hybridized orbitals.
+ Acetylene’s linear geometry is achieved via _____-hybridized carbon atoms.
+ The geometry of small compounds can be predicted using valence shell electron pair repulsion
+(VSEPR) theory, which focuses on the number of  bonds and _______________
+exhibited by each atom.
+ The physical properties of compounds are determined by __________________ forces, the
+attractive forces between molecules.
+ London dispersion forces result from the interaction between transient __________________
+and are stronger for larger alkanes due to their larger surface area and ability to accommodate
+more interactions.
+Review of Skills
+Fill in the blanks and empty boxes below. To verify that your answers are correct, look in your textbook at
+the end of Chapter 1. The answers appear in the section entitled SkillBuilder Review.
+SkillBuilder 1.1 Drawing Constitutional Isomers of Small Molecules
+SkillBuilder 1.2 Drawing the Lewis Structure of a Small Molecule
+--- PAGE 2 ---
+2 CHAPTER 1
+SkillBuilder 1.3 Calculating Formal Charge
+SkillBuilder 1.4 Locating Partial Charges Resulting from Induction
+SkillBuilder 1.5 Reading Bond-Line Structures
+SkillBuilder 1.6 Identifying Electron Configurations
+Step 1 In the energy Step 2 Fill in the boxes below with the
+diagram shown here, 2p numbers that correctly describe the
+draw the electron electron configuration of nitrogen.
+configuration of nitrogen 2s
+(using arrows to
+represent electrons). 1s 1s 2s 2p
+Nitrogen
+SkillBuilder 1.7 Identifying Hybridization States
+--- PAGE 3 ---
+CHAPTER 1 3
+SkillBuilder 1.8 Predicting Geometry
+SkillBuilder 1.9 Identifying the Presence of Molecular Dipole Moments
+SkillBuilder 1.10 Predicting Physical Properties
+Dipole-Dipole Interactions Hydrogen-Bonding Interactions Carbon Skeleton
+Circle the compound below that Circle the compound below that is Circle the compound below that is expected
+is expected to have the higher expected to have the higher boiling point. to have the higher boiling point.
+boiling point.
+CH O H H H H H H H H H H H H
+2
+C C H C O C H H C C O H H C C C H H C C C C C H
+H C CH H C CH
+3 3 3 3
+H H H H H H H H H H H H
+A Common Mistake to Avoid
+When drawing a structure, don’t forget to draw formal charges, as forgetting to do so is a common error. If
+a formal charge is present, it MUST be drawn. For example, in the following case, the nitrogen atom bears
+a positive charge, so the charge must be drawn:
+As we progress though the course, we will see structures of increasing complexity. If formal charges are
+present, failure to draw them constitutes an error, and must be scrupulously avoided. If you have trouble
+drawing formal charges, go back and master that skill. You can’t go on without it. Don’t make the mistake
+of underestimating the importance of being able to draw formal charges with confidence.
+--- PAGE 4 ---
+4 CHAPTER 1
+Solutions
+1.1.
+(a) Begin by determining the valency of each atom that
+appears in the molecular formula. The carbon atoms are
+tetravalent, while the chlorine atom and hydrogen atoms
+are all monovalent. The atoms with more than one bond Finally, we can draw three carbon atoms in a linear
+(in this case, the three carbon atoms) should be drawn in fashion, and then draw the remaining two carbon atoms
+the center of the compound. Then, the chlorine atom can on separate branches.
+be placed in either of two locations: i) connected to the
+central carbon atom, or ii) connected to one of the other
+two (equivalent) carbon atoms. The hydrogen atoms are
+then placed at the periphery (ensuring that each carbon
+atom has a total of four bonds). The formula C3H7Cl has
+Note that we cannot draw a unique carbon skeleton (a
+two constitutional isomers.
+unique arrangement of carbon atoms) simply by placing
+the last two carbon atoms together as one branch, because
+that possibility has already been drawn earlier (a linear
+chain of four carbon atoms with a single branch):
+(b) Begin by determining the valency of each atom that
+appears in the molecular formula. The carbon atoms are
+tetravalent, while the hydrogen atoms are all monovalent.
+The atoms with more than one bond (in this case, the four
+carbon atoms) should be drawn in the center of the
+In summary, there are three different ways to connect five
+compound. There are two different ways to connect four
+carbon atoms:
+carbon atoms. They can either be arranged in a linear
+fashion or in a branched fashion:
+We then place the hydrogen atoms at the periphery
+(ensuring that each carbon atom has a total of four bonds).
+We then place the hydrogen atoms at the periphery
+The formula C5H12 has three constitutional isomers:
+(ensuring that each carbon atom has a total of four bonds).
+The formula C4H10 has two constitutional isomers:
+(c) Begin by determining the valency of each atom that
+appears in the molecular formula. The carbon atoms are
+tetravalent, while the hydrogen atoms are all monovalent.
+The atoms with more than one bond (in this case, the five (d) Begin by determining the valency of each atom that
+carbon atoms) should be drawn in the center of the appears in the molecular formula. The carbon atoms are
+compound. So we must explore all of the different ways tetravalent, the oxygen atom is divalent, and the hydrogen
+to connect five carbon atoms. First, we can connect all atoms are all monovalent. Any atoms with more than one
+five carbon atoms in a linear fashion: bond (in this case, the four carbon atoms and the one
+oxygen atom) should be drawn in the center of the
+compound, with the hydrogen atoms at the periphery.
+There are several different ways to connect four carbon
+atoms and one oxygen atom. Let’s begin with the four
+Alternatively, we can draw four carbon atoms in a linear
+carbon atoms. There are two different ways to connect
+fashion, and then draw the fifth carbon atom on a branch.
+four carbon atoms. They can 
+--- PAGE 5 ---
+CHAPTER 1 5
+the center of the compound. There is only way to connect
+three carbon atoms:
+Next, the oxygen atom must be inserted. For each of the Next, we must determine all of the different possible ways
+two skeletons above (linear or branched), there are several of connecting two chlorine atoms to the chain of three
+different locations to insert the oxygen atom. The linear carbon atoms. If we place one chlorine atom at C1, then
+skeleton has four possibilities, shown here: the second chlorine atom can be placed at C1, at C2 or at
+C3:
+O O
+C C C C C C C C
+1 2 3 4 1 2 3 4
+Furthermore, we can place both chlorine atoms at C2,
+C O C C C C C O C C giving a new possibility not shown above:
+1 2 3 4 1 2 3 4
+and the branched skeleton has three possibilities shown
+here:
+There are no other possibilities. For example, placing the
+two chlorine atoms at C2 and C3 is equivalent to placing
+Finally, we complete all of the structures by drawing the them at C1 and C2:
+bonds to hydrogen atoms (ensuring that each carbon atom
+has four bonds, and each oxygen atoms has two bonds).
+The formula C4H10O has seven constitutional isomers:
+Finally, the hydrogen atoms are placed at the periphery
+(ensuring that each carbon atom has a total of four bonds).
+The formula C3H6Cl2 has four constitutional isomers:
+1.2. The carbon atoms are tetravalent, while the chlorine
+atoms and fluorine atoms are all monovalent. The atoms
+with more than one bond (in this case, the two carbon
+atoms) should be drawn in the center of the compound.
+The chlorine atoms and fluorine atoms are then placed at
+the periphery, as shown. There are only two possible
+constitutional isomers: one with the three chlorine atoms
+all connected to the same carbon, and one in which they
+are distributed over both carbon atoms. Any other
+representations that one may draw must be one of these
+(e) Begin by determining the valency of each atom that structures drawn in a different orientation.
+appears in the molecular formula. The carbon atoms are
+tetravalent, while the chlorine atom and hydrogen atoms
+are all monovalent. The atoms with more than one bond
+(in this case, the three carbon atoms) should be drawn in
+--- PAGE 6 ---
+6 CHAPTER 1
+1.3. 1.5. Each of the carbon atoms has four valence electrons;
+(a) Each carbon atom has four valence electrons, and each the nitrogen atom has five valence electrons; and each of
+hydrogen atom has one valence electron. Only the carbon the hydrogen atoms has one valence electron. We begin
+atoms can form more than one bond, so we begin by by connecting the atoms that have more than one bond (in
+connecting the carbon atoms to each other. Then, we this case, the three carbon atoms and the nitrogen atom).
+connect all of the hydrogen atoms, as shown. There are four different ways that these four atoms can be
+connected to each other, shown here.
+(b) Each carbon atom has four valence electrons, and each
+hydrogen atom has one valence electron. Only the carbon
+atoms can form more than one bond, so we begin by
+connecting the carbon atoms to each other. Then, we
+connect all of the hydrogen atoms, and the unpaired
+electrons are shared to give a double bond. In this way,
+each of the carbon atoms achieves an octet.
+For each of these possible arrangements, we connect the
+hydrogen atoms, giving the following four constitutional
+isomers.
+(c) Each carbon atom has four valence electrons, and each
+hydrogen atom has one valence electron. Only the carbon
+atoms can form more than one bond, so we begin by
+connecting the carbon atoms to each other. Then, we
+connect all of the hydrogen atoms, and the unpaired
+electrons are shared to give a triple bond. In this way,
+each of the carbon atoms achieves an octet.
+In each of these four structures, the nitrogen atom has one
+(d) Each carbon atom has four valence electrons, and each
+lone pair.
+hydrogen atom has one valence electron. Only the carbon
+atoms can form more than one bond, so we begin by
+1.6.
+connecting the carbon atoms to each other. Then, we
+(a) The carbon atom has four valence electrons, the
+connect all of the hydrogen atoms, as shown.
+nitrogen atom has five valence electrons and the hydrogen
+atom has one valence electron. Only the carbon atom and
+the nitrogen atom can form more than one bond, so we
+begin by connecting them to each other. Then, we connect
+the hydrogen atom to the carbon, as shown. The unpaired
+(e) The carbon atom has four valence electrons, the electrons are shared to give a triple bond. In this way, both
+oxygen atom has six valence electrons, and each hydrogen the carbon atom and the nitrogen atom achieve an octet.
+atom has one valence electron. Only the carbon atom and
+the oxygen atom can form more than one bond, so we
+begin by connecting them to each other. Then, we connect
+all of the hydrogen atoms, as shown. (b) Each carbon atom has four valence electrons, and each
+hydrogen atom has one valence electron. Only the carbon
+atoms can form more than one bond, so we begin by
+connecting the carbon atoms to each other. Then, we
+connect all of the hydrogen atoms as indicated in the given
+condensed formula (CH2CHCHCH2), and the unpaired
+1.4. Boron is in column 3A of the periodic table, so it has
+--- PAGE 7 ---
+CHAPTER 1 7
+case, the aluminum atom exhibits four valence electrons the oxygen atom exhibits only five valence electrons (one
+(one for each bond). With one extra electron, this for each bond, and two for the lone pair). This oxygen
+aluminum atom will bear a negative charge. atom is missing an electron, and it therefore bears a
+positive charge.
+(b) Oxygen is in group 6A of the periodic table, and it (h) Two of the atoms in this structure exhibit a formal
+should therefore have six valence electrons. In this case, charge because each of these atoms does not exhibit the
+the oxygen atom exhibits only five valence electrons (one appropriate number of valence electrons. The aluminum
+for each bond, and two for the lone pair). This oxygen atom (group 3A) should have three valence electrons, but
+atom is missing an electron, and it therefore bears a it exhibits four (one for each bond). With one extra
+positive charge. electron, this aluminum atom will bear a negative charge.
+The neighboring chlorine atom (to the right) should have
+seven valence electrons, but it exhibits only six (one for
+each bond and two for each lone pair). It is missing one
+electron, so this chlorine atom will bear a positive charge.
+(c) Nitrogen is in group 5A of the periodic table, and it
+should therefore have five valence electrons. In this case,
+the nitrogen atom exhibits six valence electrons (one for
+each bond and two for each lone pair). With one extra
+electron, this nitrogen atom will bear a negative charge.
+(i) Two of the atoms in this structure exhibit a formal
+charge because each of these atoms does not exhibit the
+appropriate number of valence electrons. The nitrogen
+atom (group 5A) should have five valence electrons, but
+(d) Oxygen is in group 6A of the periodic table, and it it exhibits four (one for each bond). It is missing one
+should therefore have six valence electrons. In this case, electron, so this nitrogen atom will bear a positive charge.
+the oxygen atom exhibits only five valence electrons (one One of the two oxygen atoms (the one on the right)
+for each bond, and two for the lone pair). This oxygen exhibits seven valence electrons (one for the bond, and
+atom is missing an electron, and it therefore bears a two for each lone pair), although it should have only six.
+positive charge. With one extra electron, this oxygen atom will bear a
+negative charge.
+(e) Carbon is in group 4A of the periodic table, and it
+should therefore have four valence electrons. In this case, 1.8.
+the carbon atom exhibits five valence electrons (one for (a) The boron atom in this case exhibits four valence
+each bond and two for the lone pair). With one extra electrons (one for each bond), although boron (group 3A)
+electron, this carbon atom will bear a negative charge. should only have three valence electrons. With one extra
+electron, this boron atom bears a negative charge.
+(f) Carbon is in group 4A of the periodic table, and it
+should therefore have four valence electrons. In this case,
+th
+--- PAGE 8 ---
+8 CHAPTER 1
+(c) One of the carbon atoms (below right) exhibits three (b) Fluorine is more electronegative than carbon, and a
+valence electrons (one for each bond), but carbon (group C–F bond is polar covalent. For a C–F bond, the F will be
+4A) is supposed to have four valence electrons. It is electron-rich (‒), and the C will be electron-poor (+).
+missing one electron, so this carbon atom therefore bears Chlorine is also more electronegative than carbon, so a
+a positive charge. C–Cl bond is also polar covalent. For a C–Cl bond, the
+Cl will be electron-rich (‒), and the C will be electron-
+poor (+), as shown below.
+1.9. Carbon is in group 4A of the periodic table, and it
+should therefore have four valence electrons. Every
+carbon atom in acetylcholine has four bonds, thus
+(c) Carbon is more electronegative than magnesium, so
+exhibiting the correct number of valence electrons (four)
+the C will be electron-rich (‒) in a C–Mg bond, and the
+and having no formal charge.
+Mg will be electron-poor (+). Also, bromine is more
+electronegative than magnesium. So in a Mg–Br bond,
+the Br will be electron-rich (‒), and the Mg will be
+electron-poor (+), as shown below.
+Oxygen is in group 6A of the periodic table, and it should
+therefore have six valence electrons. Each oxygen atom in
+acetylcholine has two bonds and two lone pairs of (d) Oxygen is more electronegative than carbon or
+electrons, so each oxygen atom exhibits six valence hydrogen, so all C–O bonds and all O–H bond are polar
+electrons (one for each bond, and two for each lone pair). covalent. For each C–O bond and each O–H bond, the O
+With the correct number of valence electrons, each will be electron-rich (‒), and the C or H will be electron-
+oxygen atom will lack a formal charge. poor (+), as shown below.
+(e) Oxygen is more electronegative than carbon. As such,
+the O will be electron-rich (‒) and the C will be electron-
+The nitrogen atom (group 5A) should have five valence
+poor (+) in a C=O bond, as shown below.
+electrons, but it exhibits four (one for each bond). It is
+missing one electron, so this nitrogen atom will bear a
+positive charge.
+(f) Chlorine is more electronegative than carbon. As
+such, for each C–Cl bond, the Cl will be electron-rich
+(‒) and the C will be electron-poor (+), as shown below.
+1.10.
+(a) Oxygen is more electronegative than carbon, and a
+C–O bond is polar covalent. For each C–O bond, the O
+will be electron-rich (‒), and the C will be electron-poor
+(+), as shown below.
+1.11. Oxygen is more electronegative than carbon. As
+such, the O will be electron-rich (‒) and the C will be
+electron-poor (+) in a C=O bond. In addition, chlorine
+is more electronegative than carbon. So for a C–Cl bond,
+--- PAGE 9 ---
+CHAPTER 1 9
+the Cl will be electron-rich (‒) and the C will be electron- (d) Each corner represents a carbon atom (highlighted
+poor (+), as shown below. below), so this compound has seven carbon atoms. Each
+carbon atom has enough attached hydrogen atoms to have
+exactly four bonds, as shown:
+Notice that two carbon atoms are electron-poor (+).
+These are the positions that are most likely to be attacked
+by an electron-rich anion, such as hydroxide.
+(e) Each corner and each endpoint represents a carbon
+1.12. Oxygen is more electronegative than carbon. As atom (highlighted below), so this compound has seven
+such, the O will be electron-rich (δ−) and the C will be carbon atoms. Each carbon atom has enough attached
+electron-poor (δ+) in a C─O bond. In addition, chlorine is hydrogen atoms to have exactly four bonds, as shown:
+more electronegative than carbon. So for a C─Cl bond,
+the Cl will be electron-rich (δ−) and the C will be electron-
+poor (δ+), as shown below. As you might imagine,
+epichlorohydrin is a very reactive molecule!
+(f) Each corner represents a carbon atom (highlighted
+below), so this compound has seven carbon atoms. Each
+1.13. carbon atom has enough attached hydrogen atoms to have
+(a) Each corner and each endpoint represents a carbon exactly four bonds, as shown:
+atom (highlighted below), so this compound has six
+carbon atoms. Each carbon atom has enough attached
+hydrogen atoms to have exactly four bonds, as shown:
+1.14. Remember that each corner and each endpoint
+represents a carbon atom. This compound therefore has
+16 carbon atoms, highlighted below:
+N N
+(b) Each corner and each endpoint represents a carbon O N
+atom (highlighted below), so this compound has twelve N NH
+carbon atoms. Each carbon atom has enough attached
+hydrogen atoms to have exactly four bonds, as shown:
+N
+Each carbon atom should have four bonds. We therefore
+draw enough hydrogen atoms in order to give each carbon
+atom a total of four bonds. Any carbon atoms that already
+have four bonds will not have any hydrogen atoms:
+H H H H H
+(c) Each corner represents a carbon atom (highlighted H H H
+below), so this compound has six carbon atoms. Each H C C C
+C C N N
+carbon atom has enough attached hydrogen atoms to have H
+exactly four bonds, as shown: O N C C C
+C C N C N H
+C H H C C C
+C H H HH
+N H H H
+1.15.
+(a) As indicated in Figure 1.10, carbon has two 1s
+electrons, two 2s electrons, and two 2p electrons. This
+--- PAGE 10 ---
+10 CHAPTER 1
+information is represented by the following electron 1.18. The angles of an equilateral triangle are 60º, but
+configuration: 1s22s22p2 each bond angle of cyclopropane is supposed to be 109.5º.
+Therefore, each bond angle is severely strained, causing
+(b) As indicated in Figure 1.10, oxygen has two 1s an increase in energy. This form of strain, called ring
+electrons, two 2s electrons, and four 2p electrons. This strain, will be discussed in Chapter 4. The ring strain
+information is represented by the following electron associated with a three-membered ring is greater than the
+configuration: 1s22s22p4 ring strain of larger rings, because larger rings do not
+require bond angles of 60º.
+(c) As indicated in Figure 1.10, boron has two 1s
+1.19.
+electrons, two 2s electrons, and one 2p electron. This
+information is represented by the following electron (a) The C=O bond of formaldehyde is comprised of one 
+configuration: 1s22s22p1 bond and one  bond.
+(b) Each C‒H bond is formed from the interaction
+(d) As indicated in Figure 1.10, fluorine has two 1s
+between an sp2-hybridized orbital from carbon and an s
+electrons, two 2s electrons, and five 2p electrons. This
+orbital from hydrogen.
+information is represented by the following electron
+configuration: 1s22s22p5 (c) The oxygen atom is sp2 hybridized, so the lone pairs
+occupy sp2-hybridized orbitals.
+(e) Sodium has two 1s electrons, two 2s electrons, six 2p
+electrons, and one 3s electron. This information is 1.20. Rotation of a single bond does not cause a reduction
+represented by the following electron configuration: in the extent of orbital overlap, because the orbital overlap
+1s22s22p63s1 occurs on the bond axis. In contrast, rotation of a  bond
+results in a reduction in the extent of orbital overlap
+(f) Aluminum has two 1s electrons, two 2s electrons, six between the two p orbitals, because the orbital overlap is
+2p electrons, two 3s electrons, and one 3p electron. This NOT on the bond axis.
+information is represented by the following electron
+configuration: 1s22s22p63s23p1 1.21.
+(a) The highlighted carbon atom (below) has four
+1.16. bonds, and is therefore sp3 hybridized. The other carbon
+(a) The electron configuration of a carbon atom is atoms in this structure are all sp2 hybridized, because each
+1s22s22p2 (see the solution to Problem 1.15a). However,
+of them has three bonds and one  bond.
+if a carbon atom bears a negative charge, then it must have
+one extra electron, so the electron configuration should be
+as follows: 1s22s22p3
+(b) The electron configuration of a carbon atom is
+1s22s22p2 (see the solution to Problem 1.15a). However,
+if a carbon atom bears a positive charge, then it must be
+missing an electron, so the electron configuration should
+(b) Each of the highlighted carbon atoms has four
+be as follows: 1s22s22p1
+bonds, and is therefore sp3 hybridized. The other two
+carbon atoms in this structure are sp hybridized, because
+(c) As seen in SkillBuilder 1.6, the electron confi
+--- PAGE 11 ---
+CHAPTER 1 11
+(d) Each of the two central carbon atoms has two bonds 1.23. Carbon-carbon triple bonds generally have a shorter
+and two  bonds, and as such, each of these carbon atoms bond length than carbon-carbon double bonds, which are
+is sp hybridized. The other two carbon atoms (the outer generally shorter than carbon-carbon single bonds (see
+ones) are sp2 hybridized because each has three bonds Table 1.2).
+and one  bond.
+(e) One of the carbon atoms (the one connected to oxygen)
+has two bonds and two  bonds, and as such, it is sp
+1.24.
+hybridized. The other carbon atom is sp2 hybridized
+(a) In this structure, the boron atom has four  bonds and
+because it has three bonds and one  bond.
+no lone pairs, giving a total of four electron pairs (steric
+number = 4). VSEPR theory therefore predicts a
+tetrahedral arrangement of electron pairs. Since all of the
+electron pairs are bonds, the structure is expected to have
+tetrahedral geometry.
+(b) In this structure, the boron atom has three  bonds and
+no lone pairs, giving a total of three electron pairs (steric
+number = 3). VSEPR theory therefore predicts a trigonal
+1.22. Each of the following three highlighted carbon planar geometry.
+atoms has four  bonds, and is therefore sp3 hybridized: (c) In this structure, the nitrogen atom has four  sigma
+bonds and no lone pairs, giving a total of four electron
+pairs (steric number = 4). VSEPR theory therefore
+predicts a tetrahedral arrangement of electron pairs. Since
+all of the electron pairs are bonds, the structure is expected
+to have tetrahedral geometry.
+(d) The carbon atom has four  bonds and no lone pairs,
+giving a total of four electron pairs (steric number = 4).
+VSEPR theory therefore predicts a tetrahedral
+arrangement of electron pairs. Since all of the electron
+pairs are bonds, the structure is expected to have
+And each of the following three highlighted carbon atoms tetrahedral geometry.
+has three  bonds and one  bond, and is therefore sp2
+hybridized: 1.25. In the carbocation, the carbon atom has three bonds
+and no lone pairs. Since there are a total of three electron
+pairs (steric number = 3), and all three are bonds, VSEPR
+theory predicts trigonal planar geometry, with bond
+angles of 120°. In contrast, the carbon atom of the
+carbanion has three bonds and one lone pair, giving a total
+of four electron pairs (steric number = 4). For this ion,
+VSEPR theory predicts a tetrahedral arrangement of
+electron pairs, with a lone pair positioned at one corner of
+the tetrahedron, giving rise to trigonal pyramidal
+geometry with bond angles approximately 107°.
+Finally, each of the following five highlighted carbon
+atoms has two  bonds and two  bonds, and is therefore 1.26. In ammonia, the nitrogen atom has three bonds and
+sp hybridized. one lone pair. Therefore, VSEPR theory predicts trigonal
+pyramidal geometry, with bond angles of approximately
+107°. In the ammonium ion, the nitrogen atom has four
+bonds and no lone pairs, so VSEPR theory predic
+--- PAGE 12 ---
+12 CHAPTER 1
+that the arrangement of electron pairs will be tetrahedral. C–Br bonds, and as such, there is a net molecular dipole
+With no lone pairs, the arrangement of the atoms moment, shown here:
+(geometry) is the same as the electronic arrangement. It
+is tetrahedral.
+(e) The oxygen atom has two bonds and two lone pairs
+(steric number = 4), and VSEPR theory predicts bent
+geometry. As such, the dipole moments associated with
+1.28.
+the polar C–O bonds do not fully cancel each other, and
+(a) This compound has three C–Cl bonds, each of which
+the dipole moments associated with the lone pairs also do
+exhibits a dipole moment. To determine if these dipole
+not fully cancel each other. As a result, there is a net
+moments cancel each other, we must identify the
+molecular dipole moment, as shown:
+molecular geometry. The central carbon atom has four
+bonds so we expect tetrahedral geometry. As such, the
+three polar C–Cl bonds do not lie in the same plane, and
+they do not completely cancel each other out. There is a
+net molecular dipole moment, as shown:
+(f) There are individual dipole moments associated with
+each polar C–O bond and the lone pairs (as in the previous
+solution), but due to the symmetrical shape of the
+molecule in this case, they fully cancel each other to give
+(b) The oxygen atom has two bonds and two lone pairs no net molecular dipole moment.
+(steric number = 4), and VSEPR theory predicts bent
+geometry. As such, the dipole moments associated with (g) Each C=O bond has a strong dipole moment, and they
+the polar C–O bonds do not fully cancel each other, and do not fully cancel each other because they are not
+the dipole moments associated with the lone pairs also do pointing in opposite directions. As such, there will be a
+not fully cancel each other. As a result, there is a net net molecular dipole moment, as shown here:
+molecular dipole moment, as shown:
+(c) The nitrogen atom has three bonds and one lone pair
+(steric number = 4), and VSEPR theory predicts trigonal
+pyramidal geometry (because one corner of the
+tetrahedron is occupied by a lone pair). As such, the
+(h) Each C=O bond has a strong dipole moment, and in
+dipole moments associated with the polar N–H bonds do
+this case, they are pointing in opposite directions. As
+not fully cancel each other, and there is also a dipole
+such, they fully cancel each other, giving no net molecular
+moment associated with the lone pair (pointing up). As a
+dipole moment.
+result, there is a net molecular dipole moment, as shown:
+(i) Each C–Cl bond has a dipole moment, and they do not
+fully cancel each other because the polar bonds are not
+pointing in opposite directions. As such, there will be a
+net molecular dipole moment, as shown here:
+(d) The central carbon atom has four bonds (steric
+number = 4), and VSEPR theory predicts tetrahedral
+geometry. There are individual dipole moments
+associated with each of the C–Cl bonds and each of the
+C–Br bonds. If all four dipole moments had the same
+magnitud
+--- PAGE 13 ---
+CHAPTER 1 13
+in opposite directions. As such, there will be a net (c) The second compound is expected to have a higher
+molecular dipole moment, as shown here: boiling point, because it has an O–H bond, which will lead
+to hydrogen-bonding interactions between molecules.
+(d) Both compounds have the same molecular weight
+(l) Each C–Cl bond has a dipole moment, but in this case,
+because they are isomers, and they are both capable of
+they fully cancel each other to give no net molecular
+forming hydrogen bonds. The first compound is expected
+dipole moment.
+to have a higher boiling point, however, because it is less
+branched. The greater surface area in the first compound
+1.29. Each of the C–O bonds has an individual dipole
+results in greater London dispersion forces and a higher
+moment, shown here:
+boiling point (b.p.):
+To determine if these individual dipole moments fully
+cancel each other, we must determine the geometry 1.31. Compound 3 is expected to have a higher boiling
+around the oxygen atom. The oxygen atom has two  point than compound 4, because only compound 3 has an
+bonds and two lone pairs, giving rise to a bent geometry. O-H group. Compound 4 does not form hydrogen-bonds,
+As such, the dipole moments associated with the polar so it will have a lower boiling point. When this mixture is
+C–O bonds do NOT fully cancel each other, heated, the lower boiling compound (4) can be collected
+first, leaving behind compound 3.
+and the dipole moments associated with the lone pairs also
+do not fully cancel each other. As a result, there is a net
+molecular dipole moment, as shown:
+1.32.
+(a) The carbon atoms are tetravalent, while the chlorine
+atom and hydrogen atoms are all monovalent. The atoms
+with more than one bond (in this case, the two carbon
+atoms) should be drawn in the center of the compound.
+The chlorine atom and hydrogen atoms are then placed at
+1.30. the periphery (ensuring that each carbon atom has a total
+(a) Both compounds have the same molecular weight of four bonds), as shown:
+because they are isomers. The second compound is
+expected to have a higher boiling point, because it is less
+branched. The greater surface area in the second
+compound results in greater London dispersion forces and
+a higher boiling point (b.p.):
+The chlorine atom can be placed in any one of the six
+available positions. The following six drawings all
+represent the same compound, in which the two carbon
+atoms are connected to each other, and the chlorine atom
+is connected to one of the carbon atoms.
+(b) The second compound is expected to have a higher
+boiling point, because more carbon atoms results in a
+higher molecular weight. Larger compounds have greater
+London dispersion forces and a higher boiling point (b.p.):
+higher b.p.
+--- PAGE 14 ---
+14 CHAPTER 1
+(b) The carbon atoms are tetravalent, while the chlorine
+atoms and hydrogen atoms are all monovalent. The atoms
+with more than one bond (in this case, the two carbon
+atoms) should be drawn in the center of the compound.
+The chlorine atoms and hydrogen atoms are then placed
+at the periphery, and there are two different ways to do
+this. The two chlorine atoms can either be connected to
+the same carbon atom or to different carbon atoms, as
+shown.
+(c) The carbon atoms are tetravalent, while the chlorine
+atoms and hydrogen atoms are all monovalent. The atoms
+with more than one bond (in this case, the two carbon
+atoms) should be drawn in the center of the compound.
+The chlorine atoms and hydrogen atoms are then placed
+at the periphery, and there are two different ways to do
+this. One way is to connect all three chlorine atoms to the
+same carbon atom. Alternatively, we can connect two
+chlorine atoms to one carbon atom, and then connect the
+third chlorine atom to the other carbon atom, as shown
+1.33.
+here:
+(a) According to Table 1.1, the difference in
+electronegativity between Br and H is 2.8 – 2.1 = 0.7, so
+an H–Br bond is expected to be polar covalent. Since
+bromine is more electronegative than hydrogen, the Br
+will be electron-rich (‒), and the H will be electron-poor
+(d) The carbon atoms are tetravalent, and the hydrogen (+), as shown below:
+atoms are all monovalent. Any atoms with more than one
+bond (in this case, the six carbon atoms) should be drawn
+in the center of the compound, with the hydrogen atoms
+at the periphery. There are five different ways to connect (b) According to Table 1.1, the difference in
+six carbon atoms, which we will organize based on the electronegativity between Cl and H is 3.0 – 2.1 = 0.9, so
+length of the longest chain. an H–Cl bond is expected to be polar covalent. Since
+chlorine is more electronegative than hydrogen, the Cl
+will be electron-rich (‒), and the H will be electron-poor
+(+), as shown below:
+(c) According to Table 1.1, the difference in
+electronegativity between O and H is 3.5 – 2.1 = 1.4, so
+an O–H bond is expected to be polar covalent. Oxygen is
+more electronegative than hydrogen, so for each O–H
+bond, the O will be electron-rich (‒) and the H will be
+electron-poor (+), as shown below:
+Finally, we complete all of the structures by drawing the
+(d) According to Table 1.1, oxygen (3.5) is more
+bonds to hydrogen atoms (ensuring that each carbon atom
+electronegative than carbon (2.5) or hydrogen (2.1), and a
+has a total of four bonds). There are a total of five isomers:
+C–O or H–O bond is polar covalent. For each C–O or
+H–O bond, the O will be electron-rich (‒), and the C or
+H will be electron-poor (+), as shown below:
+--- PAGE 15 ---
+CHAPTER 1 15
+1.34.
+(a) The difference in electronegativity between Na (0.9)
+and Br (2.8) is greater than the difference in
+electronegativity between H (2.1) and Br (2.8). Therefore,
+NaBr is expected to have more ionic character than HBr.
+The nitrogen atom has three bonds and one lone pair, so
+(b) The difference in electronegativity between F (4.0)
+the steric number is 4, which means that the arrangement
+and Cl (3.0) is greater than the difference in
+of electron pairs is expected to be tetrahedral. One corner
+electronegativity between Br (2.8) and Cl (3.0).
+of the tetrahedron is occupied by a lone pair, so the
+Therefore, FCl is expected to have more ionic character
+geometry of the nitrogen atom (the arrangement of atoms
+than BrCl.
+around that nitrogen atom) is trigonal pyramidal. As such,
+the individual dipole moments associated with the C–N
+1.35.
+bonds do not fully cancel each other, and there is also a
+(a) Each carbon atom has four valence electrons, the
+dipole moment associated with the lone pair (pointing up).
+oxygen atom has six valence electrons, and each hydrogen
+As a result, there is a net molecular dipole moment, as
+atom has one valence electron. In this case, the
+shown:
+information provided in the problem statement
+(CH3CH2OH) indicates how the atoms are connected to
+each other:
+1.37. Bromine is in group 7A of the periodic table, so
+each bromine atom has seven valence electrons.
+Aluminum is in group 3A of the periodic table, so
+aluminum is supposed to have three valence electrons, but
+(b) Each carbon atom has four valence electrons, the
+the structure bears a negative charge, which means that
+nitrogen atom has five valence electrons, and each
+there is one extra electron. That is, the aluminum atom
+hydrogen atom has one valence electron. In this case, the
+has four valence electrons, rather than three, which is why
+information provided in the problem statement (CH3CN)
+it has a formal negative charge. This gives the following
+indicates how the atoms are connected to each other:
+Lewis structure:
+The unpaired electrons are then paired up to give a triple
+bond. In this way, each of the atoms achieves an octet.
+The aluminum atom has four bonds and no lone pairs, so
+the steric number is 4, which means that this aluminum
+atom will have tetrahedral geometry.
+1.38. The molecular formula of cyclopropane is C3H6, so
+1.36. Each of the carbon atoms has four valence electrons;
+we are looking for a different compound that has the same
+the nitrogen atom has five valence electrons, and each of
+molecular formula, C3H6. That is, we need to find another
+the hydrogen atoms has one valence electron. We begin
+way to connect the carbon atoms, other than in a ring
+by connecting the atoms that have more than one bond (in
+(there is only one way to connect three carbon atoms in a
+this case, the four carbon atoms and the nitrogen atom).
+ring, so we must be looking for something other than a
+The problem statement indicates how we should connect
+ring). If we connect the
+--- PAGE 16 ---
+16 CHAPTER 1
+We are looking for a structure with the molecular formula completely cancel each other out, and there is no net
+C3H6. If we remove two hydrogen atoms from our molecular dipole moment.
+drawing, we are left with two unpaired electrons,
+indicating that we should consider drawing a double bond: (f) This compound has two C–Br bonds, each of which
+exhibits a dipole moment. To determine if these dipole
+moments cancel each other, we must identify the
+molecular geometry. The central carbon atom has four
+bonds so it is expected to have tetrahedral geometry. As
+such, the polar C–Br bonds do not completely cancel each
+other out. There is a net molecular dipole moment, as
+shown:
+The structure of this compound (called propylene) is 1.40.
+different from the structure of cyclopropane, but both (a) As indicated in Figure 1.10, a neutral oxygen atom has
+compounds share the same molecular formula, so they are two 1s electrons, two 2s electrons, and four 2p electrons.
+constitutional isomers. (b) As indicated in Figure 1.10, a neutral fluorine atom
+has two 1s electrons, two 2s electrons, and five 2p
+1.39. electrons.
+(a) C–H bonds are considered to be nonpolar, although (c) As indicated in Figure 1.10, a neutral carbon atom has
+they do have a very small dipole moment, because there two 1s electrons, two 2s electrons, and two 2p electrons.
+is a small difference in electronegativity between carbon (d) As seen in SkillBuilder 1.6, the electron configuration
+(2.5) and hydrogen (2.1). With no polar bonds present, of a neutral nitrogen atom is 1s22s22p3
+the molecule does not have a molecular dipole moment. (e) This is the electron configuration of a neutral chlorine
+atom.
+(b) The nitrogen atom has trigonal pyramidal geometry.
+As such, the dipole moments associated with the polar N–
+H bonds do not fully cancel each other, and there is also a 1.41.
+dipole moment associated with the lone pair (pointing up). (a) The difference in electronegativity between sodium
+As a result, there is a net molecular dipole moment, as (0.9) and bromine (2.8) is 2.8 – 0.9 = 1.9. Since this
+shown: difference is greater than 1.7, the bond is classified as
+ionic.
+(b) The difference in electronegativity between sodium
+(0.9) and oxygen (3.5) is 3.5 – 0.9 = 2.6. Since this
+(c) The oxygen atom has two bonds and two lone pairs difference is greater than 1.7, the Na–O bond is classified
+(steric number = 4), and VSEPR predicts bent geometry. as ionic. In contrast, the O–H bond is polar covalent,
+As such, the dipole moments associated with the polar O– because the difference in electronegativity between
+H bonds do not cancel each other, and the dipole moments oxygen (3.5) and hydrogen (2.1) is less than 1.7 but more
+associated with the lone pairs also do not fully cancel each than 0.5.
+other. As a result, there is a net molecular dipole moment,
+as shown: (c) Each C–H bond is considered to be covalent, because
+the difference in electronegativity between carbon (2.5)
+and hydrogen (2.1) is les
+--- PAGE 17 ---
+CHAPTER 1 17
+The O–H bond is polar covalent, because the difference in
+electronegativity between oxygen (3.5) and hydrogen
+(2.1) is less than 1.7 but more than 0.5.
+(e) Each C–H bond is considered to be covalent, because
+the difference in electronegativity between carbon (2.5)
+and hydrogen (2.1) is less than 0.5.
+The C=O bond is polar covalent, because the difference in
+electronegativity between oxygen (3.5) and carbon (2.5)
+is less than 1.7 but more than 0.5.
+1.42.
+(a) Begin by determining the valency of each atom in the
+compound. The carbon atoms are tetravalent, the oxygen
+(c) The carbon atoms are tetravalent, while the bromine
+atom is divalent, and the hydrogen atoms are all
+atoms and hydrogen atoms are all monovalent. The atoms
+monovalent. Any atoms with more than one bond (in this
+with more than one bond (in this case, the two carbon
+case, the two carbon atoms and the oxygen atom) should
+atoms) should be drawn in the center of the compound.
+be drawn in the center of the compound, with the
+The bromine atoms and hydrogen atoms are then placed
+hydrogen atoms at the periphery. There are two different
+at the periphery, and there are two different ways to do
+ways to connect two carbon atoms and an oxygen atom,
+this. The two bromine atoms can either be connected to
+shown here:
+the same carbon atom or to different carbon atoms, as
+shown.
+We then complete both structures by drawing the
+remaining bonds to hydrogen atoms (ensuring that each
+carbon atom has four bonds, and each oxygen atom has
+two bonds): 1.43.
+(a) Oxygen is more electronegative than carbon, and the
+withdrawal of electron density toward oxygen can be
+indicated with the following arrow:
+(b) Begin by determining the valency of each atom in the
+compound. The carbon atoms are tetravalent, the oxygen (b) Carbon is more electronegative than magnesium, and
+atoms are divalent, and the hydrogen atoms are all the withdrawal of electron density toward carbon can be
+monovalent. Any atoms with more than one bond (in this indicated with the following arrow:
+case, the two carbon atoms and the two oxygen atoms)
+should be drawn in the center of the compound, with the
+hydrogen atoms at the periphery. There are several
+different ways to connect two carbon atoms and two
+oxygen atoms (highlighted, for clarity of comparison),
+(c) Nitrogen is more electronegative than carbon, and the
+shown here:
+withdrawal of electron density toward nitrogen can be
+indicated with the following arrow:
+(d) Carbon is more electronegative than lithium, and the
+withdrawal of electron density toward carbon can be
+indicated with the following arrow:
+We then complete all of these structures by drawing the
+remaining bonds to hydrogen atoms:
+--- PAGE 18 ---
+18 CHAPTER 1
+(e) Chlorine is more electronegative than carbon, and the (e) The oxygen atom has two bonds and two lone pairs
+withdrawal of electron density toward chlorine can be (steric number = 4), and VSEPR theory predicts bent
+indicated with the following arrow: geometry. Therefore, the C-O-C bond angle is expected
+to be around 105º. The remaining bond angles are all
+expected to be approximately 109.5º (because each carbon
+atom has four bonds and tetrahedral geometry).
+(f) Carbon is more electronegative than silicon, and the (f) The nitrogen atom has three bonds and one lone pair
+withdrawal of electron density toward carbon can be (steric number = 4), and VSEPR theory predicts trigonal
+indicated with the following arrow: pyramidal geometry, with bond angles of 107º. The
+carbon atom is also tetrahedral (because it has four
+bonds), although the bond angles around the carbon
+atom are expected to be approximately 109.5º.
+(g) Oxygen is more electronegative than hydrogen, and
+the withdrawal of electron density toward oxygen can be
+indicated with the following arrow:
+(g) Each of the carbon atoms has four bonds (steric
+number = 4), so each of these carbon atoms has tetrahedral
+(h) Nitrogen is more electronegative than hydrogen, and geometry. Therefore, all bond angles are expected to be
+the withdrawal of electron density toward nitrogen can be approximately 109.5º.
+indicated with the following arrow:
+1.44.
+(h) The structure of acetonitrile (CH3CN) is shown below
+(see the solution to Problem 1.35b).
+(a) The oxygen atom has two bonds and two lone pairs
+(steric number = 4), and VSEPR theory predicts bent
+geometry. The C-O-H bond angle is expected to be
+approximately 105º, and all other bonds angles are
+expected to be approximately 109.5º (because each carbon
+atom has four bonds and tetrahedral geometry).
+One of the carbon atoms has four bonds (steric number
+(b) The central carbon atom has three bonds and no lone = 4), and is expected to have tetrahedral geometry. The
+pairs (steric number = 3), and VSEPR theory predicts other carbon atom (connected to nitrogen) has two
+trigonal planar geometry. As such, all bond angles are bonds and no lone pairs (steric number = 2), so we
+approximately 120º. expect linear geometry.
+As such, the C–C≡N bond angle is 180º, and all other bond
+angles are approximately 109.5º.
+1.45.
+(a) The nitrogen atom has three bonds and one lone pair
+(c) Each of the carbon atoms has three bonds and no (steric number = 4). It is sp3 hybridized (electronically
+lone pairs (steric number = 3), and VSEPR theory predicts tetrahedral), with trigonal pyramidal geometry (because
+trigonal planar geometry. As such, all bond angles are one corner of the tetrahedron is occupied by a lone pair).
+approximately 120º.
+(b) The boron atom has three bonds and no lone pairs
+(steric number = 3). It is sp2 hybridized, with trigonal
+planar geometry.
+(c) This carbon atom has three bonds and no lone pairs
+(d) Each of the carbon atoms has
+--- PAGE 19 ---
+CHAPTER 1 19
+tetrahedral), with trigonal pyramidal geometry (because 1.48. The double bond represents one bond and one 
+one corner of the tetrahedron is occupied by a lone pair). bond, while the triple bond represents one bond and two
+ bonds. All single bonds are bonds. Therefore, this
+1.46. compound has sixteen bonds and three  bonds.
+(a) Each corner and each endpoint represents a carbon
+atom (highlighted), so this compound has nine carbon
+atoms. Each carbon atom will have enough hydrogen
+atoms to have exactly four bonds, as shown.
+1.49.
+(a) The second compound is expected to have a higher
+boiling point, because it has an O–H bond, which will lead
+to hydrogen bonding interactions.
+(b) The second compound is expected to have a higher
+boiling point, because it has more carbon atoms, and thus
+a higher molecular weight and more opportunity for
+(b) Each corner and each endpoint represents a carbon
+London dispersion forces.
+atom (highlighted below), so this compound has eight
+carbon atoms. Each carbon atom will have enough
+(c) The first compound has a C=O bond, which has a
+hydrogen atoms to have exactly four bonds, as shown.
+strong dipole moment, while the second compound is
+nonpolar. The first compound is therefore expected to
+exhibit strong dipole-dipole interactions and to have a
+higher boiling point than the second compound.
+1.50.
+(a) This compound possesses an O–H bond, so it is
+expected to exhibit hydrogen bonding interactions.
+(c) Each corner and each endpoint represents a carbon
+atom (highlighted below), so this compound has eight
+carbon atoms. Each carbon atom will have enough
+hydrogen atoms to have exactly four bonds, as shown.
+(b) This compound lacks a hydrogen atom that is
+connected to an oxygen or nitrogen atom. Therefore, this
+compound cannot serve as a hydrogen-bond donor
+(although the lone pairs can serve as hydrogen-bond
+acceptors, in the presence of a hydrogen-bond donor). As
+a pure compound, we do not expect there to be any
+hydrogen bonding interactions.
+1.47. Each corner and each endpoint represents a carbon
+atom, so this compound has fifteen carbon atoms. Each
+carbon atom will have enough hydrogen atoms to have (c) This compound lacks a hydrogen atom that is
+exactly four bonds, giving a total of eighteen hydrogen connected to an oxygen or nitrogen atom. Therefore, this
+atoms, as shown here: compound will not exhibit hydrogen bonding interactions.
+(d) This compound lacks a hydrogen atom that is
+connected to an oxygen or nitrogen atom . Therefore, this
+compound will not exhibit hydrogen bonding interactions.
+--- PAGE 20 ---
+20 CHAPTER 1
+(e) This compound lacks a hydrogen atom that is 1.52.
+connected to an oxygen or nitrogen atom. Therefore, this (a) Each of the highlighted carbon atoms has three
+compound cannot serve as a hydrogen-bond donor bonds and no lone pairs (steric number = 3). Each of
+(although the lone pairs can serve as hydrogen-bond these carbon atoms is sp2 hybridized, with trigonal planar
+acceptors, in the presence of a hydrogen-bond donor). As geometry. Each of the other four carbon atoms has two
+a pure compound, we do not expect there to be any bonds and no lone pairs (steric number = 2). Those four
+hydrogen bonding interactions. carbon atoms are all sp hybridized, with linear geometry.
+(f) This compound possesses two N–H bonds, so it is
+expected to exhibit hydrogen bonding interactions.
+(b) The highlighted carbon atom has three bonds and no
+lone pairs (steric number = 3). This carbon atom is sp2
+hybridized, with trigonal planar geometry. Each of the
+other three carbon atoms has four bonds (steric number
+= 4). Those three carbon atoms are all sp3 hybridized,
+with tetrahedral geometry.
+(g) This compound lacks a hydrogen atom that is
+connected to an oxygen or nitrogen atom. Therefore, this
+compound will not exhibit hydrogen bonding interactions.
+1.53. Each of the highlighted carbon atoms has four
+bonds (steric number = 4), and is sp3 hybridized, with
+(h) This compound possesses N–H bonds, so it is expected
+tetrahedral geometry. Each of the other fourteen carbon
+to exhibit hydrogen bonding interactions.
+atoms in this structure has three bonds and no lone pairs
+(steric number = 3). Each of these fourteen carbon atoms
+is sp2 hybridized, with trigonal planar geometry.
+1.51.
+(a) Boron is in group 3A of the periodic table, and
+therefore has three valence electrons. It can use each of
+its valence electrons to form a bond, so we expect the
+molecular formula to be BH3 (x=3).
+(b) Carbon is in group 4A of the periodic table, and
+therefore has four valence electrons. It can use each of its
+valence electrons to form a bond, so we expect the
+molecular formula to be CH4 (x=4).
+1.54.
+(c) Nitrogen is in group 5A of the periodic table, and (a) Oxygen is the most electronegative atom in this
+therefore has five valence electrons. But it cannot form compound. See Table 1.1 for electronegativity values.
+five bonds, because it only has four orbitals with which to
+form bonds. One of those orbitals must be occupied by a (b) Fluorine is the most electronegative atom. See Table
+lone pair (two electrons), and each of the remaining three 1.1 for electronegativity values.
+electrons is available to form a bond. Nitrogen is
+therefore trivalent, and we expect the molecular formula (c) Carbon is the most electronegative atom in this
+to be NH3 (x=3). compound. See Table 1.1 for electronegativity values.
+(d) Carbon is in group 4A of the periodic table, and 1.55. The highlighted nitrogen atom has two bonds and
+therefore has four valence electrons. It can use each of its one 
+--- PAGE 21 ---
+CHAPTER 1 21
+hybridized and electronically tetrahedral. One corner of (c) Each C–Cl bond has a dipole moment, and in this case,
+the tetrahedron is occupied by a lone pair, so the geometry the two dipole moments are pointing in opposite
+(arrangement of atoms) is trigonal pyramidal. directions. As such, they fully cancel each other, giving
+no net molecular dipole moment.
+(d) The C–Cl bond has a dipole moment, and the C–Br
+bond also has a dipole moment. These two dipole
+moments are in opposite directions, but they do not have
+the same magnitude. The C–Cl bond has a larger dipole
+moment than the C–Br bond, because chlorine is more
+electronegative than bromine. Therefore, there will be a
+net molecular dipole moment, as shown here:
+1.56. Each of the nitrogen atoms in caffeine achieves an
+octet with three bonds and one lone pair, while each
+oxygen atom in this structure achieves an octet with two
+bonds and two lone pairs, as shown:
+1.59. The CCl bond in chloroform partially cancels the
+dipole moments of the other two CCl bonds, thereby
+reducing the molecular dipole moment relative to
+methylene chloride.
+1.57. As seen in Section 1.2, the following two
+compounds have the molecular formula C2H6O.
+1.60. CHCl3 is expected to have a larger molecular dipole
+moment than CBrCl3, because the bromine atom in
+CBrCl3 serves to partially cancel out the dipole moments
+of the three CCl bonds (as is the case for CCl4).
+The second compound will have a higher boiling point 1.61. The carbon atom of O=C=O has two bonds and
+because it possesses an OH group which can exhibit no lone pairs (steric number = 2) and VSEPR theory
+hydrogen bonding interactions. predicts linear geometry. As a result, the individual dipole
+moments of each C=O bond cancel each other completely
+1.58. to give no overall molecular dipole moment. In contrast,
+(a) Each C–Cl bond has a dipole moment, and the two the sulfur atom in SO2 has a steric number of three
+dipole moments do not fully cancel each other because the (because it also has a lone pair, in addition to the two S=O
+polar bonds are not pointing in opposite directions. As bonds), which means that it has bent geometry. As a
+such, there will be a net molecular dipole moment, as result, the individual dipole moments of each S=O bond
+shown here: do NOT cancel each other completely, and the molecule
+does have a molecular dipole moment.
+1.62. Two compounds possess OH groups. These two
+compounds will have the highest boiling points, because
+they can form hydrogen bonds. Among these two
+compounds, the one with more carbon atoms (six) will be
+(b) Each C–Cl bond has a dipole moment, and the two
+higher boiling than the one with fewer carbon atoms
+dipole moments do not fully cancel each other because the
+(four), because the higher molecular weight results in
+polar bonds are not pointing in opposite directions. As
+greater London dispersion forces. The remaining three
+such, there will be a net molecular dipole moment, as
+compounds all have equal molecul
+--- PAGE 22 ---
+22 CHAPTER 1
+bonds, so it is sp3-hybridized, and the carbon on the right
+has three  bonds, so it is sp2-hybridized. The indicated
+ bond results from the overlap of one sp3 hybridized
+orbital (from the carbon atom on the left), and one sp2
+hybridized orbital (from the carbon atom on the right).
+1.68. The correct answer is (c). An atom with a trigonal
+planar arrangement of bonds has a bond angle of 120°, the
+largest bond angle among the choices listed. A tetrahedral
+arrangement of bonds corresponds to an angle of 109.5°,
+while trigonal pyramidal and bent geometries typically
+have bond angles that are slightly smaller than 109.5°.
+1.63. The correct answer is (a). We must first draw the
+structure of HCN. To draw a Lewis structure, we begin
+by counting the valence electrons (hydrogen has one
+valence electron, carbon has four valence electrons, and
+nitrogen has five valence electrons, for a total of ten
+valence electrons). The structure must have ten valence 1.69. The correct answer is (c). There are 13  bonds in
+electrons (no more and no less). Carbon should have four the given compound (highlighted in bold below). All of
+bonds, and it can only form a single bond with the the single bonds are  bonds, and the double bond is
+hydrogen atom, so there must be a triple bond between
+comprised of one  bond and one  bond.
+carbon and nitrogen:
+The single bond accounts for two electrons, and the triple
+bonds accounts for another six electrons. The remaining
+two electrons must be a lone pair on nitrogen. This
+accounts for all ten valence electrons, and it gives all
+atoms an octet. 1.70. The correct answer is (b). Each C–Cl bond in Y has
+Since the carbon atom has a triple bond, it must be sp a dipole moment, and compound Y has a molecular dipole
+hybridized, with linear geometry. moment. Each CCl bond in X also has a dipole moment,
+but in this case, the two polar bonds are pointing in
+1.64. The molecular formula of cyclobutane is C4H8. Of opposite directions. As such, the dipole moments fully
+the four structures shown, only structure (c) has the same cancel each other, giving no net molecular dipole moment
+molecular formula (C4H8). for compound X. The polar isomer (Y) has more
+significant dipole-dipole attractions between molecules
+1.65. The correct answer is (b). Each of the structures has and, therefore, has a higher boiling point than the nonpolar
+two carbon atoms and one oxygen atom. However, only isomer (X).
+the second structure has an OH group. This compound
+will have an elevated boiling point, relative to the other
+three structures, because of hydrogen bonding.
+1.66. The first statement (a) is the correct answer, because
+an oxygen atom has a negative charge, and the nitrogen
+atom has a positive charge, as shown here:
+1.71. The correct answer is (b). In the bond-line drawing,
+each corner and each endpoint represents a carbon atom,
+so this compound has three carbon atoms (highlighted
+below). Each carbon atom will have enough hydrogen
+atoms to have exact
+--- PAGE 23 ---
+CHAPTER 1 23
+H H three bonds and one  bond). There are certainly many
+other possible compounds for which all of the carbon
+OH C C O H
+atoms are sp2 hybridized.
+H C H
+H
+1.72. The correct answer is (d). In the bond-line drawing,
+each corner represents a carbon atom (highlighted below),
+so this compound has nine carbon atoms. Each double
+bond is comprised of one  bond and one  bond, so there
+are five  bonds (in bold below).
+(b) In each of the following two compounds, all of the
+carbon atoms are sp3 hybridized (because each carbon
+atom has four bonds) with the exception of the carbon
+atom connected to the nitrogen atom. That carbon atom
+has two bonds and is therefore sp hybridized. There are
+1.73. certainly many other acceptable answers.
+(a) Compounds A and B share the same molecular
+formula (C4H9N) but differ in their constitution
+(connectivity of atoms), and they are therefore
+constitutional isomers.
+(b) The nitrogen atom in compound B has three bonds
+and one lone pair (steric number = 4). It is sp3 hybridized
+(electronically tetrahedral), with trigonal pyramidal
+geometry (because one corner of the tetrahedron is
+occupied by a lone pair).
+(c) In each of the following two compounds, there is a
+ring, and all of the carbon atoms are sp3 hybridized
+(c) A double bond represents one bond and one  bond,
+(because each carbon atom has four bonds). There are
+while a triple bond represents one bond and two  certainly many other acceptable answers.
+bonds. A single bond represents a bond. With this in
+mind, compound B has 14 bonds, as compared with
+compounds A and C, which have 13 and 11 bonds,
+respectively.
+(d) As explained in the solution to part (c), compound C
+has the fewest bonds.
+(e) A double bond represents one bond and one  bond,
+(d) In each of the following two compounds, all of the
+while a triple bond represents one bond and two 
+carbon atoms are sp hybridized (because each carbon atom
+bonds. As such, compound C exhibits two  bonds.
+has two bonds). There are certainly many other
+acceptable answers.
+(f) Compound A has a C=N bond, in which the carbon
+atom has three bonds and no lone pairs (steric number
+= 3). It is sp2 hybridized.
+(g) Each of the carbon atoms in compound B is sp3
+hybridized with four bonds (steric number = 4).
+1.75. In each of the following two compounds, the
+Similarly, the nitrogen atom in compound B has three
+molecular formula is C4H10N2, there is a ring (as
+bonds and one lone pair (steric number = 4). This
+suggested in the hint given in the problem statement),
+nitrogen atom is also sp3 hybridized.
+there are no  bonds, there is no net dipole moment, and
+there is an N-H bond, which enables hydrogen bonding
+(h) Compound A has an N–H bond, and is therefore
+interactions.
+expected to form hydrogen bonding interactions.
+Compounds B and C do not contain an N–H bond, so
+compound A is expected to have the highest boiling point.
+1.74.
+(a) In each of the following two compounds, all of the
+carbon atoms
+--- PAGE 24 ---
+24 CHAPTER 1
+1.76. If we try to draw a linear skeleton with five carbon Now we have the correct number of hydrogen atoms
+atoms and one nitrogen atom, we find that the number of (eleven), which means that our structure must indeed
+hydrogen atoms is not correct (there are thirteen, rather contain a ring. But this particular cyclic structure (cyclic
+than eleven): = containing a ring) does not meet all of the criteria
+described in the problem statement. Specifically, each
+carbon atom must be connected to exactly two hydrogen
+atoms. This is not the case in the structure above. This
+issue can be remedied in the following structure, which
+has a ring, and each of the carbon atoms is connected to
+exactly two hydrogen atoms, as required by the problem
+This will be the case even if try to draw a branched statement.
+skeleton:
+1.77.
+(a) In compound A, the nitrogen atom has two bonds
+and no lone pairs (steric number = 2). It is sp hybridized.
+In fact, regardless of how the skeleton is branched, it will
+The highlighted carbon atom has one bond and one lone
+still have thirteen hydrogen atoms. But we need to draw
+pair (steric number = 2), so that carbon atom is also sp
+a structure with only eleven hydrogen atoms (C5H11N).
+hybridized.
+So we must remove two hydrogen atoms, which gives two
+unpaired electrons:
+(b) The highlighted carbon atom is sp hybridized, so the
+lone pair occupies an sp-hybridized orbital.
+(c) The nitrogen atom is sp hybridized and therefore has
+linear geometry. As such, the C-N-C bond angle in A is
+expected to be 180°.
+(d) The nitrogen atom in B has two bonds and one lone
+pair (steric number = 3). It is sp2 hybridized. The
+highlighted carbon atom has three bonds and no lone
+pairs (steric number = 3), and that carbon atom is sp2
+hybridized. Each of the chlorine atoms has three lone pairs
+and one bond (steric number = 4), and the chlorine atoms
+are sp3 hybridized.
+This indicates that we should consider pairing these
+electrons as a double bond. However, the problem
+(e) The nitrogen atom is sp2 hybridized, so the lone pair
+statement specifically indicates that the structure cannot
+occupies an sp2-hybridized orbital.
+contain a double bond. So, we must find another way to
+pair the unpaired electrons. Let’s consider forming a ring
+(f) The nitrogen atom is sp2 hybridized so the C-N-C bond
+instead of a double bond:
+angle in B is expected to be approximately 120°.
+1.78. By analyzing the data, we can see that C(sp2)–Cl
+must be shorter than 1.79Å [compare with C(sp3)–Cl],
+while C(sp)–I must be longer than 1.79Å [compare with
+C(sp)–Br]. Therefore, C(sp)–I must be longer than
+C(sp2)–Cl.
+1.79.
+(a) In the first compound, the fluorine isotope (18F) has
+no formal charge. Therefore, it must have three lone pairs
+(see Section 1.4 for a review of how formal charges are
+calculated). Since it has one bond and three lone pairs,
+it must have a steric number of 4, and is sp3 hybridized.
+The bromine atom also has no formal charge. So, it too,
+like the fluorine i
+--- PAGE 25 ---
+CHAPTER 1 25
+In the second compound, the nitrogen atom has no formal 1.81.
+charge. Therefore, it must have one lone pair. Since the (a) If we analyze each atom (in both 1 and 2) using the
+nitrogen atom has three bonds and one lone pair, it must procedure outlined in Section 1.4, we find that none of the
+have a steric number of 4, and is sp3 hybridized. atoms in compound 1 have a formal charge, while
+In the product, the fluorine isotope (18F) has no formal compound 2 possesses two formal charges:
+charge. Therefore, it must have three lone pairs. Since it
+has one bond and three lone pairs, it must have a steric
+number of 4, and is sp3 hybridized. The nitrogen atom
+does have a positive formal charge. Therefore, it must
+have no lone pairs. Since it has four bonds and no lone
+The nitrogen atom has a positive charge (it should have
+pairs, it must have a steric number of 4, and is sp3
+five valence electrons, but it is exhibiting only four), and
+hybridized. Finally, the bromine atom has a negative
+the oxygen atom has a negative charge (it should have six
+charge and no bonds. So it must have four lone pairs.
+valence electrons, but it is exhibiting seven).
+With four lone pairs and no bonds, it will have a steric
+number of 4, and is expected to be sp3 hybridized.
+(b) Compound 1 possesses polar bonds, as a result of the
+In summary, all of the atoms that we analyzed are sp3
+presence of partial charges (+ and -). The associated
+hybridized.
+dipole moments can form favorable interactions with the
+dipole moments present in the polar solvent molecules
+(b) The nitrogen atom is sp3 hybridized. With four bonds,
+(dipole-dipole interactions). However, compound 2 has
+we expect the geometry around the nitrogen atom to be
+formal charges (negative on O and positive on N), so the
+tetrahedral. So, the bond angle for each C-N-C bond is
+dipole moment of the N-O bond is expected to be much
+expected to be approximately 109.5°.
+more significant than the dipole moments in compound 1.
+The dipole moment of the N-O bond in compound 2 is the
+1.80.
+result of full charges, rather than partial charges. As such,
+(a) Boron is in group 3A of the periodic table and is
+compound 2 is expected to experience much stronger
+therefore expected to be trivalent. That is, it has three
+interactions with the solvent molecules, and therefore, 2
+valence electrons, and it uses each one of those valence
+should be more soluble than 1 in a polar solvent.
+electrons to form a bond, giving rise to three bonds. It
+does not have any electrons left over for a lone pair (as in
+(c) In compound 1, the carbon atom (attached to nitrogen)
+the case of nitrogen). With three bonds and no lone
+has three bonds and no lone pairs (steric number = 3).
+pairs, the boron atom has a steric number of three, and is
+That carbon atom is sp2 hybridized, with trigonal planar
+sp2 hybridized.
+geometry. As such, the C-C-N bond angle in compound
+1 is expected to be approximately 120°. However, in
+(b) Since the boron atom is sp2 hy
+--- PAGE 26 ---
+26 CHAPTER 1
+from one another (just as we saw for the carbon atoms of The other N-C-N unit (highlighted below) exhibits a
+a triple bond; see Figure 1.33). central carbon atom that is sp2 hybridized and is therefore
+expected to have trigonal planar geometry. Accordingly,
+the bond angles about that carbon atom are expected to be
+approximately 120°.
+As a result, the two  systems are orthogonal (or 90°) to
+each other. Therefore, the p orbitals on Ca and Cc are
+orthogonal. The following is another drawing from a
+different perspective (looking down the axis of the linear
+Ca-Cb-Cc system.
+(b) The interaction is an intramolecular hydrogen bond
+that forms between the + H (connected to the highlighted
+nitrogen atom) and the lone pair of the – oxygen atom:
+1.83.
+(a) The N-C-N unit highlighted below exhibits a central
+carbon atom that is sp3 hybridized and is therefore
+expected to have tetrahedral geometry. Accordingly, the
+bond angles about that carbon atom are expected to be
+approximately 109.5°.

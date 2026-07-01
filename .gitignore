@@ -4,6 +4,7 @@ node_modules/
 # ---- secrets / env (NEVER commit) ----
 .env
 .env.*
+!.env.example
 .dev.vars
 .dev.vars.*
 *.key

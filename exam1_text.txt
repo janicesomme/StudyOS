@@ -1,0 +1,492 @@
+Pages: 21
+--- PAGE 1 ---
+Chemistry 320N
+Dr. Brent Iverson
+1st Midterm
+Feb. 13, 2014
+NAME (Print): _____________________________
+SIGNATURE: _____________________________
+Please Note:  This test may be a bit long, but there is a reason.  I would like to give you a lot 
+of little questions, so you can find ones you can answer and show me what you know, rather 
+than just a few questions that may be testing the one thing you forgot.  I recommend you 
+look the exam over and answer the questions you are sure of first, then go back and try 
+to figure out the rest.  Also make sure to look at the point totals on the questions as a 
+guide to help budget your time.
+Please print the 
+first three letters 
+of your last name 
+in the three boxes
+You must have your answers written in 
+PERMANENT ink if you want a regrade!!!!  This 
+means no test written in pencil or ERASABLE INK 
+will be regraded.
+Please note: We routinely xerox a number of exams following initial grading to 
+guard against receiving altered answers during the regrading process.
+FINALLY, DUE TO SOME UNFORTUNATE RECENT INCIDENCTS YOU ARE NOT 
+ALLOWED TO INTERACT WITH YOUR CELL PHONE IN ANY WAY. IF YOU 
+TOUCH YOUR CELL PHONE DURING THE EXAM YOU WILL GET A "0" NO 
+MATTER WHAT YOU ARE DOING WITH THE PHONE. PUT IT AWAY AND LEAVE 
+IT THERE!!!
+
+--- PAGE 2 ---
+15
+14
+13
+12
+11
+10
+9
+8
+7
+(5)
+(24)
+(17)
+(18)
+(20)
+(14)
+(23)
+(10)
+(19)
+(13)
+(16)
+(12)
+(249)
+16
+6
+Total
+17
+5
+(5)
+(5)
+4
+(15)
+3
+2
+(14)
+1
+Page        Points
+(19)
+
+--- PAGE 3 ---
+Student Honor Code
+“As a student of The University of Texas at Austin, I shall abide by the core values of the 
+University and uphold academic integrity.”
+(Your signature)
+
+--- PAGE 4 ---
+
+--- PAGE 5 ---
+Pg 1 _____________(14)
+1.   (1 pt each)  Circle all the statements that are true.  In other words, do not circle the statements that are 
+false.
+Signature_________________________
+A.  Moving charge generates a magnetic field, and a moving magnetic field causes charges to move.
+B. Atomic nuclei have a quantum mechanical property of "spin" that can be thought of as a small magnetic 
+field around the nucleus created as if the positive charge of the nucleus were circulating.
+C. We care about the nuclei 1H and 13C since these are commonly found in organic molecules and they 
+have spin quantum numbers of 3/2.
+D. Electromagnetic radiation of enough or more than enough energy can be absorbed by a nucleus and 
+excite it from the lower energy +1/2 spin state to the higher energy -1/2 spin state, a process referred to 
+as resonance.
+E. Electromagnetic radiation of only the exactly right amount of energy can be absorbed by a nucleus and 
+excite it from the lower energy +1/2 spin state to the higher energy -1/2 spin state, a process referred to as 
+resonance.
+F. The distance between peaks in a split signal is called chemical shift.
+I. For alkyl groups with freely rotating C-C bonds, splitting by n adjacent H atoms will give n+1 peaks.
+M. The H atoms of relatively acidic functional groups (alcohols, carboxylic acids, amines) exchange 
+rapidly, so they often do not split the signals of adjacent hydrogens.
+G. Different hydrogen atoms in a molecule take different amounts of energy to flip their spins, and the 
+different energies can be correlated to structure of the molecule.
+H. The distance between a signal and the standard TMS is called coupling constant.
+J. For H atoms on the C atoms of three-membered rings or on the sp2 hybridized C atoms of alkenes, 
+splitting by n adjacent H atoms will always give (n x n)+1 peaks.
+K. The signal for a CH2  group next to a chiral center will never be split, it will be a singlet.
+L. All geminal H atoms split each other, giving rise to double peaks with large chemical shifts.
+N. NMR stands for No More Regrets, time to develop a plan for lifelong physical fitness.
+
+--- PAGE 6 ---
+Pg 2 _____________(19)
+2. (cont.)   (1 pt each)
+Signature_________________________
+In the FT NMR method, the FT stands for ___________________  ________________.  
+The basic idea is that a short pulse using a range of radio frequencies is used to flip the 
+spins of all of the hydrogen __________________ at once.  Then, the nuclear spins 
+_____________________ back to the +1/2 spin state and when they do, they  
+_____________________ electromagnetic radiation at the precise frequency at which 
+they absorb.
+3. (14 points) Suppose a relative of yours is having an MRI.  In no more than four sentences, explain to 
+them what is happening when they have the MRI scan.  We wil be looking for a minumum of 7 key 
+points here.
+O
+O
+Frog Diketone
+This is not part of a question.  
+This little molecule creature is 
+simply supposed to make you 
+smile!
+
+--- PAGE 7 ---
+O
+H
+Pg 3 _____________(15)
+A.
+B.
+D.
+5.  (3 pts each)  For A)- C)  write an acceptable IUPAC name for the structures.  For D) draw a 
+structural formula in sthe space provided corresponding to the IUPAC name.
+Signature_________________________
+H
+C.
+O
+4.  (3 pts)  The most important question in organic chemistry is:
+O
+O
+H
+C
+Br
+CH3CH2
+CH2CH3
+CH2CH2CH2CCH2CH2CH3
+O
+O
+O
+(3S,4R)-3-chloro-4-methylhexanal
+
+--- PAGE 8 ---
+Pg 4 _____________(5)
+Signature_________________________
+6.  (5 pts)  Circle the molecule that corresponds to the NMR spectrum shown below.
+O
+0
+1
+2
+PPM
+O
+N
+9H
+3H
+O
+
+--- PAGE 9 ---
+Pg 5 _____________(5)
+Signature_________________________
+7.  (5 pts)  Circle the molecule that corresponds to the NMR spectrum shown below.
+OH
+OH
+OH
+F
+0
+1
+2
+3
+PPM
+2H
+1H 1H
+2H
+6H
+
+--- PAGE 10 ---
+Pg 6 _____________(5)
+Signature_________________________
+8.  (5 pts)  Circle the molecule that corresponds to the NMR spectrum shown below.
+O
+O
+
+--- PAGE 11 ---
+Pg 7 _____________(24)
+Signature_________________________
+9. (4 pts)  An important part of chemical understanding is being able to recognize the chemical 
+reactivity of different functional groups.  On the carbonyl group below, DRAW A BOX around the 
+atom that will be attacked by nucleophiles and DRAW A CIRCLE around the atom that will be 
+protonated in acid.
+H
+O
+O
+MgBr
+11. (12 pts. total) Complete the mechanism for the following Grignard reaction.   Be sure to show arrows 
+to indicate movement of all electrons, write all lone pairs, all formal charges, and all the products for 
+each step.  Remember, I said all the products for each step. IF A NEW CHIRAL CENTER IS 
+CREATED IN AN INTERMEDIATE, MARK IT WITH AN ASTERISK.  IF A CHIRAL CENTER 
+IS CREATED IN THE PRODUCTS YOU NEED TO DRAW BOTH ENANTIONMERS, AND 
+LABEL THE PRODUCT MIXTURE AS RACEMIC IF RELEVANT.  I realize these directions are 
+complex, so please read them again to make sure you know what we want.
+2)
+Product(s)
+10. (8 pts) Stereochemistry is one of the most important concepts of organic chemistry.  Using your 
+knowledge of the reaction mechanism, draw the stereoisomers produced in the following Grignard 
+reaction.
+2 pts  In the boxes provided adjacent to the first two sets of arrows, write which of the four basic 
+mechanistic elements are involved (i.e. "Make a bond", "Add a proton", etc.
+NOTICE THIS
+O
+H
+H
+H
+O
+1)
+2) HCl / H2O
+        mild
+MgCl
+NOTICE THIS
+Are the products you drew a racemic mixture of enantiomers?
+
+--- PAGE 12 ---
+Pg 8 _____________(17)
+Signature_________________________
+12. (9 pts)  From the list below, circle all the molecules that would be considered nucleophiles in 
+reactions we have seen.  Some of them might also be bases, but do not worry about that for this question.
+Li
+MgBr
+Cl
+P(Ph)3
+P(Ph)3
+O
+B
+H
+H
+H
+H
+B
+H
+H
+H
+O
+H
+H
+H
+13. (8 pts)  Shown below are the two forms of D-glucose that are most commonly found in biological 
+systems.  Draw a circle around the anomeric carbon atom on each structure.  Then answer the 
+questions below the structures.
+O
+OH
+OH
+HO
+HO
+OH
+O
+OH
+HO
+HO
+OH
+OH
+Circle the correct statement:
+The structure on the left represents the α form of D-glucose, the structure on the right represents the β 
+form of D-glucose.
+The structure on the left represents the δ form of D-glucose, the structure on the right represents the γ 
+form of D-glucose.
+The structure on the left represents the β form of D-glucose, the structure on the right represents the α 
+form of D-glucose.
+Circle the correct statement:
+The above structures are examples of cyclic acetals.
+The above structures are examples of cyclic hemiacetals.
+The above structures are examples of cyclic hemispheres.
+The above structures are examples of psychic acetals.
+
+--- PAGE 13 ---
+Signature_________________________
+Pg 9 _____________(18)
+14. (18 pts. total) Complete the mechanism for the following Wittig reaction.   Be sure to show arrows to 
+indicate movement of all electrons, write all lone pairs, all formal charges, and all the products for 
+each step.  Remember, I said all the products for each step. IF A RACEMIC MIXTURE IS CREATED 
+IN AN INTERMEDIATE, MARK ALL CHIRAL CENTERS WITH AN ASTERISK AND WRITE 
+RACEMIC.  IF A RACEMIC MIXTURE IS CREATED IN THE FINAL PRODUCTS, YOU NEED 
+TO DRAW BOTH ENANTIONMERS, AND WRITE RACEMIC.  I realize these directions are 
+complex, so please read them again to make sure you know what we want.
+Products
+H3CH2C
+C
+O
+H
++
+P
+C
+CH2CH2CH3
+H
+ 2 pts  In the boxes provided adjacent to the first two sets of arrows, write which of the four basic 
+mechanistic elements are involved (i.e. "Make a bond", "Add a proton", etc.
+NOTICE THIS
+
+--- PAGE 14 ---
+Signature_________________________
+Pg 10 _____________(20)
+15. (3 or 5 pts.) Write the predominant product or products that will occur for each transformation.  If a 
+new chiral center is created and a racemic mixture is formed, you must draw both enantiomers and 
+write "racemic" under the structure.  Use wedges (             ) and dashes (             ) to indicate 
+stereochemistry.  To get full credit, you only need to write the the major organic product for these.
+You do not have to worry about the other products.
+2 Li°
+Mg°
+ether
+1) P(Ph)3
+2) n-BuLi
+H
+O
+H
+O
+1)
+2) HCl/H2O (mild acid)
+PCC
+Br
+Br
+
+--- PAGE 15 ---
+Signature_________________________
+Pg 11 _____________(14)
+15. (3 or 5 pts.) Write the predominant product or products that will occur for each transformation.  If a 
+new chiral center is created and a racemic mixture is formed, you must draw both enantiomers and 
+write "racemic" under the structure.  Use wedges (             ) and dashes (             ) to indicate 
+stereochemistry.  To get full credit, you only need to write the the major organic product for these.
+You do not have to worry about the other products.
+O
+CH2CH3
+H
+H
+H
+CuLi
+1)
+2) HCl / H2O
+2
+O
+OH
+H2SO4
+(catalytic amount)
+(mild acid)
+HO
+O
+Excess H2O
+1) NaBH4
+2) H2O
+O
+O
+H2SO4
+(catalytic amount)
+
+--- PAGE 16 ---
+Signature_________________________
+Pg 12 _____________(23)
+15. (3 or 5 pts.) Write the predominant product or products that will occur for each transformation.  If a 
+new chiral center is created and a racemic mixture is formed, you must draw both enantiomers and 
+write "racemic" under the structure.  Use wedges (             ) and dashes (             ) to indicate 
+stereochemistry.  To get full credit, you only need to write the the major organic product for these.
+You do not have to worry about the other products.
+CuLi
+2
+O
+excess H2 / Pd°
+MgBr
+1)
+2) HCl / H2O
+(mild acid)
+Br
+H
+O
+2)
+1)
+HCl / H2O
+   (strong acid
+with some heat)
+MgBr
+H
+O
+O
+O
+HO
+H
+O
+H2SO4
+catalytic amount
+
+--- PAGE 17 ---
+OH
+All of the carbon atoms of the products must come from the starting materials for this one!
+(10 pts)
+Signature_________________________
+Pg 13_____________(10)
+?
+racemic
+OH
+16. These are synthesis questions. You need to show how the starting material can be converted into the
+product(s) shown. You may use any reactions we have learned. Show all the reagents you need. Show
+each molecule synthesized along the way and be sure to pay attention to the regiochemistry and
+stereochemistry preferences for each reaction.  If you make a racemic mixture, draw both structures and 
+make sure to write "racemic" next to them.
+OH
+
+--- PAGE 18 ---
+All of the carbon atoms of the products must come from the starting materials for this one!
+(19 pts)
+Signature_________________________
+Pg 14_____________(19)
+?
+16. These are synthesis questions. You need to show how the starting material can be converted into the
+product(s) shown. You may use any reactions we have learned. Show all the reagents you need. Show
+each molecule synthesized along the way and be sure to pay attention to the regiochemistry and
+stereochemistry preferences for each reaction.  If you make a racemic mixture, draw both structures and 
+make sure to write "racemic" next to them.
+OH
+OH
+Racemic
+
+--- PAGE 19 ---
+All of the carbon atoms of the products must come from the starting materials for this one!
+(13 pts)
+Signature_________________________
+Pg 15_____________(13)
+?
+16. These are synthesis questions. You need to show how the starting material can be converted into the
+product(s) shown. You may use any reactions we have learned. Show all the reagents you need. Show
+each molecule synthesized along the way and be sure to pay attention to the regiochemistry and
+stereochemistry preferences for each reaction.  If you make a racemic mixture, draw both structures and 
+make sure to write "racemic" next to them.
+
+--- PAGE 20 ---
+All of the carbon atoms of the products must come from the starting materials for this one!
+(16 pts)
+Signature_________________________
+Pg 16_____________(16)
+?
+16. These are synthesis questions. You need to show how the starting material can be converted into the
+product(s) shown. You may use any reactions we have learned. Show all the reagents you need. Show
+each molecule synthesized along the way and be sure to pay attention to the regiochemistry and
+stereochemistry preferences for each reaction.  If you make a racemic mixture, draw both structures and 
+make sure to write "racemic" next to them.
+H
+Br
+O
+H2C
+CH2
++
+O
+OH
+O
+OH
+racemic
+
+--- PAGE 21 ---
+Signature_________________________
+Pg 17_____________(12)
+17. (5 pts)  You have not seen the following reaction before, it comes from chapter 18.  The NMR 
+spectrum is of the predominant product.  Using your grwoing intuition about chemical reactivity as well 
+as the NMR, draw the structure of the product of this reaction.
+Cl
+O
+CuLi
+2
+1)
+2) H2O
+1H
+2H
+3H
+6H
+2H
+18. (7 pts) Reactions in context: Following is a Wittig reaction used in the published synthesis of 
+a pharmaceutical candidate.  Draw the product of the reaction
+Br
+H3CO
+OCH3
+O
+H
+OCH3
+OCH3
+P(Ph)3
+

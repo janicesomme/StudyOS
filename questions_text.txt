@@ -1,0 +1,462 @@
+Total pages: 8
+--- PAGE 1 ---
+42 CHAPTER 1 A Review of General Chemistry
+• Two molecular orbitals are the most important to consider: SECTION 1.12
+(1) the highest occupied molecular orbital, or HOMO, and • Dipole moments (μ) occur when the center of negative
+(2) the lowest unoccupied molecular orbital, or LUMO. charge and the center of positive charge are separated from
+one another by a certain distance; the dipole moment is used
+SECTION 1.10 as an indicator of polarity (measured in debyes).
+• Methane’s tetrahedral geometry can be explained using four • The percent ionic character of a bond is determined by
+degenerate sp3-hybridized orbitals to achieve its four single measuring its dipole moment. The vector sum of individual
+bonds. dipole moments in a compound determines the molecular
+• Ethylene’s planar geometry can be explained using three dipole moment.
+degenerate sp2-hybridized orbitals. The remaining p orbit‑
+als overlap to form a separate bonding interaction, called a SECTION 1.13
+pi (π) bond. The carbon atoms of ethylene are connected • The physical properties of compounds are determined by inter-
+via a σ bond, resulting from the overlap of sp2‑hybridized molecular forces, the attractive forces between molecules.
+atomic orbitals, and via a π bond, resulting from the overlap • Dipole- dipole interactions occur between two molecules
+of p orbitals, both of which comprise the double bond of that possess permanent dipole moments. Hydrogen bond-
+ethylene. ing, a type of attractive interaction, occurs when the lone
+• Acetylene’s linear geometry is achieved via sp- hybridized car‑ pairs of an electronegative atom interact with an electron‑
+bon atoms in which a triple bond is created from the bonding poor hydrogen atom. Compounds that exhibit hydrogen
+interactions of one σ bond, resulting from overlapping sp orbit‑ bonding have higher boiling points than similar compounds
+als, and two π bonds, resulting from overlapping p orbitals. that lack hydrogen bonding.
+• Triple bonds are stronger and shorter than double bonds, • London dispersion forces result from the interaction between
+which are stronger and shorter than single bonds. transient dipole moments and are stronger for larger alkanes
+due to their larger surface area and ability to accommodate
+SECTION 1.11 more interactions.
+• The geometry of small compounds can be predicted using
+valence shell electron pair repulsion (VSEPR) theory, which SECTION 1.14
+focuses on the number of σ bonds and lone pairs exhibited • Polar compounds are soluble in polar solvents; nonpolar
+by each atom. The total, called the steric number, indicates compounds are soluble in nonpolar solvents.
+the number of electron pairs that repel each other. • Soaps are compounds that contain both hydrophilic and
+• A compound’s geometry depends on the number of lone hydrophobic regions. The hydrophobic tails surround non‑
+pairs and can be tetrahedral, trigonal pyramidal, bent, polar compounds, forming a water‑ soluble micelle.
+trigonal planar, or linear.
+SKILLBUI
+--- PAGE 2 ---
+SkillBuilder Review 43
+1.3 CALCULATING FORMAL CHARGE
+STEP 1 Determine appropriate STEP 2 Determine the number of STEP 3 Assign a formal charge.
+number of valence electrons. valence electrons in this case.
+H
+H
+H +
+H N H
+H N H
+H N H
+H
+H Group 5A H Four ... missing an electron.
+(five electrons) electrons
+Try Problems 1.7–1.9, 1.66, 1.81a
+1.4 LOCATING PARTIAL CHARGES RESULTING FROM INDUCTION
+STEP 1 Identify all STEP 2 Determine the STEP 3 Indicate location
+polar covalent bonds. direction of each dipole. of partial charges.
+H H H
+δ+ δ– δ+
+H C O H H C O H H C O H
+H H H
+Polar covalent
+Try Problems 1.10–1.12, 1.33, 1.34, 1.43, 1.54
+1.5 READING BOND- LINE STRUCTURES
+Identify all carbon atoms STEP 1 The end of every line STEP 2 Each carbon atom will possess enough
+and hydrogen atoms. represents a carbon atom. hydrogen atoms in order to achieve four bonds.
+Cl H
+Cl Cl
+H HH H
+H
+H
+H N
+N N H
+N
+N N
+H H O
+O O H H
+Try Problems 1.13, 1.14, 1.46, 1.47, 1.71
+1.6 IDENTIFYING ELECTRON CONFIGURATIONS
+STEP 1 Fill orbitals using the Aufbau principle, STEP 2 Summarize using the following
+the Pauli exclusion principle, and Hund’s rule. notation:
+2p
+Nitrogen 2s 1s22s22p3
+1s
+Try Problems 1.15–1.17, 1.40
+1.7 IDENTIFYING HYBRIDIZATION STATES
+Four single bonds A double bond A triple bond
+C C C
+sp3 sp2 sp
+Try Problems 1.21, 1.22, 1.52, 1.53, 1.67, 1.73f, 1.73g, 1.74, 1.79a
+ch01_AReviewOfGeneralChemistry.indd 43 31/10/20 11:06 AM
+--- PAGE 3 ---
+44 CHAPTER 1 A Review of General Chemistry
+1.8 PREDICTING GEOMETRY
+STEP 1 Determine the steric STEP 2 Use steric number to identify STEP 3 Identify the geometry.
+number by adding the number of the arrangement of electron pairs.
+σ bonds and lone pairs.
+H N H 4 Tetrahedral Tetrahedral
+arrangement of
+H 3 Trigonal electron pairs
+planar
+# of σ bonds = 3 2 Linear No lone One lone Two lone
+pairs pair pairs
+# of lone pairs = 1
+Steric number = 4 Tetrahedral Trigonal Bent
+pyramidal
+Try Problems 1.24–1.27, 1,37, 1.45, 1.52, 1.53, 1.55, 1.63, 1.68, 1.73b, 1.77c, 1.77f, 1.82b, 1.82c
+1.9 IDENTIFYING THE PRESENCE OF MOLECULAR DIPOLE MOMENTS
+STEP 1 Predict geometry. STEP 2 Identify direction of STEP 3 Draw net dipole
+all dipole moments. moment.
+H O H H O H H O H
+C C C C C C
+H3C
+H H
+CH3 H3C
+H H
+CH3 H3C
+H H
+CH3
+Bent
+Try Problems 1.28, 1.29, 1.34, 1.36, 1.39, 1.58–1.61
+1.10 PREDICTING PHYSICAL PROPERTIES OF COMPOUNDS BASED ON THEIR MOLECULAR STRUCTURE
+STEP 1 Identify dipole-dipole STEP 2 Identify H-bonding interactions. STEP 3 Identify number of carbon atoms and extent of
+interactions. branching.
+H H H H H H H H H H H H
+CH2 O
+vs. H C O C H vs. H C C O H H C C C H vs. H C C C C C H
+C C
+H3C CH3 H3C CH3 H H H H H H H H H H H H
+Higher boiling Higher boiling Higher boiling
+point point point
+Try Problems 1.30, 1.31, 1.49, 1.50, 1.57, 1.62, 1.65, 1.70
+PRACTICE PROBLEMS
+• Included in Answers section
+1.32 • Draw structures for all constitutional isomers with the following 1.35 Draw a Lewis dot structure for each of the following compounds:
+molecular formulas: (a) CH CH OH (b) CH CN
+3 2 3
+(a) C H Cl (b) C H Cl (c ) C H Cl (d) C H
+2 5 2 4 2 2 3 3 6 14
+1.36 Draw a Lewis structure for a compound with the molecular for‑
+1.33 For each compound below, identify any polar covalent bonds mula C H N in which three of the carbon atoms are bonded to the
+4 11
+and indicate the direction of the dipole moment using the symbols δ+ nitrogen atom. What is the geometry of the nitrogen atom in this com‑
+and δ−: pound? Does this compound exhibit a molecular dipole moment? If so,
+(a) HBr (b) HCl (c) H O (d) CH O indicate the direction of the dipole moment.
+2 4
+1.34 For each pair of compounds below, identify the one that would 1.37 • Draw a Lewis structure of the anion AlBr 4 − and determine its
+be expected to have more ionic character. Explain your choice. geometry.
+(a) NaBr or HBr (b) BrCl or FCl
+ch01_AReviewOfGeneralChemistry.indd 44 31/10/20 11:06 AM
+--- PAGE 4 ---
+Practice Problems 45
+1.38 Draw the structure for the only constitutional isomer of cyclopropane:
+H H
+C
+C C H
+H H
+Cyclopropane
+H
+1.48 • Count the total number of σ bonds and π bonds in the com‑
+pound below:
+H H
+H O C C C C C C N H
+H H H H H
+1.49 For each pair of compounds below, predict which compound will
+1.39 Determine whether each compound below exhibits a molecular have the higher boiling point and explain your choice:
+dipole moment: (a) CH CH CH OCH or CH CH CH CH OH
+3 2 2 3 3 2 2 2
+(a) CH 4 (b) NH 3 (c) H 2 O (b) CH 3 CH 2 CH 2 CH 3 or CH 3 CH 2 CH 2 CH 2 CH 3
+(d) CO (e) CCl (f ) CH Br
+2 4 2 2 H O H H H H
+1.40 Identify the neutral element that corresponds with each of the H C C C H or H C C C H
+following electron configurations:
+(c) H H H H H
+(a) 1s22s22p4 (b) 1s22s22p5 (c) 1s22s22p2
+(d) 1s22s22p3 (e) 1s22s22p63s23p5 1.50 Which of the following pure compounds will exhibit hydrogen
+bonding?
+1.41 In the compounds below, classify each bond as covalent, polar (a) CH CH OH (b) CH O
+3 2 2
+covalent, or ionic:
+(c) C H (d) C H
+2 4 2 2
+(a) NaBr (b) NaOH (c) NaOCH
+3 (e) CH OCH (f ) CH NH
+3 3 3 2
+(d) CH OH (e) CH O
+3 2 (g) C H (h) NH
+3 8 3
+1.42 Draw structures for all constitutional isomers with the following
+1.51 For each case below, identify the most likely value for x:
+molecular formulas:
+(a) BH (b) CH
+(a) C H O (b) C H O (c) C H Br x x
+2 6 2 6 2 2 4 2
+(c) NH (d) CH Cl
+x 2 x
+1.43 For each type of bond below, determine the direction of the
+expected dipole moment: 1.52 Identify the hybridization state and geometry of each carbon
+atom in the following compounds:
+(a) C O (b) C Mg (c) C N (d) C Li
+(e) C  Cl (f) C  Si (g) O  H (h) N  H O
+   
+(a) (b)
+1.44 Predict the bond angles for all bonds in the following
+compounds: 1.53 • Zolpidem, sold under the trade name Ambien, is a sedative
+(a) CH CH OH (b) CH O (c) C H (d) C H used in the treatment of insomnia. It was discovered in 1982 and
+3 2 2 2 4 2 2
+brought to market in 1992 (it takes a long time for new drugs to undergo
+(e) CH OCH (f ) CH NH (g) C H (h) CH CN
+3 3 3 2 3 8 3
+the extensive testing required to receive approval from the Food and
+1.45 Identify the expected hybridization state and geometry for the Drug Administration). Identify the hybridization state and geometry of
+central atom in each of the following structures: each carbon atom in the structure of this compound:
+H H H H
+N
+N B C C −
+(a) H H (b) H H (c) H + H (d) H H N
+Zolpidem
+1.46 Draw all carbon atoms and hydrogen atoms for the following O (Ambien)
+compounds.
+N
+O OH H O
+N N 1.54 Identify the most electronegative element in each of the follow‑
+O N
+ing compounds:
+O
+O HO O N N (a) CH 3 OCH 2 CH 2 NH 2 (b) CH 2 ClCH 2 F (c) CH 3 Li
+Acetylsalicylic acid Acetaminophen 1.55 Nicotine is an addictive substance found in tobacco. Identify the
+(aspirin) (Tylenol) Caffeine hybridization state and geometry of each of the nitrogen atoms in nicotine:
+1.47 Identify the number of carbon atoms and hydrogen atoms in the
+N
+compound below: CH3
+N
+Nicotine
+
+--- PAGE 5 ---
+46 CHAPTER 1 A Review of General Chemistry
+1.56 Below is the structure of caffeine, but its lone pairs are not 1.59 Methylene chloride (CH Cl ) has fewer chlorine atoms than chlo‑
+2 2
+shown. Identify the location of all lone pairs in this compound: roform (CHCl ). Nevertheless, methylene chloride has a larger molecu‑
+3
+lar dipole moment than chloroform. Explain.
+O
+CH3
+H 3C N 1.60 Which of the following compounds has the larger dipole
+N
+moment? Explain your choice:
+O N N
+CHCl or CBrCl
+3 3
+CH3
+Caffeine
+1.61 Bonds between carbon and oxygen ( C O) are more polar than
+1.57 There are two different compounds with the molecular formula bonds between sulfur and oxygen ( S O) . Nevertheless, sulfur dioxide
+C 2 H 6 O. One of these isomers has a much higher boiling point than the (SO 2 ) exhibits a dipole moment while carbon dioxide (CO 2 ) does not.
+other. Explain why. Explain this apparent anomaly.
+1.58 Identify which compounds below possess a molecular dipole 1.62 • Arrange the following compounds in order of increasing boiling
+moment and indicate the direction of that dipole moment: point:
+Cl Cl
+Cl Cl OH
+Cl
+OH
+(a) (b) Cl (c) Cl (d) Br
+ACS- STYLE PROBLEMS (Multiple Choice)
+Problems 1.63–1.72 follow the style of the ACS organic 1.65 • Which of the following is expected to have the highest boiling
+chemistry exam. For each of these problems, there will be point?
+one correct answer and three distractors.
+H H H H
+1.63 • Which is the correct hybridization state and geometry for the H C O C H H C C OH
+carbon atom in HCN? (a) H H (b) H H
+(a) sp, linear (b) sp2, trigonal planar O H O
+(c) sp3, tetrahedral (d) None of the above H C C H H C C H
+(c) H H (d) H
+1.64 • Which of the following is a constitutional isomer of cyclobutane?
+1.66 • The following structure has been drawn without formal charges.
+H H
+Which statement describes the missing formal charge(s)?
+H C C H
+H H O
+H C C H H N C C O
+H H
+H H
+Cyclobutane
+(a) This structure has one positive charge and one negative charge.
+H (b) This structure has one positive charge but no negative charges.
+H C H (c) This structure has one negative charge but no positive charges.
+H H H H
+(d) This structure has no formal charges.
+H C C C H H C C C C H
+(a) H H H (b) H H 1.67 • The indicated σ bond results from the overlap of which orbitals?
+H H H
+H H
+C H H H H H H C C C H
+H C C C H H C C C C H H
+(c) H H H (d) H H H H (a) sp2–sp2 (b)sp– sp3 (c) sp– sp2 (d)sp2–sp3
+ch01_AReviewOfGeneralChemistry.indd 46 31/10/20 11:06 AM
+--- PAGE 6 ---
+Integrated Problems 47
+1.68 • Of the following molecular geometries, which has the largest
+bond angle?
+(a) Pyramidal (b) Tetrahedral
+(c) Trigonal planar (d) Bent
+1.69 • How many σ bonds are in the following compound?
+H
+C C
+H
+C C
+C H
+H H
+H
+H
+H
+1.71 • How many hydrogen atoms are in the compound represented
+by the following bond‑l ine drawing?
+OH
+(a) 5 (b) 6 (c) 7 (d) 8
+1.72 • The compound represented by the following bond‑ line draw‑
+ing has how many carbon atoms and how many π bonds?
+N
+C atoms π bonds
+(a) 8 (b) 9 (c) 13 (d) 14
+(a) 10 6
+1.70 • Which compound has the higher boiling point? Explain briefly.
+(b) 10 5
+H Cl H H
+(c) 9 6
+C C C C
+(d) 9 5
+Cl H Cl Cl
+X Y
+(a) X, because the dipole moments are far apart.
+(b) Y, because the dipole moments do not fully cancel.
+(c) Y, because it is less branched.
+(d) X, because it is more linear.
+INTEGRATED PROBLEMS
+1.73 • Consider the three compounds shown below and then answer (d) All six carbon atoms are sp hybridized, and the compound
+the questions that follow: contains no hydrogen atoms (remember that a triple bond is linear
+and therefore cannot be incorporated into a ring of six carbon atoms).
+H H
+H
+C
+1.75 With current spectroscopic techniques (discussed in Chap‑
+H H H H C N H H H H
+ters 14–16), chemists are generally able to determine the structure
+N H
+H C C C C H C C H H C C C C N of an unknown organic compound in just one day. These techniques
+have only been available for the last several decades. In the first half
+H H H H H H H H H
+of the twentieth century, structure determination was a very slow and
+Compound A Compound B Compound C
+painful process in which the compound under investigation would be
+(a) Which two compounds are constitutional isomers? subjected to a variety of chemical reactions. The results of those reac‑
+tions would provide chemists with clues about the structure of the com‑
+(b) Which compound contains a nitrogen atom with trigonal pyramidal
+pound. With enough clues, it was sometimes (but not always) possible
+geometry?
+to determine the structure. As an example, try to determine the struc‑
+(c) Identify the compound with the greatest number of σ bonds. ture of an unknown compound, using the following clues:
+(d) Identify the compound with the fewest number of σ bonds.
+• The molecular formula is C H N .
+(e) Which compound contains more than one π bond? 4 10 2
+• There are no π bonds in the structure.
+(f ) Which compound contains an sp2‑hybridized carbon atom?
+• The compound has no net dipole moment.
+(g) Which compound contains only sp3‑hybridized atoms (in addition
+to hydrogen atoms)? • The compound exhibits very strong hydrogen bonding.
+(h) Which compound do you predict will have the highest boiling You should find that there are at least two constitutional isomers that
+point? Explain. are consistent with the information above. (Hint: Consider incorporat‑
+ing a ring in your structure.)
+1.74 Propose at least two different structures for a compound with six
+carbon atoms that exhibits the follo
+--- PAGE 7 ---
+48 CHAPTER 1 A Review of General Chemistry
+converted to isonitrile dihalides (B), which represents a useful proce‑ a C Cl bond, which in turn is longer than a C F bond. Notice also
+dure for temporarily hiding the reactivity of an isonitrile.11 that bond length decreases as the hybridization state goes from sp3 to
+HC HC sp2 to sp. This should also make sense, because sp‑ hybridized atoms
+3 + − 3 hold their valence electrons closer to the nucleus (as seen in Table 1.2),
+HC C N C HC C N CCl
+3 3 2
+and therefore form shorter bonds. These two trends are in conflict with
+HC HC
+3 3
+A B each other when we compare a C sp2 Cl bond with a C sp bond. The
+former bond is expected to be shorter because of the first trend (size of
+(a) Identify the hybridization state for each highlighted atom in A.
+halogen), while the latter bond is expected to be shorter because of the
+(b) One of the carbon atoms in A exhibits a lone pair. In what type of
+second trend (hybridization state). Use the data provided to determine
+hybridized atomic orbital does this lone pair reside?
+which bond is actually shorter, and explain your choice.
+(c) Predict the C N C bond angle in compound A.
+  1.79 Positron emission tomography (PET) is a medical imaging
+(d) Identify the hybridization state for each highlighted atom in B.
+technique that produces a three‑dimensional picture of functional
+(e) The nitrogen atom in B exhibits a lone pair. In what type of
+processes in the body, such as the brain uptake of glucose. PET imaging
+hybridized atomic orbital does this lone pair reside? requires the introduction of [18F]‑fluorine (a radioactive isotope of fluo‑
+(f ) Predict the C N C bond angle in compound B. rine) into molecules and can be achieved by several routes, such as the
+  following:12
+1.78 Consider the following table that provides bond lengths for
+H H
+a variety of C X bonds (measured in Å).
+ H H H C H H
+X = F X = Cl X = Br X = 18F C C Br + N C C O H H
+H H
+H H H C H H H H C H H
+C X 1.40 1.79 1.97 2.16 H H 18F C C N + C C O H
+H H C H H
+H H −
+Br
+C X 1.34 1.88 2.10 H
+(a) Identify the hybridization for all atoms except for C, H, and O in
+C X 1.27 1.63 1.79
+the three compounds. Note: Throughout this chapter, all lone pairs
+were drawn. We will soon see (Chapter 2) that lone pairs are often
+Two trends emerge when we compare these data. First, notice that the
+omitted from structural drawings, because they can be inferred by the
+bond length increases as the size of the halogen increases. This should
+presence or absence of formal charges. In this problem, none of the
+make sense, since the valence electrons in iodine are farther away from
+lone pairs have been drawn.
+the nucleus than the valence electrons in Br, so a C bond is longer
+than a C Br bond. For the same reason, a C Br bond is longer than (b) Predict the bond angle of each C N C bond in the product.
+   
+CHALLENGE PROBLEMS
+1.80 Phenalamide A belongs to a class of natural products that are a hydroximoyl chloride, such as compound 1, 
+--- PAGE 8 ---
+Challenge Problems 49
+(a) Determine the hybridization state of C, C , and C. (b) When this compound was prepared and investigated, it
+a b c
+(b) Determine the H C C bond angle. demonstrated a preference for adopting a three‑d imensional shape
+a b
+  in which the two highlighted regions were in close proximity. Describe
+(c) Determine the C C C bond angle.
+a b c the interaction that occurs and create a drawing that illustrates this
+ 
+(d) C b exhibits two π bonds: one to C a , and the other to C c . Draw interaction.
+a picture of C, C , and C that shows the relative orientation of the
+a b c
+two different p orbitals that C is utilizing to form its two π bonds. LIST OF REFERENCES
+b
+Also show the p orbitals on C and C that are being used by each of
+a c 1. Nat. Geosci. 2014, 7, 266–269.
+those atoms. Describe the relative orientation of the p orbitals on C
+a 2. Cancer Epidemiol. Biomarkers Prev.2013, 22, 765–772.
+and C.
+c
+3. Cogn. Brain Res.2001, 12, 353–370.
+1.83 The following structure shows promise for studying how enzymes 4. J. Polym. Environ.2015, 23, 283–293.
+(nature's catalysts) coil up into very discrete shapes that endow them 5. J. Invest. Dermatol. 2014, 134, 2988–2990.
+with catalytic function:16 6. ACS Nano 2008, 2, 873–878.
+7. Org. Biomol. Chem.2010, 8, 811–821.
+HC O H O CH 8. Water Resour. Manag.2010, 24, 2237–2246.
+3 3
+HC C O C N C N C N C H 9. J. Chromatogr. A2009, 1216, 127–133.
+3
+H 3 C H CH 2 H H CH 3 10. Tetrahedron2006, 62, 10968–10979.
+C 11. Tetrahedron Lett.2012, 53, 4536–4537.
+HC CH
+3 H 3 12. Tetrahedron Lett.2003, 44, 9165–9167.
+13. Org. Lett.1999, 1, 1713–1715.
+(a) This compound has two N C N units, with differing bond 14. J. Org. Chem.2009, 74, 1099–1113.
+angles. Predict the difference in bond angles between these two units 15. Tetrahedron Lett.2001, 42, 8579–8582.
+and explain the source of the difference. 16. Org. Lett.2001, 3, 3843–3846.
+ch01_AReviewOfGeneralChemistry.indd 49 31/10/20 11:06 AM
