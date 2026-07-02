@@ -77,3 +77,7 @@ affected_rows_pattern*.md
 
 # ---- stray test screenshots ----
 molview-test.png
+
+# ---- premed source data (real AAMC files, not committed) ----
+premed/source-data/facts/*
+!premed/source-data/facts/.gitkeep

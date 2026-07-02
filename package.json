@@ -26,7 +26,10 @@
     "decompose-eas-klein-mcmurry": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-klein-mcmurry.ts",
     "decompose-eas-klein-mcmurry-patch": "tsx --env-file=.env.local ochem2/eas/pipeline/decompose-klein-mcmurry-patch.ts",
     "load-eas-supabase": "tsx --env-file=.env.local ochem2/eas/pipeline/load-supabase.ts",
-    "enrich-eas-problems": "tsx --env-file=.env.local ochem2/eas/pipeline/enrich-problems.ts"
+    "enrich-eas-problems": "tsx --env-file=.env.local ochem2/eas/pipeline/enrich-problems.ts",
+    "ingest-premed-facts": "tsx --env-file=.env.local premed/pipeline/ingest-facts.ts",
+    "analyze-profile": "tsx --env-file=.env.local premed/pipeline/analyze-profile.ts",
+    "typecheck-premed": "tsc -p premed/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
