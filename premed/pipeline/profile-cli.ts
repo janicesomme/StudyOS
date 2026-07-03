@@ -1,9 +1,10 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { fileURLToPath } from 'url'
+import { computeActivityGaps } from '../src/lib/activity-gap.js'
 import { analyzeProfile } from '../src/lib/gap-analyzer.js'
 import { addActivity, createProfile, getProfile, listActivities, profileToSlice } from '../src/lib/profiles.js'
 import { optionalNumber, optionalString, parseFlags, printCliError, requireNumber, requireString } from './cli-args.js'
-import { printActivities, printGapAnalysis, printProfile } from './report.js'
+import { printActivities, printActivityGaps, printGapAnalysis, printProfile } from './report.js'
 
 // One CLI, four subcommands (each backed by its own npm script):
 //   npm run profile-create -- --user <id> --gpa 3.6 --mcat 508 [--state LA --grad-year 2027 --gap-years 0]
@@ -93,6 +94,10 @@ export async function cmdShow(supabase: SupabaseClient, argv: string[]): Promise
   printProfile(profile)
   console.log('')
   printActivities(activities)
+  console.log('')
+
+  const gaps = await computeActivityGaps(activities)
+  printActivityGaps(gaps)
   console.log('')
 
   if (profile.gpa_cum !== null && profile.mcat_total !== null) {

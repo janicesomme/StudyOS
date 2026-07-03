@@ -1,6 +1,7 @@
 // Shared terminal report formatting for premed/pipeline/*.ts CLIs
 // (analyze-profile.ts, profile-cli.ts, seed-archetypes.ts).
 
+import type { CategoryGap } from '../src/lib/activity-gap.js'
 import type { CellStats, GapAnalysis } from '../src/lib/gap-analyzer.js'
 import type { PmActivity, PmProfile } from '../src/lib/schemas.js'
 
@@ -71,5 +72,23 @@ export function printActivities(activities: PmActivity[]): void {
   }
   for (const a of activities) {
     console.log(`  ${a.category.padEnd(24)} completed=${a.hours_completed}h planned=${a.hours_planned}h`)
+  }
+}
+
+export function printActivityGaps(gaps: CategoryGap[]): void {
+  console.log('=== Activity Gap Read-out === (biggest gaps first)')
+  for (const g of gaps) {
+    const baselineText =
+      g.baseline.competitive === null
+        ? 'no established benchmark'
+        : `floor=${g.baseline.floor}h competitive=${g.baseline.competitive}h`
+    const statusText = g.status ?? 'not benchmarked'
+    const gapText =
+      g.gapToCompetitive === null ? 'n/a' : g.gapToCompetitive === 0 ? 'none (met/exceeded)' : `${g.gapToCompetitive}h`
+    const plannedText = g.plannedClosesGap === null ? 'n/a' : g.plannedClosesGap ? 'yes' : 'no'
+
+    console.log(`  ${g.category.padEnd(24)} you=${g.hoursCompleted}h (planned +${g.hoursPlanned}h)  baseline: ${baselineText}`)
+    console.log(`    status=${statusText}  gap-to-competitive=${gapText}  planned hours close this gap: ${plannedText}`)
+    console.log(`    note: ${g.baseline.note}`)
   }
 }
