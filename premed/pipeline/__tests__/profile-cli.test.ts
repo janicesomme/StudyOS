@@ -57,11 +57,23 @@ describe('parseActivityAddArgs', () => {
 })
 
 describe('parseShowArgs', () => {
-  it('parses --user', () => {
-    expect(parseShowArgs(['--user', 'abc'])).toEqual({ user: 'abc' })
+  it('parses --user, defaulting --baselines to "static"', () => {
+    expect(parseShowArgs(['--user', 'abc'])).toEqual({ user: 'abc', baselines: 'static' })
+  })
+
+  it('parses an explicit --baselines live', () => {
+    expect(parseShowArgs(['--user', 'abc', '--baselines', 'live'])).toEqual({ user: 'abc', baselines: 'live' })
+  })
+
+  it('parses an explicit --baselines static', () => {
+    expect(parseShowArgs(['--user', 'abc', '--baselines', 'static'])).toEqual({ user: 'abc', baselines: 'static' })
   })
 
   it('throws when --user is missing', () => {
     expect(() => parseShowArgs([])).toThrow(/Missing required --user/)
+  })
+
+  it('throws on an invalid --baselines value', () => {
+    expect(() => parseShowArgs(['--user', 'abc', '--baselines', 'bogus'])).toThrow(/--baselines must be "live" or "static"/)
   })
 })

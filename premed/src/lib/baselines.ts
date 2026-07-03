@@ -133,3 +133,16 @@ export async function getBaseline(category: ActivityCategory): Promise<CategoryB
 export async function getAllBaselines(): Promise<Record<ActivityCategory, CategoryBaseline>> {
   return ACTIVITY_BASELINES
 }
+
+/**
+ * Shared shape for anything that can answer "what's the baseline for this
+ * category" — the hardcoded constants below, or (see baselines-live.ts) a
+ * pm_school_stats-derived provider. computeActivityGaps takes one of these,
+ * so swapping the source doesn't touch its call sites.
+ */
+export type BaselineProvider = {
+  getBaseline(category: ActivityCategory): Promise<CategoryBaseline>
+  getAllBaselines(): Promise<Record<ActivityCategory, CategoryBaseline>>
+}
+
+export const staticBaselineProvider: BaselineProvider = { getBaseline, getAllBaselines }

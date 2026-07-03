@@ -34,6 +34,8 @@
     "activity-add": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts activity-add",
     "profile-show": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts show",
     "seed-archetypes": "tsx --env-file=.env.local premed/pipeline/seed-archetypes.ts",
+    "seed-schools": "tsx --env-file=.env.local premed/pipeline/seed-schools.ts",
+    "scrape-class-profiles": "tsx --env-file=.env.local premed/pipeline/scrape-class-profiles.ts",
     "typecheck-premed": "tsc -p premed/tsconfig.json --noEmit"
   },
   "dependencies": {
@@ -51,6 +53,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
+    "@types/jsdom": "^28.0.3",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

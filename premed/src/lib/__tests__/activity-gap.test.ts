@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
+import { createFakeSupabase } from './fake-supabase.js'
 import { computeActivityGaps, computeGap, computeStatus } from '../activity-gap.js'
+import { createLiveBaselineProvider } from '../baselines-live.js'
 import { getBaseline } from '../baselines.js'
 import { ACTIVITY_CATEGORIES } from '../schemas.js'
 
@@ -140,5 +142,26 @@ describe('computeActivityGaps', () => {
     expect(publication.status).toBeNull()
     expect(publication.gapToCompetitive).toBeNull()
     expect(publication.plannedClosesGap).toBeNull()
+  })
+
+  it('accepts an injected live BaselineProvider — the actual static/live swap point', async () => {
+    const supabase = createFakeSupabase({
+      pm_school_stats: [
+        { id: 's1', school_id: 'a', cycle_year: 2029, median_research_hours: 300, median_clinical_hours: null },
+        { id: 's2', school_id: 'b', cycle_year: 2029, median_research_hours: 500, median_clinical_hours: null },
+        { id: 's3', school_id: 'c', cycle_year: 2029, median_research_hours: 700, median_clinical_hours: null },
+      ],
+    })
+    const liveProvider = createLiveBaselineProvider(supabase as never)
+
+    const staticGaps = await computeActivityGaps([{ category: 'research', hours_completed: 200, hours_planned: 0 }])
+    const liveGaps = await computeActivityGaps([{ category: 'research', hours_completed: 200, hours_planned: 0 }], liveProvider)
+
+    const staticResearch = staticGaps.find(g => g.category === 'research')!
+    const liveResearch = liveGaps.find(g => g.category === 'research')!
+
+    expect(staticResearch.baseline.competitive).toBe(400) // hardcoded static value
+    expect(liveResearch.baseline.competitive).toBe(500) // live median of 300/500/700
+    expect(liveResearch.gapToCompetitive).toBe(300) // 500 - 200
   })
 })

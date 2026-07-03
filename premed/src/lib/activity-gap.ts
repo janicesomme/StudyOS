@@ -1,4 +1,4 @@
-import { getAllBaselines, type CategoryBaseline } from './baselines.js'
+import { staticBaselineProvider, type BaselineProvider, type CategoryBaseline } from './baselines.js'
 import { ACTIVITY_CATEGORIES, type ActivityCategory } from './schemas.js'
 
 export type GapStatus = 'strong' | 'competitive' | 'below' | 'missing'
@@ -61,10 +61,15 @@ export function computeGap(
  * category), scores each of the 10 categories against its baseline, and
  * returns them ordered biggest-gap-first. Categories with no computable gap
  * (no baseline, or already met/exceeded) sort last, in category-enum order.
+ * Defaults to the hardcoded static baselines; pass a live provider (see
+ * baselines-live.ts) to score against pm_school_stats instead.
  */
-export async function computeActivityGaps(activities: ActivityHours[]): Promise<CategoryGap[]> {
+export async function computeActivityGaps(
+  activities: ActivityHours[],
+  provider: BaselineProvider = staticBaselineProvider
+): Promise<CategoryGap[]> {
   const totals = sumByCategory(activities)
-  const baselines = await getAllBaselines()
+  const baselines = await provider.getAllBaselines()
 
   const gaps: CategoryGap[] = ACTIVITY_CATEGORIES.map(category => {
     const { completed, planned } = totals[category]

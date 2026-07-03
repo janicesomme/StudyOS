@@ -38,8 +38,8 @@ export function createFakeSupabase(seed: Record<string, Row[]> = {}) {
       }
 
       if (mode === 'upsert') {
-        const conflictCol = onConflict ?? 'id'
-        const idx = rows.findIndex(r => r[conflictCol] === (payload as Row)[conflictCol])
+        const conflictCols = (onConflict ?? 'id').split(',').map(c => c.trim())
+        const idx = rows.findIndex(r => conflictCols.every(col => r[col] === (payload as Row)[col]))
         if (idx >= 0) {
           rows[idx] = { ...rows[idx], ...payload }
           return { data: rows[idx], error: null }

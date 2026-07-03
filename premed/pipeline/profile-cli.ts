@@ -1,6 +1,8 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { fileURLToPath } from 'url'
 import { computeActivityGaps } from '../src/lib/activity-gap.js'
+import { createLiveBaselineProvider } from '../src/lib/baselines-live.js'
+import { staticBaselineProvider } from '../src/lib/baselines.js'
 import { analyzeProfile } from '../src/lib/gap-analyzer.js'
 import { addActivity, createProfile, getProfile, listActivities, profileToSlice } from '../src/lib/profiles.js'
 import { optionalNumber, optionalString, parseFlags, printCliError, requireNumber, requireString } from './cli-args.js'
@@ -44,7 +46,11 @@ export function parseActivityAddArgs(argv: string[]) {
 
 export function parseShowArgs(argv: string[]) {
   const flags = parseFlags(argv)
-  return { user: requireString(flags, 'user') }
+  const baselinesRaw = optionalString(flags, 'baselines') ?? 'static'
+  if (baselinesRaw !== 'live' && baselinesRaw !== 'static') {
+    throw new Error(`--baselines must be "live" or "static", got "${baselinesRaw}".`)
+  }
+  return { user: requireString(flags, 'user'), baselines: baselinesRaw }
 }
 
 // ── Subcommand handlers ──────────────────────────────────────────────────────
@@ -96,7 +102,9 @@ export async function cmdShow(supabase: SupabaseClient, argv: string[]): Promise
   printActivities(activities)
   console.log('')
 
-  const gaps = await computeActivityGaps(activities)
+  const provider = args.baselines === 'live' ? createLiveBaselineProvider(supabase) : staticBaselineProvider
+  console.log(`(baselines: ${args.baselines})`)
+  const gaps = await computeActivityGaps(activities, provider)
   printActivityGaps(gaps)
   console.log('')
 

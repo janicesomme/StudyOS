@@ -81,3 +81,6 @@ molview-test.png
 # ---- premed source data (real AAMC files, not committed) ----
 premed/source-data/facts/*
 !premed/source-data/facts/.gitkeep
+
+# ---- premed scrape retry queue (transient pipeline artifact) ----
+premed/source-data/scrape-retry-queue.json
