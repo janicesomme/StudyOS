@@ -10,6 +10,7 @@ import { ReviewImagesPage } from './pages/ReviewImagesPage'
 import { ExamPickerPage } from './pages/ExamPickerPage'
 import { QuestionUnlocksPage } from './pages/QuestionUnlocksPage'
 import { EasPracticePage } from './pages/EasPracticePage'
+import { PremedPage } from './pages/PremedPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/courses/:id/review-images" element={<ProtectedRoute><ReviewImagesPage /></ProtectedRoute>} />
         <Route path="/courses/:id/question-unlocks" element={<ProtectedRoute><QuestionUnlocksPage /></ProtectedRoute>} />
         <Route path="/eas-practice" element={<ProtectedRoute><EasPracticePage /></ProtectedRoute>} />
+        <Route path="/premed" element={<ProtectedRoute><PremedPage /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
