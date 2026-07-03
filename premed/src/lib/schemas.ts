@@ -1,5 +1,23 @@
 import { z } from 'zod'
 
+// AAMC-style Work & Activities categories. Not encoded as a DB CHECK
+// constraint (pm_activities.category stays `text` — see PLAN.md scope on
+// schema changes); enforced only at this Zod layer.
+export const ACTIVITY_CATEGORIES = [
+  'clinical_volunteer',
+  'clinical_paid',
+  'nonclinical_volunteer',
+  'research',
+  'shadowing',
+  'leadership',
+  'teaching',
+  'publication',
+  'extracurricular',
+  'other',
+] as const
+export const ActivityCategorySchema = z.enum(ACTIVITY_CATEGORIES)
+export type ActivityCategory = z.infer<typeof ActivityCategorySchema>
+
 export const PmProfileSchema = z.object({
   id: z.string().uuid(),
   user_id: z.string().uuid(),
@@ -16,7 +34,7 @@ export const PmProfileSchema = z.object({
 export const PmActivitySchema = z.object({
   id: z.string().uuid(),
   profile_id: z.string().uuid(),
-  category: z.string(),
+  category: ActivityCategorySchema,
   hours_completed: z.number().int().min(0),
   hours_planned: z.number().int().min(0),
   start_date: z.string().nullable(),

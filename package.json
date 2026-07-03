@@ -29,6 +29,11 @@
     "enrich-eas-problems": "tsx --env-file=.env.local ochem2/eas/pipeline/enrich-problems.ts",
     "ingest-premed-facts": "tsx --env-file=.env.local premed/pipeline/ingest-facts.ts",
     "analyze-profile": "tsx --env-file=.env.local premed/pipeline/analyze-profile.ts",
+    "profile-create": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts create",
+    "profile-analyze": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts analyze",
+    "activity-add": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts activity-add",
+    "profile-show": "tsx --env-file=.env.local premed/pipeline/profile-cli.ts show",
+    "seed-archetypes": "tsx --env-file=.env.local premed/pipeline/seed-archetypes.ts",
     "typecheck-premed": "tsc -p premed/tsconfig.json --noEmit"
   },
   "dependencies": {
