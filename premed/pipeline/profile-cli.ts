@@ -3,10 +3,16 @@ import { fileURLToPath } from 'url'
 import { computeActivityGaps } from '../src/lib/activity-gap.js'
 import { createLiveBaselineProvider } from '../src/lib/baselines-live.js'
 import { staticBaselineProvider } from '../src/lib/baselines.js'
+import { computeApplicantPoolPosition } from '../src/lib/corpus-stats.js'
 import { analyzeProfile } from '../src/lib/gap-analyzer.js'
 import { addActivity, createProfile, getProfile, listActivities, profileToSlice } from '../src/lib/profiles.js'
 import { optionalNumber, optionalString, parseFlags, printCliError, requireNumber, requireString } from './cli-args.js'
-import { printActivities, printActivityGaps, printGapAnalysis, printProfile } from './report.js'
+import { printActivities, printActivityGaps, printApplicantPoolPosition, printGapAnalysis, printProfile } from './report.js'
+
+// Most recent cycle year ingested into pm_facts_grid (session 1/bridge) — the
+// Applicant Pool Position section reads this one year, same as gap-analyzer.ts
+// defaults to comparing 2023 vs 2025.
+const LATEST_FACTS_CYCLE_YEAR = 2025
 
 // One CLI, four subcommands (each backed by its own npm script):
 //   npm run profile-create -- --user <id> --gpa 3.6 --mcat 508 [--state LA --grad-year 2027 --gap-years 0]
@@ -109,10 +115,14 @@ export async function cmdShow(supabase: SupabaseClient, argv: string[]): Promise
   console.log('')
 
   if (profile.gpa_cum !== null && profile.mcat_total !== null) {
+    const position = await computeApplicantPoolPosition(supabase, profileToSlice(profile), LATEST_FACTS_CYCLE_YEAR)
+    printApplicantPoolPosition(position)
+    console.log('')
+
     const result = await analyzeProfile(supabase, profileToSlice(profile))
     printGapAnalysis(result)
   } else {
-    console.log('(Gap analysis skipped — profile is missing gpa_cum or mcat_total.)')
+    console.log('(Applicant pool position and gap analysis skipped — profile is missing gpa_cum or mcat_total.)')
   }
 }
 

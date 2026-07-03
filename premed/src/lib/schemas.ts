@@ -69,6 +69,8 @@ export const PmSchoolStatsSchema = z.object({
 
 export const PmOutcomesCorpusSchema = z.object({
   id: z.string().uuid(),
+  user_id: z.string().uuid(),
+  consent_to_store: z.boolean(),
   cycle_year: z.number().int().nullable(),
   gpa: z.number().min(0).max(4.0).nullable(),
   mcat: z.number().int().min(472).max(528).nullable(),

@@ -9,12 +9,24 @@ export function parseFlags(argv: string[]): Map<string, string> {
     const eq = arg.indexOf('=')
     if (eq !== -1) {
       values.set(arg.slice(2, eq), arg.slice(eq + 1))
+      continue
+    }
+    const next = argv[i + 1]
+    if (next === undefined || next.startsWith('--')) {
+      // Boolean flag (e.g. "--consent") — no value follows, don't swallow the next flag.
+      values.set(arg.slice(2), 'true')
     } else {
-      values.set(arg.slice(2), argv[i + 1])
+      values.set(arg.slice(2), next)
       i++
     }
   }
   return values
+}
+
+/** True if the flag is present and not explicitly "false" (e.g. "--consent" or "--consent=true"). */
+export function flagPresent(values: Map<string, string>, key: string): boolean {
+  const v = values.get(key)
+  return v !== undefined && v !== 'false'
 }
 
 export function requireString(values: Map<string, string>, key: string): string {

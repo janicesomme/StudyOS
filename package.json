@@ -36,6 +36,7 @@
     "seed-archetypes": "tsx --env-file=.env.local premed/pipeline/seed-archetypes.ts",
     "seed-schools": "tsx --env-file=.env.local premed/pipeline/seed-schools.ts",
     "scrape-class-profiles": "tsx --env-file=.env.local premed/pipeline/scrape-class-profiles.ts",
+    "report-outcome": "tsx --env-file=.env.local premed/pipeline/report-outcome.ts",
     "typecheck-premed": "tsc -p premed/tsconfig.json --noEmit"
   },
   "dependencies": {

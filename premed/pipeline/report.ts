@@ -2,6 +2,7 @@
 // (analyze-profile.ts, profile-cli.ts, seed-archetypes.ts).
 
 import type { CategoryGap } from '../src/lib/activity-gap.js'
+import type { ApplicantPoolPosition } from '../src/lib/corpus-stats.js'
 import type { CellStats, GapAnalysis } from '../src/lib/gap-analyzer.js'
 import type { PmActivity, PmProfile } from '../src/lib/schemas.js'
 
@@ -91,4 +92,15 @@ export function printActivityGaps(gaps: CategoryGap[]): void {
     console.log(`    status=${statusText}  gap-to-competitive=${gapText}  planned hours close this gap: ${plannedText}`)
     console.log(`    note: ${g.baseline.note}`)
   }
+}
+
+function formatPercentile(p: number | null): string {
+  return p !== null ? `${p.toFixed(1)}th percentile` : 'n/a'
+}
+
+export function printApplicantPoolPosition(position: ApplicantPoolPosition): void {
+  console.log(`=== Applicant Pool Position (cycle_year=${position.cycle_year}) ===`)
+  console.log(`GPA band ${position.gpa_band}: ${formatPercentile(position.gpa_percentile_applicants)} of applicants, ${formatPercentile(position.gpa_percentile_acceptees)} of acceptees`)
+  console.log(`MCAT band ${position.mcat_band}: ${formatPercentile(position.mcat_percentile_applicants)} of applicants, ${formatPercentile(position.mcat_percentile_acceptees)} of acceptees`)
+  if (position.note) console.log(`  note: ${position.note}`)
 }
