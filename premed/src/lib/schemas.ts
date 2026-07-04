@@ -119,6 +119,17 @@ export const PmFactsGridSchema = z
     message: 'acceptees_suppressed must be true iff acceptees is null',
   })
 
+export const PmEssayReviewSchema = z.object({
+  id: z.string().uuid(),
+  profile_id: z.string().uuid(),
+  essay_sha256: z.string().length(64),
+  rubric_version: z.string().min(1),
+  scores: z.record(z.string(), z.number()),
+  review: z.record(z.string(), z.unknown()),
+  model: z.string().min(1),
+  created_at: z.string(),
+})
+
 export type PmProfile = z.infer<typeof PmProfileSchema>
 export type PmActivity = z.infer<typeof PmActivitySchema>
 export type PmSchool = z.infer<typeof PmSchoolSchema>
@@ -126,3 +137,4 @@ export type PmSchoolStats = z.infer<typeof PmSchoolStatsSchema>
 export type PmOutcomesCorpus = z.infer<typeof PmOutcomesCorpusSchema>
 export type PmNarrative = z.infer<typeof PmNarrativeSchema>
 export type PmFactsGrid = z.infer<typeof PmFactsGridSchema>
+export type PmEssayReview = z.infer<typeof PmEssayReviewSchema>

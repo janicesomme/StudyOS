@@ -3,6 +3,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import { computeSchoolComparison } from '../lib/school-comparison.js'
 import { ApplicantPoolPositionSection } from './sections/ApplicantPoolPositionSection.js'
 import { ActivityGapsSection } from './sections/ActivityGapsSection.js'
+import { EssayReviewSection } from './sections/EssayReviewSection.js'
 import { SchoolComparisonSection } from './sections/SchoolComparisonSection.js'
 import { ProfileIntakePanel } from './ProfileIntakePanel.js'
 import { useRealProfileData } from './useRealProfileData.js'
@@ -122,6 +123,9 @@ export function PremedDashboard({ supabase, devUserId }: Props) {
           <SchoolComparisonSection comparison={schoolComparison} />
         </>
       )}
+
+      {/* Real mode only — demo archetypes have no essays (session 8). */}
+      {mode === 'real' && !real.loading && real.profile && <EssayReviewSection reviews={real.essayReviews} />}
     </div>
   )
 }

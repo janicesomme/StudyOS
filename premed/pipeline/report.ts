@@ -2,6 +2,7 @@
 // (analyze-profile.ts, profile-cli.ts, seed-archetypes.ts).
 
 import type { CategoryGap } from '../src/lib/activity-gap.js'
+import type { EssayReview } from '../src/lib/committee-simulator.js'
 import type { ApplicantPoolPosition } from '../src/lib/corpus-stats.js'
 import type { CellStats, GapAnalysis } from '../src/lib/gap-analyzer.js'
 import type { PmActivity, PmProfile } from '../src/lib/schemas.js'
@@ -96,6 +97,25 @@ export function printActivityGaps(gaps: CategoryGap[]): void {
 
 function formatPercentile(p: number | null): string {
   return p !== null ? `${p.toFixed(1)}th percentile` : 'n/a'
+}
+
+export function printEssayReview(review: EssayReview): void {
+  console.log('=== Committee Simulator Review ===')
+  for (const d of review.dimensionScores) {
+    console.log(`  ${d.dimension.padEnd(36)} score=${d.score}/5`)
+    for (const q of d.evidenceQuotes) console.log(`    quote: "${q}"`)
+    if (d.challengeQuestion) console.log(`    challenge: ${d.challengeQuestion}`)
+  }
+  console.log('')
+  console.log('--- Strengths ---')
+  review.strengths.forEach(s => console.log(`  - ${s}`))
+  console.log('--- Priority fixes ---')
+  review.priorityFixes.forEach(s => console.log(`  - ${s}`))
+  if (review.consistencyFlags.length) {
+    console.log('--- Consistency flags ---')
+    review.consistencyFlags.forEach(s => console.log(`  - ${s}`))
+  }
+  console.log(`\nVerdict: ${review.verdict}`)
 }
 
 export function printApplicantPoolPosition(position: ApplicantPoolPosition): void {

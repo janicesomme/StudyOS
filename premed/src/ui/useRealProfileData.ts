@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { computeActivityGaps, type CategoryGap } from '../lib/activity-gap.js'
 import { computeApplicantPoolPosition, type ApplicantPoolPosition } from '../lib/corpus-stats.js'
+import { listEssayReviews } from '../lib/essay-reviews.js'
 import { analyzeProfile, type GapAnalysis } from '../lib/gap-analyzer.js'
 import { getProfile, listActivities, profileToSlice } from '../lib/profiles.js'
-import type { PmActivity, PmProfile } from '../lib/schemas.js'
+import type { PmActivity, PmEssayReview, PmProfile } from '../lib/schemas.js'
 
 const CYCLE_YEARS = [2023, 2025]
 
@@ -14,6 +15,7 @@ export type RealProfileData = {
   activityGaps: CategoryGap[] | null
   poolPositions: ApplicantPoolPosition[] | null
   gapAnalysis: GapAnalysis | null
+  essayReviews: PmEssayReview[]
   loading: boolean
   error: string | null
   refetch: () => Promise<void>
@@ -32,6 +34,7 @@ export function useRealProfileData(supabase: SupabaseClient, userId: string): Re
   const [activityGaps, setActivityGaps] = useState<CategoryGap[] | null>(null)
   const [poolPositions, setPoolPositions] = useState<ApplicantPoolPosition[] | null>(null)
   const [gapAnalysis, setGapAnalysis] = useState<GapAnalysis | null>(null)
+  const [essayReviews, setEssayReviews] = useState<PmEssayReview[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -47,12 +50,14 @@ export function useRealProfileData(supabase: SupabaseClient, userId: string): Re
         setActivityGaps(null)
         setPoolPositions(null)
         setGapAnalysis(null)
+        setEssayReviews([])
         return
       }
 
       const fetchedActivities = await listActivities(supabase, fetchedProfile.id)
       setActivities(fetchedActivities)
       setActivityGaps(await computeActivityGaps(fetchedActivities))
+      setEssayReviews(await listEssayReviews(supabase, fetchedProfile.id))
 
       if (fetchedProfile.gpa_cum !== null && fetchedProfile.mcat_total !== null) {
         const slice = profileToSlice(fetchedProfile)
@@ -77,5 +82,5 @@ export function useRealProfileData(supabase: SupabaseClient, userId: string): Re
     refetch()
   }, [refetch])
 
-  return { profile, activities, activityGaps, poolPositions, gapAnalysis, loading, error, refetch }
+  return { profile, activities, activityGaps, poolPositions, gapAnalysis, essayReviews, loading, error, refetch }
 }
