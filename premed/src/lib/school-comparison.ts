@@ -78,3 +78,18 @@ export async function loadSchoolStatsRows(supabase: SupabaseClient): Promise<Sch
     median_mcat: row.median_mcat as number,
   }))
 }
+
+export type MissionFitSchool = { name: string; mission_keywords: string[] | null }
+
+/**
+ * Fuzzy `ilike` lookup against `pm_schools.name` — first match wins, since the
+ * table has no unique constraint on name. Fine for a single-operator CLI and
+ * a single logged-in dashboard user; would need tightening (exact id, or
+ * disambiguation on multiple matches) before any multi-user surface used it.
+ * Shared by the CLI and the review-essay Edge Function.
+ */
+export async function findSchool(supabase: SupabaseClient, nameQuery: string): Promise<MissionFitSchool | null> {
+  const { data, error } = await supabase.from('pm_schools').select('name, mission_keywords').ilike('name', `%${nameQuery}%`).limit(1)
+  if (error) throw new Error(`Failed to look up school "${nameQuery}": ${error.message}`)
+  return data?.[0] ?? null
+}

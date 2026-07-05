@@ -115,6 +115,13 @@ export function printEssayReview(review: EssayReview): void {
     console.log('--- Consistency flags ---')
     review.consistencyFlags.forEach(s => console.log(`  - ${s}`))
   }
+  if (review.redFlags.length) {
+    console.log('--- Red flags ---')
+    review.redFlags.forEach(f => {
+      console.log(`  - [${f.key}] ${f.note}`)
+      if (f.evidenceQuote) console.log(`    quote: "${f.evidenceQuote}"`)
+    })
+  }
   console.log(`\nVerdict: ${review.verdict}`)
 }
 

@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { analyzeProfile } from '../gap-analyzer.js'
 import {
   addActivity,
+  aggregateActivities,
   createProfile,
   getProfile,
   listActivities,
@@ -128,6 +129,26 @@ describe('profileToSlice', () => {
     const supabase = createFakeSupabase()
     const profile = await createProfile(supabase as never, { user_id: USER_A }) // no gpa/mcat
     expect(() => profileToSlice(profile)).toThrow(/missing gpa_cum or mcat_total/)
+  })
+})
+
+describe('aggregateActivities', () => {
+  it('sums hours_completed per category', () => {
+    const summary = aggregateActivities([
+      { category: 'clinical_volunteer', hours_completed: 40 },
+      { category: 'clinical_volunteer', hours_completed: 60 },
+      { category: 'research', hours_completed: 100 },
+    ])
+    expect(summary).toEqual(
+      expect.arrayContaining([
+        { category: 'clinical_volunteer', hoursCompleted: 100 },
+        { category: 'research', hoursCompleted: 100 },
+      ])
+    )
+  })
+
+  it('returns an empty array for no activities', () => {
+    expect(aggregateActivities([])).toEqual([])
   })
 })
 

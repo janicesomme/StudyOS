@@ -1,11 +1,12 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
-import { estimateReviewTokens, reviewEssay, type ActivitySummary } from '../src/lib/committee-simulator.js'
+import { estimateReviewTokens, reviewEssay } from '../src/lib/committee-simulator.js'
 import { saveEssayReview } from '../src/lib/essay-reviews.js'
-import { getProfile, listActivities } from '../src/lib/profiles.js'
+import { aggregateActivities, getProfile, listActivities } from '../src/lib/profiles.js'
 import { RUBRIC_VERSION } from '../src/lib/rubrics.js'
+import { findSchool } from '../src/lib/school-comparison.js'
 import { flagPresent, optionalString, parseFlags, printCliError, requireString } from './cli-args.js'
 import { printEssayReview } from './report.js'
 
@@ -28,18 +29,6 @@ export function parseReviewEssayArgs(argv: string[]) {
     school: optionalString(flags, 'school'),
     go: flagPresent(flags, 'go'),
   }
-}
-
-function aggregateActivities(activities: { category: string; hours_completed: number }[]): ActivitySummary[] {
-  const totals = new Map<string, number>()
-  for (const a of activities) totals.set(a.category, (totals.get(a.category) ?? 0) + a.hours_completed)
-  return Array.from(totals.entries()).map(([category, hoursCompleted]) => ({ category, hoursCompleted }))
-}
-
-async function findSchool(supabase: SupabaseClient, nameQuery: string): Promise<{ name: string; mission_keywords: string[] | null } | null> {
-  const { data, error } = await supabase.from('pm_schools').select('name, mission_keywords').ilike('name', `%${nameQuery}%`).limit(1)
-  if (error) throw new Error(`Failed to look up school "${nameQuery}": ${error.message}`)
-  return data?.[0] ?? null
 }
 
 function estimatedCost(inputTokens: number, outputTokens: number): number {

@@ -1,6 +1,6 @@
 import type Anthropic from '@anthropic-ai/sdk'
 import { z } from 'zod'
-import { RubricDimensionKeySchema, getRubricDimensions } from './rubrics.js'
+import { RED_FLAGS, RED_FLAG_KEYS, RedFlagKeySchema, RubricDimensionKeySchema, getRubricDimensions } from './rubrics.ts'
 
 // Critique-only essay review. This hard rule is enforced in three places at
 // once (prompt instruction, Zod schema shape — there is no "suggestedRewrite"
@@ -35,12 +35,30 @@ export const DimensionScoreSchema = z
   })
 export type DimensionScore = z.infer<typeof DimensionScoreSchema>
 
+export const RedFlagSchema = z
+  .object({
+    key: RedFlagKeySchema,
+    // Always required — a short plain-language explanation of what was
+    // flagged and why, so the UI never renders a bare category label with
+    // nothing behind it.
+    note: z.string().min(1),
+    // Verbatim quote from the essay proving the flag. Nullable only for
+    // unexplained_gap, which can be inferred from stored profile/activity
+    // data the essay never mentions — there's no essay text to quote there.
+    evidenceQuote: z.string().min(1).nullable(),
+  })
+  .refine(f => f.key === 'unexplained_gap' || f.evidenceQuote !== null, {
+    message: 'evidenceQuote is required except for unexplained_gap',
+  })
+export type RedFlag = z.infer<typeof RedFlagSchema>
+
 export const EssayReviewSchema = z.object({
   dimensionScores: z.array(DimensionScoreSchema).min(1),
   strengths: z.array(z.string().min(1)).length(3),
   priorityFixes: z.array(z.string().min(1)).length(3),
   verdict: z.string().min(1),
   consistencyFlags: z.array(z.string().min(1)),
+  redFlags: z.array(RedFlagSchema),
 })
 export type EssayReview = z.infer<typeof EssayReviewSchema>
 
@@ -55,6 +73,7 @@ export function applyProseGuard(review: EssayReview): EssayReview {
     priorityFixes: review.priorityFixes.map(s => truncateToWords(s, PROSE_GUARD_MAX_WORDS)) as EssayReview['priorityFixes'],
     verdict: truncateToWords(review.verdict, PROSE_GUARD_MAX_WORDS),
     consistencyFlags: review.consistencyFlags.map(s => truncateToWords(s, PROSE_GUARD_MAX_WORDS)),
+    redFlags: review.redFlags.map(f => ({ ...f, note: truncateToWords(f.note, PROSE_GUARD_MAX_WORDS) })),
   }
 }
 
@@ -88,6 +107,8 @@ export function buildReviewPrompt(input: ReviewPromptInput): string {
     ? `\nTarget school: ${input.school}. Mission keywords: ${(input.missionKeywords ?? []).join(', ') || '(none on file)'}. Score mission_fit against these keywords specifically — do not reuse another school's mission themes.\n`
     : ''
 
+  const redFlagBlock = RED_FLAG_KEYS.map(k => `- ${k}: ${RED_FLAGS[k].description}`).join('\n')
+
   return `You are simulating a medical school admissions committee critiquing a personal statement draft.
 
 HARD RULE — CRITIQUE ONLY: You never rewrite sentences, never draft replacement text, and never generate essay prose for the applicant. Every suggestion must name the problem in the applicant's own draft, never write the fix for them. This is a compliance requirement, not a style preference.
@@ -97,6 +118,10 @@ Score each dimension below from 1-5 using the stated anchors. For every dimensio
 Dimensions to score:
 ${dimensionBlock}
 ${activitiesBlock}${missionBlock}
+Also check for these red flags:
+${redFlagBlock}
+For each one you find, always give a short "note" explaining what was flagged and why. For cliche_opening_or_closing and professionalism_issue, also quote the triggering essay text verbatim in evidenceQuote. For unexplained_gap, quote the essay verbatim in evidenceQuote when the essay itself raises the gap; if the gap only shows up by comparing the essay against the stored activities/profile (nothing in the essay text to quote), leave evidenceQuote null. Return an empty redFlags array if none apply.
+
 Also flag any consistency issues between what the essay claims and the stored activities (if provided), name 3 strengths, name 3 priority fixes (naming the problem only, never writing the fix), and give one adcom-style verdict line.
 
 APPLICANT'S ESSAY DRAFT:
@@ -130,8 +155,21 @@ function buildCritiqueTool(includeMissionFit: boolean): Anthropic.Tool {
         priorityFixes: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 3, description: 'Name the problem only — never write the replacement text.' },
         verdict: { type: 'string', description: 'One adcom-style verdict line.' },
         consistencyFlags: { type: 'array', items: { type: 'string' }, description: 'Essay claims not supported by the stored activity list. Empty array if none or no activities were provided.' },
+        redFlags: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              key: { type: 'string', enum: [...RED_FLAG_KEYS] },
+              note: { type: 'string', description: 'Short plain-language explanation of what was flagged and why. Always required.' },
+              evidenceQuote: { type: ['string', 'null'], description: 'Verbatim essay quote. Required for cliche_opening_or_closing and professionalism_issue; may be null for unexplained_gap when the gap is only visible against stored activities/profile data.' },
+            },
+            required: ['key', 'note', 'evidenceQuote'],
+          },
+          description: 'Empty array if no red flags apply.',
+        },
       },
-      required: ['dimensionScores', 'strengths', 'priorityFixes', 'verdict', 'consistencyFlags'],
+      required: ['dimensionScores', 'strengths', 'priorityFixes', 'verdict', 'consistencyFlags', 'redFlags'],
     },
   }
 }

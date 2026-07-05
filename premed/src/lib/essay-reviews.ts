@@ -1,7 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { z } from 'zod'
-import type { EssayReview } from './committee-simulator.js'
-import { PmEssayReviewSchema, type PmEssayReview } from './schemas.js'
+import type { EssayReview } from './committee-simulator.ts'
+import { PmEssayReviewSchema, type PmEssayReview } from './schemas.ts'
 
 // pm_essay_reviews is user-owned via pm_profiles (same join-based RLS tier as
 // pm_activities/pm_narratives) — see supabase/migrations for the applied
@@ -48,6 +48,13 @@ export async function saveEssayReview(supabase: SupabaseClient, input: SaveEssay
   return PmEssayReviewSchema.parse(data)
 }
 
+/** Old rows (saved before redFlags existed in EssayReviewSchema) have no `redFlags` key in their jsonb — normalized to [] here so every caller sees a consistent shape without re-validating against the current EssayReview schema. */
+function normalizeReview(row: Record<string, unknown>): Record<string, unknown> {
+  const review = row.review as Record<string, unknown> | null
+  if (!review || Array.isArray(review.redFlags)) return row
+  return { ...row, review: { ...review, redFlags: [] } }
+}
+
 export async function listEssayReviews(supabase: SupabaseClient, profileId: string): Promise<PmEssayReview[]> {
   const { data, error } = await supabase
     .from('pm_essay_reviews')
@@ -55,5 +62,5 @@ export async function listEssayReviews(supabase: SupabaseClient, profileId: stri
     .eq('profile_id', profileId)
     .order('created_at', { ascending: false })
   if (error) throw new Error(`Failed to list essay reviews for profile_id=${profileId}: ${error.message}`)
-  return (data ?? []).map((row: unknown) => PmEssayReviewSchema.parse(row))
+  return (data ?? []).map((row: unknown) => PmEssayReviewSchema.parse(normalizeReview(row as Record<string, unknown>)))
 }

@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { z } from 'zod'
-import { ActivityCategorySchema, PmActivitySchema, PmProfileSchema, type PmActivity, type PmProfile } from './schemas.js'
+import type { ActivitySummary } from './committee-simulator.ts'
+import { ActivityCategorySchema, PmActivitySchema, PmProfileSchema, type PmActivity, type PmProfile } from './schemas.ts'
 
 // Functions take a user_id/profile_id explicitly rather than reading
 // auth.uid() — there's no auth UI yet, and every pipeline script in this repo
@@ -138,6 +139,13 @@ export async function listActivities(supabase: SupabaseClient, profileId: string
     .order('category')
   if (error) throw new Error(`Failed to list activities for profile_id=${profileId}: ${error.message}`)
   return (data ?? []).map((row: unknown) => PmActivitySchema.parse(row))
+}
+
+/** Sums hours_completed per category — the shape committee-simulator.ts's consistency check needs, shared by the CLI and the review-essay Edge Function. */
+export function aggregateActivities(activities: { category: string; hours_completed: number }[]): ActivitySummary[] {
+  const totals = new Map<string, number>()
+  for (const a of activities) totals.set(a.category, (totals.get(a.category) ?? 0) + a.hours_completed)
+  return Array.from(totals.entries()).map(([category, hoursCompleted]) => ({ category, hoursCompleted }))
 }
 
 export const UpdateActivityInputSchema = z.object({

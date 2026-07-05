@@ -125,7 +125,9 @@ export function PremedDashboard({ supabase, devUserId }: Props) {
       )}
 
       {/* Real mode only — demo archetypes have no essays (session 8). */}
-      {mode === 'real' && !real.loading && real.profile && <EssayReviewSection reviews={real.essayReviews} />}
+      {mode === 'real' && !real.loading && real.profile && (
+        <EssayReviewSection reviews={real.essayReviews} supabase={supabase} onReviewSaved={real.refetch} />
+      )}
     </div>
   )
 }

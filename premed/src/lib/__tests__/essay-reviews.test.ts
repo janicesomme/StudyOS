@@ -9,6 +9,7 @@ const SAMPLE_REVIEW: EssayReview = {
   priorityFixes: ['f1', 'f2', 'f3'],
   verdict: 'Solid draft.',
   consistencyFlags: [],
+  redFlags: [],
 }
 
 describe('hashEssay', () => {
@@ -60,5 +61,35 @@ describe('listEssayReviews', () => {
     const supabase = createFakeSupabase()
     const reviews = await listEssayReviews(supabase as never, '33333333-3333-3333-8333-333333333333')
     expect(reviews).toEqual([])
+  })
+
+  it('normalizes a pre-existing row with no redFlags key to an empty array', async () => {
+    const profileId = '44444444-4444-4444-8444-444444444444'
+    const reviewWithoutRedFlags = {
+      dimensionScores: SAMPLE_REVIEW.dimensionScores,
+      strengths: SAMPLE_REVIEW.strengths,
+      priorityFixes: SAMPLE_REVIEW.priorityFixes,
+      verdict: SAMPLE_REVIEW.verdict,
+      consistencyFlags: SAMPLE_REVIEW.consistencyFlags,
+      // deliberately no redFlags key — simulates a row saved before this field existed
+    }
+    const supabase = createFakeSupabase({
+      pm_essay_reviews: [
+        {
+          id: '55555555-5555-5555-8555-555555555555',
+          profile_id: profileId,
+          essay_sha256: await hashEssay('essay from before redFlags existed'),
+          rubric_version: 'v1',
+          scores: { theme_coherence: 4 },
+          review: reviewWithoutRedFlags,
+          model: 'claude-sonnet-5',
+          created_at: new Date().toISOString(),
+        },
+      ],
+    })
+
+    const reviews = await listEssayReviews(supabase as never, profileId)
+    expect(reviews).toHaveLength(1)
+    expect((reviews[0].review as unknown as EssayReview).redFlags).toEqual([])
   })
 })

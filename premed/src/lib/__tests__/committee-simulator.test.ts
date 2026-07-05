@@ -53,6 +53,13 @@ const VALID_REVIEW: EssayReview = {
   ],
   verdict: 'A promising draft with one strong scene, undercut by a cliche opening and thin reflection.',
   consistencyFlags: ['Essay claims "over 100 hours" at the clinic; stored activities show only 40 hours logged.'],
+  redFlags: [
+    {
+      key: 'cliche_opening_or_closing',
+      note: 'Opens with the stock "ever since I was young" line.',
+      evidenceQuote: 'Ever since I was a young child, I have wanted to help people.',
+    },
+  ],
 }
 
 describe('EssayReviewSchema', () => {
@@ -71,6 +78,23 @@ describe('EssayReviewSchema', () => {
   it('requires exactly 3 strengths and 3 priority fixes', () => {
     expect(() => EssayReviewSchema.parse({ ...VALID_REVIEW, strengths: ['only one'] })).toThrow()
     expect(() => EssayReviewSchema.parse({ ...VALID_REVIEW, priorityFixes: ['only one'] })).toThrow()
+  })
+
+  it('accepts an empty redFlags array', () => {
+    expect(() => EssayReviewSchema.parse({ ...VALID_REVIEW, redFlags: [] })).not.toThrow()
+  })
+
+  it('requires a non-null evidenceQuote for cliche_opening_or_closing and professionalism_issue', () => {
+    const bad = { ...VALID_REVIEW, redFlags: [{ key: 'professionalism_issue', note: 'Disparages a named supervisor.', evidenceQuote: null }] }
+    expect(() => EssayReviewSchema.parse(bad)).toThrow()
+  })
+
+  it('allows a null evidenceQuote for unexplained_gap', () => {
+    const ok = {
+      ...VALID_REVIEW,
+      redFlags: [{ key: 'unexplained_gap', note: 'A one-year gap in activities is never addressed.', evidenceQuote: null }],
+    }
+    expect(() => EssayReviewSchema.parse(ok)).not.toThrow()
   })
 })
 
@@ -112,6 +136,17 @@ describe('applyProseGuard', () => {
     })
     expect(guarded.dimensionScores[0].challengeQuestion!.split(' ').length).toBeLessThanOrEqual(16)
   })
+
+  it('truncates a long redFlags note but never touches evidenceQuote', () => {
+    const longNote = Array.from({ length: 30 }, (_, i) => `w${i}`).join(' ')
+    const longQuote = Array.from({ length: 40 }, (_, i) => `q${i}`).join(' ')
+    const guarded = applyProseGuard({
+      ...VALID_REVIEW,
+      redFlags: [{ key: 'cliche_opening_or_closing', note: longNote, evidenceQuote: longQuote }],
+    })
+    expect(guarded.redFlags[0].note.split(' ').length).toBeLessThanOrEqual(16)
+    expect(guarded.redFlags[0].evidenceQuote).toBe(longQuote)
+  })
 })
 
 describe('buildReviewPrompt', () => {
@@ -141,6 +176,13 @@ describe('buildReviewPrompt', () => {
     expect(withSchool).toContain('Tulane')
     expect(withSchool).toContain('mission_fit')
     expect(withoutSchool).not.toContain('mission_fit')
+  })
+
+  it('includes red-flag category instructions', () => {
+    const prompt = buildReviewPrompt({ essay: 'My essay text.' })
+    expect(prompt).toContain('cliche_opening_or_closing')
+    expect(prompt).toContain('unexplained_gap')
+    expect(prompt).toContain('professionalism_issue')
   })
 })
 
