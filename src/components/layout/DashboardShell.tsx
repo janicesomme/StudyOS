@@ -2,11 +2,21 @@ import { type ReactNode } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
-export function DashboardShell({ children }: { children: ReactNode }) {
+type Props = {
+  children: ReactNode
+  /** Overrides the default sign-out behavior (sign out then navigate to /login) — e.g. /premed signs out but stays put so its own logged-out view renders. */
+  onSignOut?: () => Promise<void> | void
+}
+
+export function DashboardShell({ children, onSignOut }: Props) {
   const { signOut } = useAuth()
   const navigate = useNavigate()
 
   const handleSignOut = async () => {
+    if (onSignOut) {
+      await onSignOut()
+      return
+    }
     await signOut()
     navigate('/login')
   }

@@ -28,4 +28,42 @@ describe('useAuth', () => {
     await act(async () => {})
     expect(result.current.loading).toBe(false)
   })
+
+  it('signUp surfaces both session and user from the Supabase response', async () => {
+    const { supabase } = await import('../../lib/supabase')
+    const fakeSession = { access_token: 'tok' }
+    const fakeUser = { id: 'user-1', email: 'a@b.com' }
+    vi.mocked(supabase.auth.signUp).mockResolvedValueOnce({
+      data: { session: fakeSession, user: fakeUser },
+      error: null,
+    } as never)
+
+    const { result } = renderHook(() => useAuth())
+    let response!: Awaited<ReturnType<typeof result.current.signUp>>
+    await act(async () => {
+      response = await result.current.signUp('a@b.com', 'password123', 'A Name')
+    })
+
+    expect(response.error).toBeNull()
+    expect(response.session).toEqual(fakeSession)
+    expect(response.user).toEqual(fakeUser)
+  })
+
+  it('signUp surfaces a null session when email confirmation is required', async () => {
+    const { supabase } = await import('../../lib/supabase')
+    const fakeUser = { id: 'user-2', email: 'c@d.com' }
+    vi.mocked(supabase.auth.signUp).mockResolvedValueOnce({
+      data: { session: null, user: fakeUser },
+      error: null,
+    } as never)
+
+    const { result } = renderHook(() => useAuth())
+    let response!: Awaited<ReturnType<typeof result.current.signUp>>
+    await act(async () => {
+      response = await result.current.signUp('c@d.com', 'password123', 'C Name')
+    })
+
+    expect(response.session).toBeNull()
+    expect(response.user).toEqual(fakeUser)
+  })
 })

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { computeSchoolComparison } from '../lib/school-comparison.js'
 import { ApplicantPoolPositionSection } from './sections/ApplicantPoolPositionSection.js'
@@ -14,26 +14,28 @@ type Mode = 'real' | 'demo'
 
 type Props = {
   supabase: SupabaseClient
-  /**
-   * "Real profile mode" reads/writes this fixed user_id rather than the
-   * actual logged-in session's own id — deliberate for this session (see
-   * docs/handoffs/2026-07-03-premed-session-7.md). RLS still applies, so
-   * this only works end to end while logged in as the account this id
-   * belongs to. Deriving it from the real session is deferred to the
-   * auth-wiring session.
-   */
-  devUserId: string
+  /** The logged-in user's auth.uid(), or null when logged out. Real-mode content only ever renders when this is non-null. */
+  userId: string | null
+  /** Rendered alongside demo mode when userId is null — the logged-out signup/login UI. Owned by PremedPage, not this component (keeps premed/src/ui/ free of any src/ auth imports). */
+  loggedOutSlot?: ReactNode
 }
 
-export function PremedDashboard({ supabase, devUserId }: Props) {
+export function PremedDashboard({ supabase, userId, loggedOutSlot }: Props) {
   const [mode, setMode] = useState<Mode>('demo')
   const [archetypeKey, setArchetypeKey] = useState(DEMO_ARCHETYPES[0]?.key ?? '')
 
-  const real = useRealProfileData(supabase, devUserId)
+  const real = useRealProfileData(supabase, userId)
   const demoFixture = useMemo(() => DEMO_ARCHETYPES.find(a => a.key === archetypeKey) ?? null, [archetypeKey])
 
+  // Forces demo when logged out, regardless of whatever `mode` was left at
+  // before a sign-out — without this, stale mode:'real' state would survive
+  // the "Real profile" toggle being hidden and drive rendering against a
+  // null userId.
+  const effectiveMode: Mode = userId !== null ? mode : 'demo'
+  const isReal = userId !== null && effectiveMode === 'real'
+
   const active =
-    mode === 'demo'
+    effectiveMode === 'demo'
       ? demoFixture
         ? {
             profile: demoFixture.profile,
@@ -74,19 +76,21 @@ export function PremedDashboard({ supabase, devUserId }: Props) {
         <div className="flex rounded-lg border border-gray-300 overflow-hidden">
           <button
             onClick={() => setMode('demo')}
-            className={`px-3 py-1.5 text-sm font-medium ${mode === 'demo' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+            className={`px-3 py-1.5 text-sm font-medium ${effectiveMode === 'demo' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
           >
             Demo
           </button>
-          <button
-            onClick={() => setMode('real')}
-            className={`px-3 py-1.5 text-sm font-medium border-l border-gray-300 ${mode === 'real' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
-          >
-            Real profile
-          </button>
+          {userId !== null && (
+            <button
+              onClick={() => setMode('real')}
+              className={`px-3 py-1.5 text-sm font-medium border-l border-gray-300 ${effectiveMode === 'real' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+            >
+              Real profile
+            </button>
+          )}
         </div>
 
-        {mode === 'demo' && (
+        {effectiveMode === 'demo' && (
           <div className="flex gap-2">
             {DEMO_ARCHETYPES.map(a => (
               <button
@@ -102,17 +106,20 @@ export function PremedDashboard({ supabase, devUserId }: Props) {
           </div>
         )}
 
-        {mode === 'demo' && <p className="text-xs text-gray-400 ml-auto">Read-only — seeded archetype data</p>}
+        {effectiveMode === 'demo' && <p className="text-xs text-gray-400 ml-auto">Read-only — seeded archetype data</p>}
       </div>
 
-      {mode === 'real' && (
-        <ProfileIntakePanel supabase={supabase} userId={devUserId} profile={real.profile} activities={real.activities} onChange={real.refetch} />
+      {/* Renders independently of effectiveMode — forcing demo mode when logged out must not hide this, since it's the only way a logged-out visitor gets back to real mode. */}
+      {userId === null && loggedOutSlot}
+
+      {userId !== null && isReal && (
+        <ProfileIntakePanel supabase={supabase} userId={userId} profile={real.profile} activities={real.activities} onChange={real.refetch} />
       )}
 
-      {mode === 'real' && real.loading && <p className="text-sm text-gray-400">Loading...</p>}
-      {mode === 'real' && real.error && <p className="text-sm text-red-600">{real.error}</p>}
+      {isReal && real.loading && <p className="text-sm text-gray-400">Loading...</p>}
+      {isReal && real.error && <p className="text-sm text-red-600">{real.error}</p>}
 
-      {!hasReadOut && mode === 'real' && !real.loading && (
+      {!hasReadOut && isReal && !real.loading && (
         <p className="text-sm text-gray-400">Fill in GPA and MCAT above to see your read-out.</p>
       )}
 
@@ -125,7 +132,7 @@ export function PremedDashboard({ supabase, devUserId }: Props) {
       )}
 
       {/* Real mode only — demo archetypes have no essays (session 8). */}
-      {mode === 'real' && !real.loading && real.profile && (
+      {isReal && !real.loading && real.profile && (
         <EssayReviewSection reviews={real.essayReviews} supabase={supabase} onReviewSaved={real.refetch} />
       )}
     </div>

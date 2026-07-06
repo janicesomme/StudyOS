@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import type { Session } from '@supabase/supabase-js'
+import type { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
 
 interface UseAuthReturn {
   session: Session | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>
-  signUp: (email: string, password: string, name: string) => Promise<{ error: Error | null }>
+  signUp: (email: string, password: string, name: string) => Promise<{ error: Error | null; session: Session | null; user: User | null }>
   signOut: () => Promise<void>
 }
 
@@ -33,12 +33,12 @@ export function useAuth(): UseAuthReturn {
   }
 
   const signUp = async (email: string, password: string, name: string) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { name } },
     })
-    return { error: error as Error | null }
+    return { error: error as Error | null, session: data.session, user: data.user }
   }
 
   const signOut = async () => {

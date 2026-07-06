@@ -1,21 +1,106 @@
+import { useState } from 'react'
 import { DashboardShell } from '../components/layout/DashboardShell'
+import { LoginForm } from '../components/auth/LoginForm'
+import { SignupForm } from '../components/auth/SignupForm'
+import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { PremedDashboard } from '../../premed/src/ui/PremedDashboard'
 
-// "Real profile mode" operates on this fixed user_id rather than the actual
-// logged-in session's own id — a deliberate session-7 shortcut (see
-// docs/handoffs/2026-07-03-premed-session-7.md). RLS is still fully in
-// effect, so real-mode reads/writes only succeed while logged in as the
-// account this id belongs to (crm2263@gmail.com in this environment).
-// Deriving it from useAuth()'s session.user.id instead is deferred to the
-// auth-wiring session.
-const DEV_USER_ID = 'f022dd8c-3d18-4b78-b4f3-511b61022207'
+type AuthView = 'login' | 'signup'
+
+function LoggedOutAuthPanel() {
+  const { signIn, signUp } = useAuth()
+  const [view, setView] = useState<AuthView>('login')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [needsConfirmation, setNeedsConfirmation] = useState(false)
+
+  const handleLogin = async (email: string, password: string) => {
+    setLoading(true)
+    setError(null)
+    const { error } = await signIn(email, password)
+    setLoading(false)
+    // No navigation on success — the session updating flips PremedPage into its logged-in branch automatically.
+    if (error) setError(error.message)
+  }
+
+  const handleSignup = async (name: string, email: string, password: string) => {
+    setLoading(true)
+    setError(null)
+    // SignupForm emits (name, email, password); useAuth().signUp expects (email, password, name).
+    const { error, session } = await signUp(email, password, name)
+    setLoading(false)
+    if (error) {
+      setError(error.message)
+    } else if (session) {
+      // Session present — PremedPage flips to the logged-in branch automatically.
+    } else {
+      // Project requires email confirmation — signUp succeeded but no session yet.
+      setNeedsConfirmation(true)
+    }
+  }
+
+  if (needsConfirmation) {
+    return (
+      <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <p className="text-sm text-gray-700">Check your email to confirm your account, then sign in below.</p>
+      </section>
+    )
+  }
+
+  return (
+    <section className="bg-white rounded-2xl border border-gray-200 p-6 max-w-sm">
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">{view === 'login' ? 'Sign in' : 'Create your account'}</h2>
+      {view === 'login' ? (
+        <LoginForm onSubmit={handleLogin} loading={loading} error={error} />
+      ) : (
+        <SignupForm onSubmit={handleSignup} loading={loading} error={error} />
+      )}
+      <p className="mt-4 text-sm text-gray-500">
+        {view === 'login' ? "Don't have an account? " : 'Already have an account? '}
+        <button
+          onClick={() => {
+            setView(view === 'login' ? 'signup' : 'login')
+            setError(null)
+          }}
+          className="text-indigo-600 font-medium hover:underline"
+        >
+          {view === 'login' ? 'Create one' : 'Sign in'}
+        </button>
+      </p>
+    </section>
+  )
+}
 
 export function PremedPage() {
+  const { session, loading, signOut } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-400 text-sm">Loading...</p>
+      </div>
+    )
+  }
+
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <main className="max-w-6xl mx-auto px-6 py-8 space-y-6">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">Premed</h1>
+            <p className="text-gray-500">Know your odds, close your gaps, and get your personal statement critiqued — before you submit.</p>
+          </div>
+          <PremedDashboard supabase={supabase} userId={null} loggedOutSlot={<LoggedOutAuthPanel />} />
+        </main>
+      </div>
+    )
+  }
+
   return (
-    <DashboardShell>
+    <DashboardShell onSignOut={() => signOut()}>
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Premed</h1>
-      <PremedDashboard supabase={supabase} devUserId={DEV_USER_ID} />
+      <PremedDashboard supabase={supabase} userId={session.user.id} />
     </DashboardShell>
   )
 }

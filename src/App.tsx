@@ -37,7 +37,8 @@ export default function App() {
         <Route path="/courses/:id/review-images" element={<ProtectedRoute><ReviewImagesPage /></ProtectedRoute>} />
         <Route path="/courses/:id/question-unlocks" element={<ProtectedRoute><QuestionUnlocksPage /></ProtectedRoute>} />
         <Route path="/eas-practice" element={<ProtectedRoute><EasPracticePage /></ProtectedRoute>} />
-        <Route path="/premed" element={<ProtectedRoute><PremedPage /></ProtectedRoute>} />
+        {/* Public — PremedPage handles its own auth gating so logged-out visitors can still see demo mode. */}
+        <Route path="/premed" element={<PremedPage />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
