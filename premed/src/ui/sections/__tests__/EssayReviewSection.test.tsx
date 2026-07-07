@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
+import type { EssayReview } from '../../../lib/committee-simulator.js'
 import type { PmEssayReview } from '../../../lib/schemas.js'
 import { EssayReviewSection } from '../EssayReviewSection.js'
 
@@ -31,8 +32,14 @@ function makeReview(overrides: Partial<PmEssayReview> = {}): PmEssayReview {
   }
 }
 
-function makeSupabase(invokeResult: { data?: unknown; error?: unknown } = { data: {} }) {
-  return { functions: { invoke: vi.fn().mockResolvedValue(invokeResult) } }
+function makeSupabase(
+  invokeResult: { data?: unknown; error?: unknown } = { data: {} },
+  calibrationResult: { data?: unknown[]; error?: unknown } = { data: [] }
+) {
+  return {
+    functions: { invoke: vi.fn().mockResolvedValue(invokeResult) },
+    from: vi.fn().mockReturnValue({ select: vi.fn().mockResolvedValue(calibrationResult) }),
+  }
 }
 
 describe('EssayReviewSection', () => {
@@ -132,6 +139,76 @@ describe('EssayReviewSection', () => {
       fireEvent.click(screen.getByRole('button', { name: /get review/i }))
 
       await waitFor(() => expect(screen.getByText(/boom/)).toBeInTheDocument())
+    })
+  })
+
+  describe('benchmark overlay', () => {
+    it('shows the accepted-essay range caption and a band for each calibrated dimension', async () => {
+      const calibrationRows = [{ scores: { theme_coherence: 3 } }, { scores: { theme_coherence: 5 } }, { scores: { theme_coherence: 4 } }]
+      const supabase = makeSupabase(undefined, { data: calibrationRows })
+      render(<EssayReviewSection reviews={[makeReview()]} supabase={supabase as never} onReviewSaved={vi.fn()} />)
+
+      await waitFor(() => expect(screen.getByText(/accepted-essay range/i)).toBeInTheDocument())
+      expect(screen.getByText(/n=3 published essays/i)).toBeInTheDocument()
+      expect(screen.getByTestId('calibration-band-theme_coherence')).toBeInTheDocument()
+    })
+
+    it('omits the band for a dimension the current review has but calibration does not cover', async () => {
+      const baseReview = makeReview().review as unknown as EssayReview
+      const withMissionFit = makeReview({
+        review: {
+          ...baseReview,
+          dimensionScores: [...baseReview.dimensionScores, { dimension: 'mission_fit', score: 4, evidenceQuotes: ['q'], challengeQuestion: null }],
+        },
+      })
+      const supabase = makeSupabase(undefined, { data: [{ scores: { theme_coherence: 4 } }] })
+      render(<EssayReviewSection reviews={[withMissionFit]} supabase={supabase as never} onReviewSaved={vi.fn()} />)
+
+      await waitFor(() => expect(screen.getByTestId('calibration-band-theme_coherence')).toBeInTheDocument())
+      expect(screen.queryByTestId('calibration-band-mission_fit')).not.toBeInTheDocument()
+    })
+
+    it('renders no overlay when the calibration table is empty', async () => {
+      const supabase = makeSupabase(undefined, { data: [] })
+      render(<EssayReviewSection reviews={[makeReview()]} supabase={supabase as never} onReviewSaved={vi.fn()} />)
+
+      await waitFor(() => expect(supabase.from).toHaveBeenCalledWith('pm_rubric_calibration'))
+      expect(screen.queryByText(/accepted-essay range/i)).not.toBeInTheDocument()
+    })
+
+    it('logs a console error and renders no overlay when the calibration fetch fails, without crashing', async () => {
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+      const supabase = makeSupabase(undefined, { error: { message: 'RLS denied' } })
+      render(<EssayReviewSection reviews={[makeReview()]} supabase={supabase as never} onReviewSaved={vi.fn()} />)
+
+      await waitFor(() => expect(consoleErrorSpy).toHaveBeenCalled())
+      expect(screen.queryByText(/accepted-essay range/i)).not.toBeInTheDocument()
+      consoleErrorSpy.mockRestore()
+    })
+  })
+
+  describe('render hierarchy', () => {
+    it('renders verdict, then Your three moves, then dimension detail, then red flags/consistency flags, in that order', () => {
+      const base = makeReview()
+      const withFlags = makeReview({
+        review: {
+          ...base.review,
+          consistencyFlags: ['A consistency flag.'],
+          redFlags: [{ key: 'cliche_opening_or_closing', note: 'A red flag note.', evidenceQuote: 'quote' }],
+        },
+      })
+      const { container } = render(<EssayReviewSection reviews={[withFlags]} supabase={makeSupabase() as never} onReviewSaved={vi.fn()} />)
+      const text = container.textContent ?? ''
+
+      const verdictPos = text.indexOf('A cliche-heavy draft')
+      const movesPos = text.indexOf('Your three moves')
+      const dimensionPos = text.indexOf('Theme Coherence')
+      const flagsPos = text.indexOf('A red flag note.')
+
+      expect(verdictPos).toBeGreaterThan(-1)
+      expect(verdictPos).toBeLessThan(movesPos)
+      expect(movesPos).toBeLessThan(dimensionPos)
+      expect(dimensionPos).toBeLessThan(flagsPos)
     })
   })
 })

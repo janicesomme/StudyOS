@@ -112,15 +112,17 @@ describe('truncateToWords', () => {
 })
 
 describe('applyProseGuard', () => {
-  it('truncates over-long generated commentary but leaves short fields untouched', () => {
-    const longVerdict = Array.from({ length: 40 }, (_, i) => `w${i}`).join(' ')
+  it('truncates over-long generated commentary to the 40-word cap but leaves short fields untouched', () => {
+    const longVerdict = Array.from({ length: 60 }, (_, i) => `w${i}`).join(' ')
     const guarded = applyProseGuard({ ...VALID_REVIEW, verdict: longVerdict })
-    expect(guarded.verdict.split(' ').length).toBeLessThanOrEqual(16)
+    const wordCount = guarded.verdict.split(' ').length
+    expect(wordCount).toBeGreaterThan(16) // proves the cap is no longer 15
+    expect(wordCount).toBeLessThanOrEqual(41) // 40 words + the truncation marker
     expect(guarded.strengths[0]).toBe(VALID_REVIEW.strengths[0])
   })
 
   it('never truncates evidenceQuotes even if long — they must stay verbatim', () => {
-    const longQuote = Array.from({ length: 40 }, (_, i) => `w${i}`).join(' ')
+    const longQuote = Array.from({ length: 60 }, (_, i) => `w${i}`).join(' ')
     const guarded = applyProseGuard({
       ...VALID_REVIEW,
       dimensionScores: VALID_REVIEW.dimensionScores.map((d, i) => (i === 0 ? { ...d, evidenceQuotes: [longQuote] } : d)),
@@ -128,23 +130,27 @@ describe('applyProseGuard', () => {
     expect(guarded.dimensionScores[0].evidenceQuotes[0]).toBe(longQuote)
   })
 
-  it('truncates a long challengeQuestion', () => {
-    const longQuestion = Array.from({ length: 30 }, (_, i) => `q${i}`).join(' ') + '?'
+  it('truncates a long challengeQuestion to the 40-word cap', () => {
+    const longQuestion = Array.from({ length: 60 }, (_, i) => `q${i}`).join(' ') + '?'
     const guarded = applyProseGuard({
       ...VALID_REVIEW,
       dimensionScores: VALID_REVIEW.dimensionScores.map((d, i) => (i === 0 ? { ...d, challengeQuestion: longQuestion } : d)),
     })
-    expect(guarded.dimensionScores[0].challengeQuestion!.split(' ').length).toBeLessThanOrEqual(16)
+    const wordCount = guarded.dimensionScores[0].challengeQuestion!.split(' ').length
+    expect(wordCount).toBeGreaterThan(16)
+    expect(wordCount).toBeLessThanOrEqual(41)
   })
 
-  it('truncates a long redFlags note but never touches evidenceQuote', () => {
-    const longNote = Array.from({ length: 30 }, (_, i) => `w${i}`).join(' ')
-    const longQuote = Array.from({ length: 40 }, (_, i) => `q${i}`).join(' ')
+  it('truncates a long redFlags note to the 40-word cap but never touches evidenceQuote', () => {
+    const longNote = Array.from({ length: 60 }, (_, i) => `w${i}`).join(' ')
+    const longQuote = Array.from({ length: 60 }, (_, i) => `q${i}`).join(' ')
     const guarded = applyProseGuard({
       ...VALID_REVIEW,
       redFlags: [{ key: 'cliche_opening_or_closing', note: longNote, evidenceQuote: longQuote }],
     })
-    expect(guarded.redFlags[0].note.split(' ').length).toBeLessThanOrEqual(16)
+    const wordCount = guarded.redFlags[0].note.split(' ').length
+    expect(wordCount).toBeGreaterThan(16)
+    expect(wordCount).toBeLessThanOrEqual(41)
     expect(guarded.redFlags[0].evidenceQuote).toBe(longQuote)
   })
 })

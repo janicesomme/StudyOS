@@ -130,6 +130,16 @@ export const PmEssayReviewSchema = z.object({
   created_at: z.string(),
 })
 
+export const PmRubricCalibrationSchema = z.object({
+  id: z.string().uuid(),
+  source_label: z.string().min(1),
+  source_url: z.string().min(1),
+  rubric_version: z.string().min(1),
+  scores: z.record(z.string(), z.number()),
+  model: z.string().min(1),
+  created_at: z.string(),
+})
+
 export type PmProfile = z.infer<typeof PmProfileSchema>
 export type PmActivity = z.infer<typeof PmActivitySchema>
 export type PmSchool = z.infer<typeof PmSchoolSchema>
@@ -138,3 +148,4 @@ export type PmOutcomesCorpus = z.infer<typeof PmOutcomesCorpusSchema>
 export type PmNarrative = z.infer<typeof PmNarrativeSchema>
 export type PmFactsGrid = z.infer<typeof PmFactsGridSchema>
 export type PmEssayReview = z.infer<typeof PmEssayReviewSchema>
+export type PmRubricCalibration = z.infer<typeof PmRubricCalibrationSchema>

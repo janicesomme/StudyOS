@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createFakeSupabase } from './fake-supabase.js'
-import { saveEssayReview, listEssayReviews, hashEssay } from '../essay-reviews.js'
+import { saveEssayReview, listEssayReviews, hashEssay, scoresSummary } from '../essay-reviews.js'
 import type { EssayReview } from '../committee-simulator.js'
 
 const SAMPLE_REVIEW: EssayReview = {
@@ -11,6 +11,19 @@ const SAMPLE_REVIEW: EssayReview = {
   consistencyFlags: [],
   redFlags: [],
 }
+
+describe('scoresSummary', () => {
+  it('extracts only dimension keys and scores, discarding quotes/commentary', () => {
+    const review: EssayReview = {
+      ...SAMPLE_REVIEW,
+      dimensionScores: [
+        { dimension: 'theme_coherence', score: 4, evidenceQuotes: ['a verbatim essay quote'], challengeQuestion: null },
+        { dimension: 'narrative_arc', score: 2, evidenceQuotes: ['another quote'], challengeQuestion: 'What changed?' },
+      ],
+    }
+    expect(scoresSummary(review)).toEqual({ theme_coherence: 4, narrative_arc: 2 })
+  })
+})
 
 describe('hashEssay', () => {
   it('is deterministic and 64 hex chars (sha256)', async () => {

@@ -8,7 +8,7 @@ import { RED_FLAGS, RED_FLAG_KEYS, RedFlagKeySchema, RubricDimensionKeySchema, g
 // compliance and this product's legal/market positioning both depend on it
 // never drafting replacement essay text.
 
-const PROSE_GUARD_MAX_WORDS = 15
+const PROSE_GUARD_MAX_WORDS = 40
 const TRUNCATION_MARKER = '[...]'
 
 export function countWords(text: string): number {

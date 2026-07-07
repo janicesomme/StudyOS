@@ -132,12 +132,14 @@ describe('handleReviewEssay — cost gate', () => {
 describe('handleReviewEssay — success path', () => {
   it('returns { essayReview, usage } and applies the prose guard', async () => {
     const { supabase } = await setup()
-    const longVerdict = Array.from({ length: 40 }, (_, i) => `w${i}`).join(' ')
+    const longVerdict = Array.from({ length: 60 }, (_, i) => `w${i}`).join(' ')
     const res = await handleReviewEssay(req({ essay: 'My essay text.' }), deps(supabase, fakeAnthropic({ ...CANNED_REVIEW, verdict: longVerdict })))
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.usage).toEqual({ input_tokens: 1000, output_tokens: 300 })
-    expect(body.essayReview.review.verdict.split(' ').length).toBeLessThanOrEqual(16)
+    const wordCount = body.essayReview.review.verdict.split(' ').length
+    expect(wordCount).toBeGreaterThan(16) // proves the cap is no longer 15
+    expect(wordCount).toBeLessThanOrEqual(41) // 40 words + the truncation marker
   })
 })
 

@@ -26,7 +26,7 @@ export const SaveEssayReviewInputSchema = z.object({
 })
 export type SaveEssayReviewInput = z.infer<typeof SaveEssayReviewInputSchema>
 
-function scoresSummary(review: EssayReview): Record<string, number> {
+export function scoresSummary(review: EssayReview): Record<string, number> {
   return Object.fromEntries(review.dimensionScores.map(d => [d.dimension, d.score]))
 }
 

@@ -38,6 +38,7 @@
     "scrape-class-profiles": "tsx --env-file=.env.local premed/pipeline/scrape-class-profiles.ts",
     "report-outcome": "tsx --env-file=.env.local premed/pipeline/report-outcome.ts",
     "review-essay": "tsx --env-file=.env.local premed/pipeline/review-essay.ts",
+    "calibrate-rubric": "tsx --env-file=.env.local premed/pipeline/calibrate-rubric.ts",
     "export-demo-fixtures": "tsx --env-file=.env.local premed/pipeline/export-demo-fixtures.ts",
     "typecheck-premed": "tsc -p premed/tsconfig.json --noEmit"
   },
